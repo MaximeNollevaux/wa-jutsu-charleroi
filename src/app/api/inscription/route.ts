@@ -56,7 +56,7 @@ export async function POST(request: Request) {
         emergency_contact: emergencyContact,
         emergency_phone: emergencyPhone,
         message: message || null,
-      })
+      } as never)
 
     if (error) {
       console.error('Error storing registration:', error)
