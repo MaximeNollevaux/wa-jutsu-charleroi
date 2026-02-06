@@ -19,19 +19,33 @@ export default function ConnexionPage() {
     setIsLoading(true)
     setError(null)
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
 
-    if (error) {
-      setError('Email ou mot de passe incorrect')
+      if (error) {
+        console.error('Login error:', error)
+        setError(error.message || 'Email ou mot de passe incorrect')
+        setIsLoading(false)
+        return
+      }
+
+      if (data?.session) {
+        // Small delay to ensure cookies are set
+        await new Promise(resolve => setTimeout(resolve, 100))
+        router.push('/espace-membre')
+        router.refresh()
+      } else {
+        setError('Erreur de connexion - pas de session')
+        setIsLoading(false)
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err)
+      setError('Erreur inattendue lors de la connexion')
       setIsLoading(false)
-      return
     }
-
-    router.push('/espace-membre')
-    router.refresh()
   }
 
   return (
