@@ -22,6 +22,11 @@ export default async function EspaceMembrePage() {
     redirect('/espace-membre/connexion')
   }
 
+  // Redirect admins to admin dashboard
+  if (profile.role === 'admin') {
+    redirect('/espace-membre/admin')
+  }
+
   // Get payments
   const { data: payments } = await supabase
     .from('payments')
