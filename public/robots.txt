@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow member area
+Disallow: /espace-membre/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://wa-jutsu-charleroi.be/sitemap.xml

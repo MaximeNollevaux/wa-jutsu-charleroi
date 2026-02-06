@@ -1,0 +1,21 @@
+services:
+  app:
+    image: ghcr.io/maximenollevaux/wa-jutsu-charleroi:latest
+    container_name: wajutsu-app
+    restart: unless-stopped
+    environment:
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wajutsu.rule=Host(`wa-jutsu-charleroi.be`)"
+      - "traefik.http.routers.wajutsu.entrypoints=websecure"
+      - "traefik.http.routers.wajutsu.tls.certresolver=letsencrypt"
+      - "traefik.http.services.wajutsu.loadbalancer.server.port=3000"
+
+networks:
+  dokploy-network:
+    external: true
