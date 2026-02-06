@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline'
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'outline-dark'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 interface BaseButtonProps {
@@ -22,9 +22,10 @@ interface ButtonAsLink extends BaseButtonProps, Omit<AnchorHTMLAttributes<HTMLAn
 type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-primary text-white hover:bg-primary-600',
+  primary: 'bg-primary text-white hover:bg-primary-700',
   secondary: 'bg-dark-900 text-white border border-white/20 hover:bg-dark-700',
   outline: 'bg-transparent text-white border-2 border-white hover:bg-white hover:text-dark-900',
+  'outline-dark': 'bg-transparent text-dark-800 border-2 border-dark-800 hover:bg-dark-800 hover:text-white',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
