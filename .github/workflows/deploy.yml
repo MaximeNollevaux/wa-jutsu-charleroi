@@ -66,6 +66,12 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd /home/ubuntu/projects/wa-jutsu-charleroi
+
+            # Update docker-compose.yml with GOOGLE_AI_API_KEY if not present
+            if ! grep -q "GOOGLE_AI_API_KEY" docker-compose.yml; then
+              sed -i 's/- NEXT_PUBLIC_SITE_URL=/- GOOGLE_AI_API_KEY=${{ secrets.GOOGLE_AI_API_KEY }}\n      - NEXT_PUBLIC_SITE_URL=/g' docker-compose.yml
+            fi
+
             docker compose pull
             docker compose up -d --force-recreate
             docker image prune -f
