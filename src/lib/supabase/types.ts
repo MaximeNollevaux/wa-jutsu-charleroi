@@ -11,6 +11,8 @@ export type MemberCategory = 'enfant' | 'jeune' | 'adulte'
 export type PaymentStatus = 'pending' | 'paid' | 'overdue'
 export type PaymentType = 'license' | 'subscription'
 export type BeltColor = 'blanche' | 'jaune' | 'orange' | 'verte' | 'bleue' | 'marron' | 'noire' | 'violette'
+export type ImagePlaceholderStatus = 'pending' | 'generating' | 'review' | 'approved'
+export type ImageGenerationStatus = 'generated' | 'rejected' | 'approved'
 
 export interface Database {
   public: {
@@ -277,6 +279,91 @@ export interface Database {
           status?: 'pending' | 'approved' | 'rejected'
           processed_at?: string | null
           processed_by?: string | null
+        }
+      }
+      image_placeholders: {
+        Row: {
+          id: string
+          created_at: string
+          updated_at: string
+          site_id: string
+          path: string
+          name: string
+          description: string | null
+          prompt_initial: string
+          prompt_current: string | null
+          status: ImagePlaceholderStatus
+          current_image_url: string | null
+          width: number
+          height: number
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          site_id?: string
+          path: string
+          name: string
+          description?: string | null
+          prompt_initial: string
+          prompt_current?: string | null
+          status?: ImagePlaceholderStatus
+          current_image_url?: string | null
+          width?: number
+          height?: number
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          updated_at?: string
+          site_id?: string
+          path?: string
+          name?: string
+          description?: string | null
+          prompt_initial?: string
+          prompt_current?: string | null
+          status?: ImagePlaceholderStatus
+          current_image_url?: string | null
+          width?: number
+          height?: number
+        }
+      }
+      image_generations: {
+        Row: {
+          id: string
+          created_at: string
+          placeholder_id: string
+          prompt_used: string
+          feedback: string | null
+          image_url: string
+          reference_image_url: string | null
+          status: ImageGenerationStatus
+          approved_at: string | null
+          approved_by: string | null
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          placeholder_id: string
+          prompt_used: string
+          feedback?: string | null
+          image_url: string
+          reference_image_url?: string | null
+          status?: ImageGenerationStatus
+          approved_at?: string | null
+          approved_by?: string | null
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          placeholder_id?: string
+          prompt_used?: string
+          feedback?: string | null
+          image_url?: string
+          reference_image_url?: string | null
+          status?: ImageGenerationStatus
+          approved_at?: string | null
+          approved_by?: string | null
         }
       }
     }

@@ -56,6 +56,13 @@ export default async function AdminPage() {
     .order('created_at', { ascending: false })
     .limit(10)
 
+  // Get image placeholders with their generations
+  const { data: imagePlaceholders } = await supabase
+    .from('image_placeholders')
+    .select('*, generations:image_generations(*)')
+    .eq('site_id', 'wa-jutsu-charleroi')
+    .order('created_at', { ascending: false })
+
   return (
     <AdminDashboard
       members={members || []}
@@ -63,6 +70,7 @@ export default async function AdminPage() {
       payments={payments || []}
       messages={messages || []}
       announcements={announcements || []}
+      imagePlaceholders={imagePlaceholders || []}
     />
   )
 }

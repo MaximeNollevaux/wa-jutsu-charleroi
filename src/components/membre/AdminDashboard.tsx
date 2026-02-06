@@ -15,7 +15,10 @@ import {
   CheckIcon,
   XMarkIcon,
   EyeIcon,
+  PhotoIcon,
 } from '@heroicons/react/24/outline'
+import { ImageManager } from './ImageManager'
+import type { ImagePlaceholderStatus, ImageGenerationStatus } from '@/lib/supabase/types'
 
 type Profile = Database['public']['Tables']['profiles']['Row']
 type Registration = Database['public']['Tables']['registrations']['Row']
@@ -25,12 +28,43 @@ type Payment = Database['public']['Tables']['payments']['Row'] & {
 type ContactMessage = Database['public']['Tables']['contact_messages']['Row']
 type Announcement = Database['public']['Tables']['announcements']['Row']
 
+interface ImageGeneration {
+  id: string
+  created_at: string
+  placeholder_id: string
+  prompt_used: string
+  feedback: string | null
+  image_url: string
+  reference_image_url: string | null
+  status: ImageGenerationStatus
+  approved_at: string | null
+  approved_by: string | null
+}
+
+interface ImagePlaceholder {
+  id: string
+  created_at: string
+  updated_at: string
+  site_id: string
+  path: string
+  name: string
+  description: string | null
+  prompt_initial: string
+  prompt_current: string | null
+  status: ImagePlaceholderStatus
+  current_image_url: string | null
+  width: number
+  height: number
+  generations?: ImageGeneration[]
+}
+
 interface AdminDashboardProps {
   members: Profile[]
   registrations: Registration[]
   payments: Payment[]
   messages: ContactMessage[]
   announcements: Announcement[]
+  imagePlaceholders?: ImagePlaceholder[]
 }
 
 const beltColors: Record<BeltColor, string> = {
@@ -50,8 +84,9 @@ export function AdminDashboard({
   payments,
   messages,
   announcements,
+  imagePlaceholders = [],
 }: AdminDashboardProps) {
-  const [activeTab, setActiveTab] = useState<'overview' | 'members' | 'registrations' | 'payments' | 'messages' | 'announcements'>('overview')
+  const [activeTab, setActiveTab] = useState<'overview' | 'members' | 'registrations' | 'payments' | 'messages' | 'announcements' | 'images'>('overview')
   const supabase = createClient()
 
   const activeMembers = members.filter(m => m.is_active)
@@ -99,6 +134,8 @@ export function AdminDashboard({
     }
   }
 
+  const pendingImages = imagePlaceholders.filter(p => p.status === 'review').length
+
   const tabs = [
     { id: 'overview', name: 'Vue d\'ensemble', icon: UserGroupIcon },
     { id: 'members', name: 'Membres', icon: UserGroupIcon, count: activeMembers.length },
@@ -106,6 +143,7 @@ export function AdminDashboard({
     { id: 'payments', name: 'Paiements', icon: CreditCardIcon, count: pendingPayments.length },
     { id: 'messages', name: 'Messages', icon: EnvelopeIcon, count: messages.length },
     { id: 'announcements', name: 'Annonces', icon: MegaphoneIcon },
+    { id: 'images', name: 'Images IA', icon: PhotoIcon, count: pendingImages },
   ] as const
 
   return (
@@ -420,6 +458,10 @@ export function AdminDashboard({
               <p className="p-4 text-dark-400">Aucune annonce</p>
             )}
           </div>
+        )}
+
+        {activeTab === 'images' && (
+          <ImageManager initialPlaceholders={imagePlaceholders} />
         )}
       </div>
     </div>
