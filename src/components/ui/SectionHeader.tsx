@@ -20,11 +20,11 @@ export function SectionHeader({
           {subtitle}
         </p>
       )}
-      <h2 className={`section-title ${light ? 'text-white' : 'text-white'}`}>
+      <h2 className={`section-title ${light ? 'text-dark-800' : 'text-white'}`}>
         {title}
       </h2>
       {description && (
-        <p className={`mt-4 text-lg max-w-3xl ${centered ? 'mx-auto' : ''} ${light ? 'text-dark-300' : 'text-dark-400'}`}>
+        <p className={`mt-4 text-lg max-w-3xl ${centered ? 'mx-auto' : ''} ${light ? 'text-dark-600' : 'text-dark-400'}`}>
           {description}
         </p>
       )}

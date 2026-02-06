@@ -62,11 +62,12 @@ export function Pricing() {
           subtitle="Tarifs"
           title="Nos formules"
           description="Des tarifs accessibles pour tous. Premier mois d'essai gratuit pour les nouveaux membres."
+          light
         />
 
         {/* Annual fee notice */}
         <div className="bg-primary/10 border border-primary/20 p-6 mb-12 text-center">
-          <p className="text-white">
+          <p className="text-dark-800">
             <strong className="text-primary">Licence annuelle : 50€</strong> - Comprend le droit d'entrée,
             l'assurance responsabilité civile et la carte membre AEJT.
           </p>
@@ -119,10 +120,10 @@ export function Pricing() {
         </div>
 
         <div className="text-center mt-8">
-          <p className="text-dark-400 mb-4">
+          <p className="text-dark-600 mb-4">
             Facilités de paiement disponibles. Contactez-nous pour plus d'informations.
           </p>
-          <Button href="/horaires-tarifs" variant="outline">
+          <Button href="/horaires-tarifs" variant="primary">
             Voir tous les détails
           </Button>
         </div>
