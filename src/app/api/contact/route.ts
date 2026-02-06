@@ -24,7 +24,7 @@ export async function POST(request: Request) {
         phone: phone || null,
         subject,
         message,
-      } as never)
+      })
 
     if (error) {
       console.error('Error storing contact message:', error)
