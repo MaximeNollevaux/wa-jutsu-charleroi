@@ -33,10 +33,8 @@ export default function ConnexionPage() {
       }
 
       if (data?.session) {
-        // Small delay to ensure cookies are set
-        await new Promise(resolve => setTimeout(resolve, 100))
-        router.push('/espace-membre')
-        router.refresh()
+        // Full page reload to ensure cookies are properly sent to server
+        window.location.href = '/espace-membre/admin'
       } else {
         setError('Erreur de connexion - pas de session')
         setIsLoading(false)
