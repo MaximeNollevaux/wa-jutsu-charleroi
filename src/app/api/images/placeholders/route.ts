@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json()
-  const { path, name, description, prompt_initial, width, height, site_id } = body
+  const { path, name, description, prompt_initial, width, height, site_id, tags } = body
 
   if (!path || !name || !prompt_initial) {
     return NextResponse.json(
@@ -89,7 +89,8 @@ export async function POST(request: NextRequest) {
       prompt_current: prompt_initial,
       width: width || 1200,
       height: height || 800,
-      status: 'pending'
+      status: 'pending',
+      tags: tags || [],
     })
     .select()
     .single()

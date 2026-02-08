@@ -12,6 +12,9 @@ import {
   ArrowUpTrayIcon,
   ChevronDownIcon,
   SparklesIcon,
+  TagIcon,
+  MagnifyingGlassMinusIcon,
+  ArrowsPointingOutIcon,
 } from '@heroicons/react/24/outline'
 import type { ImagePlaceholderStatus, ImageGenerationStatus } from '@/lib/supabase/types'
 
@@ -42,6 +45,7 @@ interface ImagePlaceholder {
   current_image_url: string | null
   width: number
   height: number
+  tags?: string[]
   generations?: ImageGeneration[]
 }
 
@@ -56,9 +60,40 @@ const statusLabels: Record<ImagePlaceholderStatus, { label: string; color: strin
   approved: { label: 'Approuvee', color: 'bg-green-500/20 text-green-400' },
 }
 
+// Ratios predefinis avec dimensions de base
+const ASPECT_RATIOS = [
+  { label: '1:1', ratio: 1, width: 1024, height: 1024 },
+  { label: '4:5', ratio: 4/5, width: 1024, height: 1280 },
+  { label: '3:4', ratio: 3/4, width: 1024, height: 1365 },
+  { label: '10:14', ratio: 10/14, width: 1024, height: 1433 },
+  { label: '2:3', ratio: 2/3, width: 1024, height: 1536 },
+  { label: '9:16', ratio: 9/16, width: 1024, height: 1820 },
+  { label: '1:2', ratio: 1/2, width: 1024, height: 2048 },
+  { label: '5:4', ratio: 5/4, width: 1280, height: 1024 },
+  { label: '4:3', ratio: 4/3, width: 1365, height: 1024 },
+  { label: '14:10', ratio: 14/10, width: 1433, height: 1024 },
+  { label: '3:2', ratio: 3/2, width: 1536, height: 1024 },
+  { label: '16:9', ratio: 16/9, width: 1820, height: 1024 },
+  { label: '2:1', ratio: 2/1, width: 2048, height: 1024 },
+]
+
+// Tags predéfinis pour suggestions
+const SUGGESTED_TAGS = ['hero', 'background', 'portrait', 'action', 'dojo', 'logo', 'banner', 'card', 'section']
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
 export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
   const [placeholders, setPlaceholders] = useState<ImagePlaceholder[]>(initialPlaceholders)
   const [filterStatus, setFilterStatus] = useState<ImagePlaceholderStatus | 'all'>('all')
+  const [filterTag, setFilterTag] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const [selectedPlaceholder, setSelectedPlaceholder] = useState<ImagePlaceholder | null>(null)
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [feedback, setFeedback] = useState('')
@@ -66,21 +101,29 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
   const [isApproving, setIsApproving] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [referenceImage, setReferenceImage] = useState<string | null>(null)
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   // Form state for new placeholder
   const [newPlaceholder, setNewPlaceholder] = useState({
-    path: '',
     name: '',
     description: '',
     prompt_initial: '',
-    width: 1200,
-    height: 800,
+    selectedRatio: '16:9',
+    tags: [] as string[],
+    newTag: '',
   })
 
-  const filteredPlaceholders = filterStatus === 'all'
-    ? placeholders
-    : placeholders.filter(p => p.status === filterStatus)
+  // Extraire tous les tags uniques des placeholders
+  const allTags = Array.from(new Set(placeholders.flatMap(p => p.tags || [])))
+
+  // Filtrer les placeholders
+  const filteredPlaceholders = placeholders.filter(p => {
+    if (filterStatus !== 'all' && p.status !== filterStatus) return false
+    if (filterTag && !(p.tags || []).includes(filterTag)) return false
+    if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false
+    return true
+  })
 
   async function fetchPlaceholders() {
     const response = await fetch('/api/images/placeholders')
@@ -91,24 +134,54 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
   }
 
   async function createPlaceholder() {
+    const selectedRatioData = ASPECT_RATIOS.find(r => r.label === newPlaceholder.selectedRatio)
+    const slug = slugify(newPlaceholder.name)
+    const path = `/images/generated/${slug}.jpg`
+
     const response = await fetch('/api/images/placeholders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newPlaceholder),
+      body: JSON.stringify({
+        path,
+        name: newPlaceholder.name,
+        description: newPlaceholder.description,
+        prompt_initial: newPlaceholder.prompt_initial,
+        width: selectedRatioData?.width || 1024,
+        height: selectedRatioData?.height || 1024,
+        tags: newPlaceholder.tags,
+      }),
     })
 
     if (response.ok) {
       await fetchPlaceholders()
       setShowCreateForm(false)
       setNewPlaceholder({
-        path: '',
         name: '',
         description: '',
         prompt_initial: '',
-        width: 1200,
-        height: 800,
+        selectedRatio: '16:9',
+        tags: [],
+        newTag: '',
       })
     }
+  }
+
+  function addTag(tag: string) {
+    const trimmed = tag.trim().toLowerCase()
+    if (trimmed && !newPlaceholder.tags.includes(trimmed)) {
+      setNewPlaceholder({
+        ...newPlaceholder,
+        tags: [...newPlaceholder.tags, trimmed],
+        newTag: '',
+      })
+    }
+  }
+
+  function removeTag(tag: string) {
+    setNewPlaceholder({
+      ...newPlaceholder,
+      tags: newPlaceholder.tags.filter(t => t !== tag),
+    })
   }
 
   async function generateImage() {
@@ -130,7 +203,6 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
         await fetchPlaceholders()
         setFeedback('')
         setReferenceImage(null)
-        // Re-select the placeholder to get updated data
         const updatedPlaceholders = await fetch('/api/images/placeholders').then(r => r.json())
         const updated = updatedPlaceholders.find((p: ImagePlaceholder) => p.id === selectedPlaceholder.id)
         if (updated) setSelectedPlaceholder(updated)
@@ -163,7 +235,6 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
       method: 'DELETE',
     })
     await fetchPlaceholders()
-    // Re-select the placeholder to get updated data
     if (selectedPlaceholder) {
       const updatedPlaceholders = await fetch('/api/images/placeholders').then(r => r.json())
       const updated = updatedPlaceholders.find((p: ImagePlaceholder) => p.id === selectedPlaceholder.id)
@@ -189,9 +260,51 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
 
   return (
     <div className="space-y-6">
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-[60] p-4 cursor-pointer"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 p-2 bg-dark-800 text-white hover:bg-dark-700 z-10"
+          >
+            <XMarkIcon className="w-6 h-6" />
+          </button>
+          <img
+            src={lightboxImage}
+            alt="Preview"
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
       {/* Header with filters */}
-      <div className="flex flex-wrap gap-4 items-center justify-between">
-        <div className="flex gap-2">
+      <div className="space-y-4">
+        {/* Search and create */}
+        <div className="flex flex-wrap gap-4 items-center justify-between">
+          <div className="flex-1 max-w-md">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Rechercher par nom..."
+              className="w-full px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none text-sm"
+            />
+          </div>
+          <button
+            onClick={() => setShowCreateForm(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm hover:bg-primary-dark transition-colors"
+          >
+            <PlusIcon className="w-4 h-4" />
+            Nouveau placeholder
+          </button>
+        </div>
+
+        {/* Status filters */}
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setFilterStatus('all')}
             className={`px-3 py-1.5 text-sm transition-colors ${
@@ -216,13 +329,31 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
           })}
         </div>
 
-        <button
-          onClick={() => setShowCreateForm(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm hover:bg-primary-dark transition-colors"
-        >
-          <PlusIcon className="w-4 h-4" />
-          Nouveau placeholder
-        </button>
+        {/* Tag filters */}
+        {allTags.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2">
+            <TagIcon className="w-4 h-4 text-dark-400" />
+            <button
+              onClick={() => setFilterTag(null)}
+              className={`px-2 py-1 text-xs transition-colors rounded ${
+                filterTag === null ? 'bg-primary/20 text-primary' : 'bg-dark-700 text-dark-400 hover:bg-dark-600'
+              }`}
+            >
+              Tous
+            </button>
+            {allTags.map(tag => (
+              <button
+                key={tag}
+                onClick={() => setFilterTag(filterTag === tag ? null : tag)}
+                className={`px-2 py-1 text-xs transition-colors rounded ${
+                  filterTag === tag ? 'bg-primary/20 text-primary' : 'bg-dark-700 text-dark-400 hover:bg-dark-600'
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Create form modal */}
@@ -237,25 +368,21 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
             </div>
             <div className="p-4 space-y-4">
               <div>
-                <label className="block text-sm text-dark-300 mb-1">Chemin de l&apos;image *</label>
-                <input
-                  type="text"
-                  value={newPlaceholder.path}
-                  onChange={(e) => setNewPlaceholder({ ...newPlaceholder, path: e.target.value })}
-                  placeholder="/images/hero-bg.jpg"
-                  className="w-full px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none"
-                />
-              </div>
-              <div>
                 <label className="block text-sm text-dark-300 mb-1">Nom *</label>
                 <input
                   type="text"
                   value={newPlaceholder.name}
                   onChange={(e) => setNewPlaceholder({ ...newPlaceholder, name: e.target.value })}
-                  placeholder="Image hero principale"
+                  placeholder="Ex: Hero background dojo"
                   className="w-full px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none"
                 />
+                {newPlaceholder.name && (
+                  <p className="text-dark-500 text-xs mt-1">
+                    Chemin: /images/generated/{slugify(newPlaceholder.name)}.jpg
+                  </p>
+                )}
               </div>
+
               <div>
                 <label className="block text-sm text-dark-300 mb-1">Description</label>
                 <input
@@ -266,6 +393,96 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                   className="w-full px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none"
                 />
               </div>
+
+              {/* Ratio selection */}
+              <div>
+                <label className="block text-sm text-dark-300 mb-2">Format / Ratio *</label>
+                <div className="grid grid-cols-7 gap-2">
+                  {ASPECT_RATIOS.map((ratio) => (
+                    <button
+                      key={ratio.label}
+                      onClick={() => setNewPlaceholder({ ...newPlaceholder, selectedRatio: ratio.label })}
+                      className={`p-2 border text-xs text-center transition-colors ${
+                        newPlaceholder.selectedRatio === ratio.label
+                          ? 'border-primary bg-primary/20 text-white'
+                          : 'border-dark-600 bg-dark-700 text-dark-400 hover:border-dark-500'
+                      }`}
+                    >
+                      <div
+                        className={`mx-auto mb-1 border ${
+                          newPlaceholder.selectedRatio === ratio.label ? 'border-primary' : 'border-dark-500'
+                        }`}
+                        style={{
+                          width: ratio.ratio >= 1 ? '24px' : `${24 * ratio.ratio}px`,
+                          height: ratio.ratio >= 1 ? `${24 / ratio.ratio}px` : '24px',
+                        }}
+                      />
+                      {ratio.label}
+                    </button>
+                  ))}
+                </div>
+                {newPlaceholder.selectedRatio && (
+                  <p className="text-dark-500 text-xs mt-2">
+                    Dimensions: {ASPECT_RATIOS.find(r => r.label === newPlaceholder.selectedRatio)?.width}x
+                    {ASPECT_RATIOS.find(r => r.label === newPlaceholder.selectedRatio)?.height}px
+                  </p>
+                )}
+              </div>
+
+              {/* Tags */}
+              <div>
+                <label className="block text-sm text-dark-300 mb-1">
+                  <TagIcon className="w-4 h-4 inline mr-1" />
+                  Tags
+                </label>
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {newPlaceholder.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded"
+                    >
+                      {tag}
+                      <button onClick={() => removeTag(tag)} className="hover:text-white">
+                        <XMarkIcon className="w-3 h-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newPlaceholder.newTag}
+                    onChange={(e) => setNewPlaceholder({ ...newPlaceholder, newTag: e.target.value })}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault()
+                        addTag(newPlaceholder.newTag)
+                      }
+                    }}
+                    placeholder="Ajouter un tag..."
+                    className="flex-1 px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none text-sm"
+                  />
+                  <button
+                    onClick={() => addTag(newPlaceholder.newTag)}
+                    disabled={!newPlaceholder.newTag.trim()}
+                    className="px-3 py-2 bg-dark-600 text-white text-sm hover:bg-dark-500 disabled:opacity-50"
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {SUGGESTED_TAGS.filter(t => !newPlaceholder.tags.includes(t)).map(tag => (
+                    <button
+                      key={tag}
+                      onClick={() => addTag(tag)}
+                      className="px-2 py-0.5 bg-dark-700 text-dark-400 text-xs hover:bg-dark-600 rounded"
+                    >
+                      + {tag}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <label className="block text-sm text-dark-300 mb-1">Prompt initial *</label>
                 <textarea
@@ -276,26 +493,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                   className="w-full px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none resize-none"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm text-dark-300 mb-1">Largeur (px)</label>
-                  <input
-                    type="number"
-                    value={newPlaceholder.width}
-                    onChange={(e) => setNewPlaceholder({ ...newPlaceholder, width: parseInt(e.target.value) })}
-                    className="w-full px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-dark-300 mb-1">Hauteur (px)</label>
-                  <input
-                    type="number"
-                    value={newPlaceholder.height}
-                    onChange={(e) => setNewPlaceholder({ ...newPlaceholder, height: parseInt(e.target.value) })}
-                    className="w-full px-3 py-2 bg-dark-700 border border-dark-600 text-white focus:border-primary focus:outline-none"
-                  />
-                </div>
-              </div>
+
               <div className="flex justify-end gap-3 pt-4">
                 <button
                   onClick={() => setShowCreateForm(false)}
@@ -305,7 +503,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                 </button>
                 <button
                   onClick={createPlaceholder}
-                  disabled={!newPlaceholder.path || !newPlaceholder.name || !newPlaceholder.prompt_initial}
+                  disabled={!newPlaceholder.name || !newPlaceholder.prompt_initial}
                   className="px-4 py-2 bg-primary text-white text-sm hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Creer
@@ -329,19 +527,42 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
             }`}
           >
             {/* Image preview */}
-            <div className="aspect-video bg-dark-800 relative overflow-hidden">
+            <div className="aspect-video bg-dark-800 relative overflow-hidden group">
               {placeholder.current_image_url ? (
-                <img
-                  src={placeholder.current_image_url}
-                  alt={placeholder.name}
-                  className="w-full h-full object-cover"
-                />
+                <>
+                  <img
+                    src={placeholder.current_image_url}
+                    alt={placeholder.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setLightboxImage(placeholder.current_image_url)
+                    }}
+                    className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                  >
+                    <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
+                  </button>
+                </>
               ) : placeholder.generations?.find(g => g.status === 'generated')?.image_url ? (
-                <img
-                  src={placeholder.generations.find(g => g.status === 'generated')?.image_url}
-                  alt={placeholder.name}
-                  className="w-full h-full object-cover opacity-75"
-                />
+                <>
+                  <img
+                    src={placeholder.generations.find(g => g.status === 'generated')?.image_url}
+                    alt={placeholder.name}
+                    className="w-full h-full object-cover opacity-75"
+                  />
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      const url = placeholder.generations?.find(g => g.status === 'generated')?.image_url
+                      if (url) setLightboxImage(url)
+                    }}
+                    className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                  >
+                    <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
+                  </button>
+                </>
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <PhotoIcon className="w-12 h-12 text-dark-600" />
@@ -357,10 +578,21 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
             {/* Info */}
             <div className="p-3">
               <h3 className="font-medium text-sm truncate">{placeholder.name}</h3>
-              <p className="text-dark-400 text-xs truncate">{placeholder.path}</p>
               <p className="text-dark-500 text-xs mt-1">
                 {placeholder.width}x{placeholder.height}px
               </p>
+              {placeholder.tags && placeholder.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {placeholder.tags.slice(0, 3).map(tag => (
+                    <span key={tag} className="px-1.5 py-0.5 bg-dark-600 text-dark-400 text-xs rounded">
+                      {tag}
+                    </span>
+                  ))}
+                  {placeholder.tags.length > 3 && (
+                    <span className="text-dark-500 text-xs">+{placeholder.tags.length - 3}</span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -368,7 +600,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
         {filteredPlaceholders.length === 0 && (
           <div className="col-span-full py-12 text-center text-dark-400">
             <PhotoIcon className="w-12 h-12 mx-auto mb-3 opacity-50" />
-            <p>Aucun placeholder {filterStatus !== 'all' ? `avec le statut "${statusLabels[filterStatus].label}"` : ''}</p>
+            <p>Aucun placeholder trouve</p>
           </div>
         )}
       </div>
@@ -380,7 +612,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
             <div className="p-4 border-b border-dark-600 flex justify-between items-center">
               <div>
                 <h3 className="font-heading font-bold">{selectedPlaceholder.name}</h3>
-                <p className="text-dark-400 text-sm">{selectedPlaceholder.path}</p>
+                <p className="text-dark-400 text-sm">{selectedPlaceholder.width}x{selectedPlaceholder.height}px</p>
               </div>
               <button onClick={() => setSelectedPlaceholder(null)} className="text-dark-400 hover:text-white">
                 <XMarkIcon className="w-5 h-5" />
@@ -390,19 +622,36 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
             <div className="grid md:grid-cols-2 gap-6 p-6">
               {/* Left: Image preview */}
               <div>
-                <div className="aspect-video bg-dark-900 relative overflow-hidden mb-4">
+                <div
+                  className="bg-dark-900 relative overflow-hidden mb-4 cursor-pointer group"
+                  style={{ aspectRatio: `${selectedPlaceholder.width}/${selectedPlaceholder.height}` }}
+                  onClick={() => {
+                    const url = latestGeneration?.image_url || selectedPlaceholder.current_image_url
+                    if (url) setLightboxImage(url)
+                  }}
+                >
                   {latestGeneration?.image_url ? (
-                    <img
-                      src={latestGeneration.image_url}
-                      alt="Preview"
-                      className="w-full h-full object-contain"
-                    />
+                    <>
+                      <img
+                        src={latestGeneration.image_url}
+                        alt="Preview"
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
+                      </div>
+                    </>
                   ) : selectedPlaceholder.current_image_url ? (
-                    <img
-                      src={selectedPlaceholder.current_image_url}
-                      alt="Current"
-                      className="w-full h-full object-contain"
-                    />
+                    <>
+                      <img
+                        src={selectedPlaceholder.current_image_url}
+                        alt="Current"
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
+                      </div>
+                    </>
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <PhotoIcon className="w-16 h-16 text-dark-600" />
@@ -459,7 +708,8 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                       .map((gen) => (
                         <div
                           key={gen.id}
-                          className="flex items-center gap-3 p-2 bg-dark-700 text-sm"
+                          className="flex items-center gap-3 p-2 bg-dark-700 text-sm cursor-pointer hover:bg-dark-600"
+                          onClick={() => gen.image_url && setLightboxImage(gen.image_url)}
                         >
                           <div className="w-16 h-12 bg-dark-800 flex-shrink-0">
                             {gen.image_url && (
