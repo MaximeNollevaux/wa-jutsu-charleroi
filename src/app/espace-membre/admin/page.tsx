@@ -56,10 +56,10 @@ export default async function AdminPage() {
     .order('created_at', { ascending: false })
     .limit(10)
 
-  // Get image placeholders with their generations
+  // Get image placeholders (lightweight: no image data URLs)
   const { data: imagePlaceholders } = await supabase
     .from('image_placeholders')
-    .select('*, generations:image_generations(*)')
+    .select('*, generations:image_generations(id, status, created_at)')
     .eq('site_id', 'wa-jutsu-charleroi')
     .order('created_at', { ascending: false })
 

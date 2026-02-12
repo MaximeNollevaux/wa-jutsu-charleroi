@@ -23,15 +23,28 @@ export async function GET(request: NextRequest) {
 
   // Get query params
   const { searchParams } = new URL(request.url)
+  const id = searchParams.get('id')
   const status = searchParams.get('status')
   const siteId = searchParams.get('site_id') || 'wa-jutsu-charleroi'
 
+  // Single placeholder with full generation data (including image_url)
+  if (id) {
+    const { data, error } = await supabase
+      .from('image_placeholders')
+      .select('*, generations:image_generations(*)')
+      .eq('id', id)
+      .single()
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+    return NextResponse.json(data)
+  }
+
+  // List: lightweight query (no image_url from generations)
   let query = supabase
     .from('image_placeholders')
-    .select(`
-      *,
-      generations:image_generations(*)
-    `)
+    .select('*, generations:image_generations(id, status, created_at)')
     .eq('site_id', siteId)
     .order('created_at', { ascending: false })
 

@@ -162,6 +162,19 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
     return true
   })
 
+  // Fetch full placeholder data (with image_url) for detail panel
+  async function fetchFullPlaceholder(id: string): Promise<ImagePlaceholder | null> {
+    const response = await fetch(`/api/images/placeholders?id=${id}`)
+    if (response.ok) return response.json()
+    return null
+  }
+
+  async function selectPlaceholder(placeholder: ImagePlaceholder) {
+    setSelectedPlaceholder(placeholder) // Show panel immediately
+    const full = await fetchFullPlaceholder(placeholder.id)
+    if (full) setSelectedPlaceholder(full) // Update with image data
+  }
+
   async function fetchPlaceholders() {
     const response = await fetch('/api/images/placeholders')
     if (response.ok) {
@@ -205,7 +218,10 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
         const updatedList = await listResponse.json()
         setPlaceholders(updatedList)
         const newPh = updatedList.find((p: ImagePlaceholder) => p.path === path)
-        if (newPh) setSelectedPlaceholder(newPh)
+        if (newPh) {
+          const full = await fetchFullPlaceholder(newPh.id)
+          setSelectedPlaceholder(full || newPh)
+        }
       }
     }
   }
@@ -248,9 +264,8 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
         await fetchPlaceholders()
         setFeedback('')
         setReferenceImage(null)
-        const updatedPlaceholders = await fetch('/api/images/placeholders').then(r => r.json())
-        const updated = updatedPlaceholders.find((p: ImagePlaceholder) => p.id === selectedPlaceholder.id)
-        if (updated) setSelectedPlaceholder(updated)
+        const full = await fetchFullPlaceholder(selectedPlaceholder.id)
+        if (full) setSelectedPlaceholder(full)
       }
     } finally {
       setIsGenerating(false)
@@ -281,9 +296,8 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
     })
     await fetchPlaceholders()
     if (selectedPlaceholder) {
-      const updatedPlaceholders = await fetch('/api/images/placeholders').then(r => r.json())
-      const updated = updatedPlaceholders.find((p: ImagePlaceholder) => p.id === selectedPlaceholder.id)
-      if (updated) setSelectedPlaceholder(updated)
+      const full = await fetchFullPlaceholder(selectedPlaceholder.id)
+      if (full) setSelectedPlaceholder(full)
     }
   }
 
@@ -548,6 +562,41 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                 />
               </div>
 
+              {/* Model selector */}
+              <div>
+                <label className="block text-sm text-dark-300 mb-2">
+                  <SparklesIcon className="w-4 h-4 inline mr-1" />
+                  Modele IA
+                </label>
+                <div className="space-y-1">
+                  {AI_MODELS.map((m) => (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => {
+                        setSelectedModel(m.id)
+                        if (m.type === 'imagen') setReferenceImage(null)
+                      }}
+                      className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                        selectedModel === m.id
+                          ? 'bg-primary/20 border border-primary text-white'
+                          : 'bg-dark-700 border border-dark-600 text-dark-300 hover:border-dark-500'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium">{m.name}</span>
+                        {m.badge && (
+                          <span className={`text-xs px-1.5 py-0.5 rounded ${m.badgeColor}`}>
+                            {m.badge}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-dark-400 mt-0.5">{m.description}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="flex justify-end gap-3 pt-4">
                 <button
                   onClick={() => setShowCreateForm(false)}
@@ -573,7 +622,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
         {filteredPlaceholders.map((placeholder) => (
           <div
             key={placeholder.id}
-            onClick={() => setSelectedPlaceholder(placeholder)}
+            onClick={() => selectPlaceholder(placeholder)}
             className={`bg-dark-700 border cursor-pointer transition-colors ${
               selectedPlaceholder?.id === placeholder.id
                 ? 'border-primary'
