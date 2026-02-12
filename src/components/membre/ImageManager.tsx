@@ -190,7 +190,6 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
     })
 
     if (response.ok) {
-      await fetchPlaceholders()
       setShowCreateForm(false)
       setNewPlaceholder({
         name: '',
@@ -200,6 +199,14 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
         tags: [],
         newTag: '',
       })
+      // Fetch updated list and auto-open the new placeholder
+      const listResponse = await fetch('/api/images/placeholders')
+      if (listResponse.ok) {
+        const updatedList = await listResponse.json()
+        setPlaceholders(updatedList)
+        const newPh = updatedList.find((p: ImagePlaceholder) => p.path === path)
+        if (newPh) setSelectedPlaceholder(newPh)
+      }
     }
   }
 
