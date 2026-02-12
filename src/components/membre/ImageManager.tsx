@@ -80,6 +80,42 @@ const ASPECT_RATIOS = [
 // Tags predéfinis pour suggestions
 const SUGGESTED_TAGS = ['hero', 'background', 'portrait', 'action', 'dojo', 'logo', 'banner', 'card', 'section']
 
+// Modeles IA disponibles
+const AI_MODELS = [
+  {
+    id: 'gemini-2.5-flash-image',
+    name: 'Gemini 2.5 Flash',
+    description: 'Rapide, supporte image de reference',
+    type: 'gemini' as const,
+    badge: 'Rapide',
+    badgeColor: 'bg-blue-500/20 text-blue-400',
+  },
+  {
+    id: 'imagen-4.0-fast-generate-001',
+    name: 'Imagen 4 Fast',
+    description: 'Dedie image, bon compromis vitesse/qualite',
+    type: 'imagen' as const,
+    badge: null as string | null,
+    badgeColor: '',
+  },
+  {
+    id: 'imagen-4.0-generate-001',
+    name: 'Imagen 4',
+    description: 'Haute qualite, dedie generation d\'images',
+    type: 'imagen' as const,
+    badge: 'Recommande',
+    badgeColor: 'bg-green-500/20 text-green-400',
+  },
+  {
+    id: 'imagen-4.0-ultra-generate-001',
+    name: 'Imagen 4 Ultra',
+    description: 'Meilleure qualite possible, plus lent',
+    type: 'imagen' as const,
+    badge: 'Premium',
+    badgeColor: 'bg-purple-500/20 text-purple-400',
+  },
+]
+
 function slugify(text: string): string {
   return text
     .toLowerCase()
@@ -101,6 +137,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
   const [isApproving, setIsApproving] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [referenceImage, setReferenceImage] = useState<string | null>(null)
+  const [selectedModel, setSelectedModel] = useState('gemini-2.5-flash-image')
   const [lightboxImage, setLightboxImage] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -196,6 +233,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
           placeholder_id: selectedPlaceholder.id,
           feedback: feedback || undefined,
           reference_image_base64: referenceImage || undefined,
+          model: selectedModel,
         }),
       })
 
@@ -252,6 +290,15 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
       setReferenceImage(base64)
     }
     reader.readAsDataURL(file)
+  }
+
+  // Helper: trouver la meilleure URL d'image pour un placeholder
+  function getDisplayUrl(p: ImagePlaceholder): string | null {
+    const latestGen = p.generations
+      ?.filter(g => g.status === 'approved' || g.status === 'generated')
+      .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0]
+    if (latestGen?.image_url) return latestGen.image_url
+    return p.current_image_url || null
   }
 
   const latestGeneration = selectedPlaceholder?.generations
@@ -528,46 +575,31 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
           >
             {/* Image preview */}
             <div className="aspect-video bg-dark-800 relative overflow-hidden group">
-              {placeholder.current_image_url ? (
-                <>
-                  <img
-                    src={placeholder.current_image_url}
-                    alt={placeholder.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setLightboxImage(placeholder.current_image_url)
-                    }}
-                    className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                  >
-                    <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
-                  </button>
-                </>
-              ) : placeholder.generations?.find(g => g.status === 'generated')?.image_url ? (
-                <>
-                  <img
-                    src={placeholder.generations.find(g => g.status === 'generated')?.image_url}
-                    alt={placeholder.name}
-                    className="w-full h-full object-cover opacity-75"
-                  />
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      const url = placeholder.generations?.find(g => g.status === 'generated')?.image_url
-                      if (url) setLightboxImage(url)
-                    }}
-                    className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                  >
-                    <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
-                  </button>
-                </>
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <PhotoIcon className="w-12 h-12 text-dark-600" />
-                </div>
-              )}
+              {(() => {
+                const url = getDisplayUrl(placeholder)
+                return url ? (
+                  <>
+                    <img
+                      src={url}
+                      alt={placeholder.name}
+                      className={`w-full h-full object-cover${placeholder.status === 'review' ? ' opacity-75' : ''}`}
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setLightboxImage(url)
+                      }}
+                      className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                    >
+                      <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
+                    </button>
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <PhotoIcon className="w-12 h-12 text-dark-600" />
+                  </div>
+                )
+              })()}
               <div className="absolute top-2 right-2">
                 <span className={`px-2 py-1 text-xs rounded ${statusLabels[placeholder.status].color}`}>
                   {statusLabels[placeholder.status].label}
@@ -626,37 +658,29 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                   className="bg-dark-900 relative overflow-hidden mb-4 cursor-pointer group"
                   style={{ aspectRatio: `${selectedPlaceholder.width}/${selectedPlaceholder.height}` }}
                   onClick={() => {
-                    const url = latestGeneration?.image_url || selectedPlaceholder.current_image_url
+                    const url = latestGeneration?.image_url || getDisplayUrl(selectedPlaceholder)
                     if (url) setLightboxImage(url)
                   }}
                 >
-                  {latestGeneration?.image_url ? (
-                    <>
-                      <img
-                        src={latestGeneration.image_url}
-                        alt="Preview"
-                        className="w-full h-full object-contain"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
+                  {(() => {
+                    const url = latestGeneration?.image_url || getDisplayUrl(selectedPlaceholder)
+                    return url ? (
+                      <>
+                        <img
+                          src={url}
+                          alt="Preview"
+                          className="w-full h-full object-contain"
+                        />
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
+                        </div>
+                      </>
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <PhotoIcon className="w-16 h-16 text-dark-600" />
                       </div>
-                    </>
-                  ) : selectedPlaceholder.current_image_url ? (
-                    <>
-                      <img
-                        src={selectedPlaceholder.current_image_url}
-                        alt="Current"
-                        className="w-full h-full object-contain"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <ArrowsPointingOutIcon className="w-8 h-8 text-white" />
-                      </div>
-                    </>
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <PhotoIcon className="w-16 h-16 text-dark-600" />
-                    </div>
-                  )}
+                    )
+                  })()}
                   {isGenerating && (
                     <div className="absolute inset-0 bg-black/75 flex items-center justify-center">
                       <div className="text-center">
@@ -762,7 +786,42 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                   />
                 </div>
 
-                {/* Reference image upload */}
+                {/* Model selector */}
+                <div>
+                  <label className="block text-sm text-dark-300 mb-2">
+                    <SparklesIcon className="w-4 h-4 inline mr-1" />
+                    Modele IA
+                  </label>
+                  <div className="space-y-1">
+                    {AI_MODELS.map((m) => (
+                      <button
+                        key={m.id}
+                        onClick={() => {
+                          setSelectedModel(m.id)
+                          if (m.type === 'imagen') setReferenceImage(null)
+                        }}
+                        className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                          selectedModel === m.id
+                            ? 'bg-primary/20 border border-primary text-white'
+                            : 'bg-dark-700 border border-dark-600 text-dark-300 hover:border-dark-500'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium">{m.name}</span>
+                          {m.badge && (
+                            <span className={`text-xs px-1.5 py-0.5 rounded ${m.badgeColor}`}>
+                              {m.badge}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-dark-400 mt-0.5">{m.description}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Reference image upload - Gemini only */}
+                {AI_MODELS.find(m => m.id === selectedModel)?.type === 'gemini' && (
                 <div>
                   <label className="block text-sm text-dark-300 mb-1">
                     <ArrowUpTrayIcon className="w-4 h-4 inline mr-1" />
@@ -803,6 +862,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                     L&apos;IA utilisera cette image comme reference de style/sujet
                   </p>
                 </div>
+                )}
 
                 <button
                   onClick={generateImage}
