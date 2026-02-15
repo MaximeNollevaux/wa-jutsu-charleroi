@@ -3,6 +3,9 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
   description: 'Politique de confidentialité et protection des données du Wa-Jutsu Club l\'Asie Marcinelle.',
+  alternates: {
+    canonical: 'https://wa-jutsu-charleroi.be/politique-confidentialite',
+  },
 }
 
 export default function PolitiqueConfidentialitePage() {

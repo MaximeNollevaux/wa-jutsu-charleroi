@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/Button'
 export const metadata: Metadata = {
   title: 'Règlement intérieur',
   description: 'Règlement d\'ordre intérieur du Wa-Jutsu Club l\'Asie Marcinelle.',
+  alternates: {
+    canonical: 'https://wa-jutsu-charleroi.be/reglement-interieur',
+  },
 }
 
 export default function ReglementInterieurPage() {

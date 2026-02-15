@@ -3,6 +3,9 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description: 'Mentions légales du site Wa-Jutsu Club l\'Asie Marcinelle.',
+  alternates: {
+    canonical: 'https://wa-jutsu-charleroi.be/mentions-legales',
+  },
 }
 
 export default function MentionsLegalesPage() {
