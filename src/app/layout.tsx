@@ -252,6 +252,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Script src="https://chat.synara.be/widget.js" data-website-id="aff487bb-b960-46b7-9688-b92c66e9113e" strategy="lazyOnload" />
       </body>
     </html>
   )
