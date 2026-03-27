@@ -4,17 +4,20 @@ import Script from 'next/script'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { WebVitals } from '@/components/WebVitals'
 
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   variable: '--font-roboto',
+  display: 'swap',
 })
 
 const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-roboto-condensed',
+  display: 'swap',
 })
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
@@ -247,6 +250,7 @@ export default function RootLayout({
           `}
         </Script>
 
+        <WebVitals />
         <Header />
         <main className="flex-1">
           {children}
