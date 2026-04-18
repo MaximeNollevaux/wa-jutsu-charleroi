@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { InscriptionForm } from '@/components/inscription/InscriptionForm'
-import { CheckIcon } from '@heroicons/react/24/solid'
+import { Button } from '@/components/ui/Button'
+import { CheckIcon, DocumentArrowDownIcon } from '@heroicons/react/24/solid'
 
 export const metadata: Metadata = {
   title: 'Inscription',
@@ -27,7 +28,7 @@ const steps = [
   {
     number: 4,
     title: 'Licence & cotisation',
-    description: 'Réglez la licence annuelle (50€) et votre première cotisation.',
+    description: 'Réglez la licence annuelle (60€) et votre première cotisation.',
   },
 ]
 
@@ -136,6 +137,30 @@ export default function InscriptionPage() {
                 <p className="text-dark-500 text-xs mt-4">
                   Les documents seront à fournir après la période d'essai.
                 </p>
+              </div>
+
+              <div className="bg-dark-700 border border-dark-600 p-6">
+                <h3 className="font-heading font-bold text-lg uppercase mb-4 text-primary flex items-center gap-2">
+                  <DocumentArrowDownIcon className="w-5 h-5" />
+                  Documents à imprimer
+                </h3>
+                <ul className="space-y-3">
+                  <li>
+                    <Button href="/documents/formulaire-inscription" variant="secondary" className="w-full text-left text-sm">
+                      Formulaire d'inscription
+                    </Button>
+                  </li>
+                  <li>
+                    <Button href="/documents/certificat-1ere-formule" variant="secondary" className="w-full text-left text-sm">
+                      Certificat médical — 1ère formule
+                    </Button>
+                  </li>
+                  <li>
+                    <Button href="/documents/certificat-2eme-formule" variant="secondary" className="w-full text-left text-sm">
+                      Certificat médical — 2ème formule
+                    </Button>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

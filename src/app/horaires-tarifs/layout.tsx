@@ -24,11 +24,11 @@ const offerJsonLd = {
       '@type': 'Offer',
       name: 'Cours Enfants',
       description: 'Cours du jeudi pour enfants de moins de 13 ans',
-      price: '8',
+      price: '10',
       priceCurrency: 'EUR',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
-        price: '8',
+        price: '10',
         priceCurrency: 'EUR',
         unitText: 'mois',
       },
@@ -93,7 +93,7 @@ const faqJsonLd = {
       name: 'Combien coutent les cours de Wa-Jutsu ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Les tarifs mensuels sont : 8EUR pour les enfants (moins de 13 ans), 10EUR pour les jeunes (13-18 ans), 20EUR pour les adultes, et 30EUR pour les couples. Une licence annuelle de 50EUR est requise (assurance et carte AEJT incluses).',
+        text: 'Les tarifs mensuels sont : 10EUR pour les enfants et jeunes (jusqu\'a 18 ans), 20EUR pour les adultes, et 30EUR pour les couples. Une licence annuelle de 60EUR est requise (assurance et carte AEJT incluses).',
       },
     },
     {
@@ -116,8 +116,8 @@ const faqJsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: 'Horaires & Tarifs - Cours Ju-Jutsu Charleroi des 8EUR/mois',
-  description: 'Horaires des cours de Wa-Jutsu a Marcinelle : jeudi soir et dimanche matin. Tarifs accessibles des 8EUR/mois. Premier mois d\'essai gratuit. Licence annuelle 50EUR.',
+  title: 'Horaires & Tarifs - Cours Ju-Jutsu Charleroi des 10EUR/mois',
+  description: 'Horaires des cours de Wa-Jutsu a Marcinelle : jeudi soir et dimanche matin. Tarifs accessibles des 10EUR/mois. Premier mois d\'essai gratuit. Licence annuelle 60EUR.',
   keywords: [
     'horaires cours arts martiaux charleroi',
     'tarifs jujitsu charleroi',
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Horaires & Tarifs - Cours de Wa-Jutsu a Charleroi',
-    description: 'Cours jeudi soir et dimanche. Tarifs des 8EUR/mois. Premier mois gratuit.',
+    description: 'Cours jeudi soir et dimanche. Tarifs des 10EUR/mois. Premier mois gratuit.',
     url: `${baseUrl}/horaires-tarifs`,
     type: 'website',
   },

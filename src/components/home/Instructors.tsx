@@ -4,14 +4,14 @@ const instructors = [
   {
     name: 'Didier Nollevaux',
     role: 'Enseignant',
-    grade: 'Ceinture Noire',
+    grade: 'Shihan',
     description: 'Passionné par l\'enseignement du Wa-Jutsu depuis de nombreuses années.',
     image: '/images/instructor-1.jpg',
   },
   {
     name: 'Abdelmonaïm Magaz',
     role: 'Enseignant',
-    grade: 'Ceinture Noire',
+    grade: 'Shihan',
     description: 'Expert en techniques de self-défense et pédagogie adaptée.',
     image: '/images/instructor-2.jpg',
   },
@@ -60,7 +60,7 @@ export function Instructors() {
             <h3 className="font-heading font-bold text-xl mb-6 uppercase">Direction du Club</h3>
             <div className="flex flex-wrap justify-center gap-8">
               <div>
-                <p className="font-heading font-semibold">Yen-Long Hsiao</p>
+                <p className="font-heading font-semibold">Dany Lacroix</p>
                 <p className="text-dark-400 text-sm">Président</p>
               </div>
               <div>

@@ -171,7 +171,7 @@ export default function ReglementInterieurPage() {
           <section className="bg-dark-700 border border-dark-600 p-6">
             <h3 className="font-heading font-bold text-lg mb-4">Signataires</h3>
             <div className="text-dark-300 space-y-2">
-              <p><strong className="text-white">Le Président :</strong> Yen-Long Hsiao</p>
+              <p><strong className="text-white">Le Président :</strong> Dany Lacroix</p>
               <p><strong className="text-white">Les Représentants légaux :</strong> Fabrice Koos et Philippe Dorant</p>
               <p><strong className="text-white">Les Enseignants :</strong> Didier Nollevaux et Abdelmonaïm Magaz</p>
             </div>

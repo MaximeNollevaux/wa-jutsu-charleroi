@@ -35,7 +35,7 @@ export default function MentionsLegalesPage() {
               Responsable de publication
             </h2>
             <p className="text-dark-300">
-              Yen-Long Hsiao, Président de l'ASBL
+              Dany Lacroix, Président de l'ASBL
             </p>
           </section>
 
@@ -95,7 +95,7 @@ export default function MentionsLegalesPage() {
         </div>
 
         <p className="text-dark-500 text-sm mt-12">
-          Dernière mise à jour : Février 2024
+          Dernière mise à jour : Avril 2026
         </p>
       </div>
     </div>

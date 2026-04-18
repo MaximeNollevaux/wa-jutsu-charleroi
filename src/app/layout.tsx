@@ -71,7 +71,7 @@ const organizationJsonLd = {
       closes: '12:00',
     },
   ],
-  priceRange: '8-30 EUR/mois',
+  priceRange: '10-30 EUR/mois',
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '5',
@@ -88,7 +88,7 @@ const localBusinessJsonLd = {
   image: `${baseUrl}/og-image.jpg`,
   url: baseUrl,
   telephone: '+32476703880',
-  priceRange: '8-30 EUR',
+  priceRange: '10-30 EUR',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '4 Rue de l\'Asie',

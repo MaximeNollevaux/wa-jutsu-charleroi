@@ -38,7 +38,7 @@ const values = [
 
 const team = [
   {
-    name: 'Yen-Long Hsiao',
+    name: 'Dany Lacroix',
     role: 'Président',
     type: 'direction',
   },
@@ -196,7 +196,7 @@ export default function LeClubPage() {
                   <div className="w-24 h-24 bg-dark-600 rounded-full mx-auto mb-4" />
                   <h4 className="font-heading font-bold text-xl">{member.name}</h4>
                   <p className="text-primary text-sm font-heading uppercase">{member.role}</p>
-                  <p className="text-dark-400 text-sm mt-2">Ceinture Noire</p>
+                  <p className="text-dark-400 text-sm mt-2">Shihan</p>
                 </div>
               ))}
             </div>

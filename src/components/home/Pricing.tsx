@@ -6,7 +6,7 @@ const pricingPlans = [
   {
     name: 'Enfants',
     age: '- de 13 ans',
-    price: 8,
+    price: 10,
     period: '/mois',
     features: [
       'Cours du jeudi (19h00-20h30)',
@@ -68,7 +68,7 @@ export function Pricing() {
         {/* Annual fee notice */}
         <div className="bg-primary/10 border border-primary/20 p-6 mb-12 text-center">
           <p className="text-dark-800">
-            <strong className="text-primary">Licence annuelle : 50€</strong> - Comprend le droit d'entrée,
+            <strong className="text-primary">Licence annuelle : 60€</strong> - Comprend le droit d'entrée,
             l'assurance responsabilité civile et la carte membre AEJT.
           </p>
         </div>

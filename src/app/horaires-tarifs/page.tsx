@@ -40,7 +40,7 @@ const pricingPlans = [
   {
     name: 'Enfants',
     age: 'Moins de 13 ans',
-    price: 8,
+    price: 10,
     period: '/mois',
     features: [
       'Cours du jeudi (19h00-20h30)',
@@ -175,7 +175,7 @@ export default function HorairesTarifsPage() {
                 </p>
               </div>
               <div className="text-center md:text-right">
-                <span className="font-heading font-extrabold text-5xl">50€</span>
+                <span className="font-heading font-extrabold text-5xl">60€</span>
                 <span className="text-white/80">/an</span>
                 <p className="text-white/80 text-sm mt-2">
                   Inclut : droit d'entrée, assurance RC, carte AEJT
