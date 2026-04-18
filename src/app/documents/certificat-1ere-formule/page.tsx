@@ -12,7 +12,10 @@ export default function Certificat1ereFormulePage() {
     <div className="bg-white text-black min-h-screen print:bg-white">
       <style>{`
         @media print {
-          header, footer, nav, .no-print { display: none !important; }
+          header, footer, nav, .no-print,
+          iframe, [data-website-id],
+          div[style*="position: fixed"], div[style*="position:fixed"],
+          script { display: none !important; visibility: hidden !important; }
           body { background: white !important; color: black !important; }
           main { padding: 0 !important; }
         }
