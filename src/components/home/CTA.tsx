@@ -25,8 +25,9 @@ export function CTA() {
           </Button>
           <Button
             href="/contact"
+            variant="outline"
             size="lg"
-            className="bg-white text-primary hover:bg-dark-100"
+            className="!bg-white !text-primary !border-white hover:!bg-dark-100"
           >
             Nous contacter
           </Button>

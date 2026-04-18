@@ -275,7 +275,8 @@ export default function LeClubPage() {
             <Button
               href="/contact"
               size="lg"
-              className="bg-white text-primary hover:bg-dark-100"
+              variant="outline"
+              className="!bg-white !text-primary !border-white hover:!bg-dark-100"
             >
               Nous contacter
             </Button>
