@@ -13,14 +13,10 @@ export default function FormulaireInscriptionPage() {
       <style>{`
         @media print {
           header, footer, nav, .no-print,
-          iframe, [data-website-id],
-          div[style*="position: fixed"], div[style*="position:fixed"],
-          script { display: none !important; visibility: hidden !important; }
+          .synara-loader-container,
+          iframe, [data-website-id] { display: none !important; visibility: hidden !important; }
           body { background: white !important; color: black !important; }
           main { padding: 0 !important; }
-        }
-        @media not print {
-          .print-page header, .print-page footer { /* normal view ok */ }
         }
       `}</style>
 
