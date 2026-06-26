@@ -7,17 +7,14 @@ export const metadata: Metadata = {
   description: 'Photos et vidéos du Wa-Jutsu Club l\'Asie Marcinelle. Découvrez nos entraînements, événements et moments partagés.',
 }
 
-// Placeholder images - to be replaced with actual images
+// Images réelles du club (à enrichir avec vos propres photos dans public/images/)
 const galleryImages = [
-  { id: 1, src: '/images/gallery/training-1.jpg', alt: 'Entraînement', category: 'training' },
-  { id: 2, src: '/images/gallery/training-2.jpg', alt: 'Technique de projection', category: 'training' },
-  { id: 3, src: '/images/gallery/training-3.jpg', alt: 'Kata', category: 'training' },
-  { id: 4, src: '/images/gallery/event-1.jpg', alt: 'Passage de grade', category: 'event' },
-  { id: 5, src: '/images/gallery/training-4.jpg', alt: 'Self-défense', category: 'training' },
-  { id: 6, src: '/images/gallery/group-1.jpg', alt: 'Photo de groupe', category: 'group' },
-  { id: 7, src: '/images/gallery/training-5.jpg', alt: 'Technique au sol', category: 'training' },
-  { id: 8, src: '/images/gallery/event-2.jpg', alt: 'Stage', category: 'event' },
-  { id: 9, src: '/images/gallery/training-6.jpg', alt: 'Cours enfants', category: 'training' },
+  { id: 1, src: '/images/about-training.jpg', alt: 'Entraînement au dojo', category: 'training' },
+  { id: 2, src: '/images/nage-waza.jpg', alt: 'Nage-Waza : technique de projection', category: 'training' },
+  { id: 3, src: '/images/kata.jpg', alt: 'Kata', category: 'training' },
+  { id: 4, src: '/images/self-defense.jpg', alt: 'Self-défense', category: 'training' },
+  { id: 5, src: '/images/ne-waza.jpg', alt: 'Ne-Waza : technique au sol', category: 'training' },
+  { id: 6, src: '/images/wa-jutsu-hero.jpg', alt: 'Pratique du Wa-Jutsu', category: 'training' },
 ]
 
 export default function GaleriePage() {

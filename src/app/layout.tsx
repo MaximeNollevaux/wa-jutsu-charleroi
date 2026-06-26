@@ -72,11 +72,6 @@ const organizationJsonLd = {
     },
   ],
   priceRange: '10-30 EUR/mois',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    reviewCount: '12',
-  },
 }
 
 // JSON-LD LocalBusiness
