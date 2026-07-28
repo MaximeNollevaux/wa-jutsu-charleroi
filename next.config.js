@@ -111,6 +111,17 @@ const nextConfig = {
         destination: '/galerie',
         permanent: true,
       },
+      // Ancien certificat medical en 2 formules -> modele officiel unique (2026)
+      {
+        source: '/documents/certificat-1ere-formule',
+        destination: '/documents/certificat-medical',
+        permanent: true,
+      },
+      {
+        source: '/documents/certificat-2eme-formule',
+        destination: '/documents/certificat-medical',
+        permanent: true,
+      },
     ]
   },
 

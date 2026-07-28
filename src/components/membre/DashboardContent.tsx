@@ -319,11 +319,11 @@ export function DashboardContent({
                   Fiche d'inscription (PDF)
                 </a>
                 <a
-                  href="/docs/certificat_wajutsucharleroi.pdf"
+                  href="/documents/certificat-medical"
                   target="_blank"
                   className="block text-dark-400 hover:text-primary text-sm transition-colors"
                 >
-                  Certificat médical (PDF)
+                  Certificat médical
                 </a>
                 <a
                   href="/reglement-interieur"

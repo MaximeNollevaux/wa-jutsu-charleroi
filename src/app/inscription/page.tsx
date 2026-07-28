@@ -151,13 +151,8 @@ export default function InscriptionPage() {
                     </Button>
                   </li>
                   <li>
-                    <Button href="/documents/certificat-1ere-formule" variant="secondary" className="w-full text-left text-sm">
-                      Certificat médical — 1ère formule
-                    </Button>
-                  </li>
-                  <li>
-                    <Button href="/documents/certificat-2eme-formule" variant="secondary" className="w-full text-left text-sm">
-                      Certificat médical — 2ème formule
+                    <Button href="/documents/certificat-medical" variant="secondary" className="w-full text-left text-sm">
+                      Certificat médical
                     </Button>
                   </li>
                 </ul>
