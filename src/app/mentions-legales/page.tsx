@@ -26,7 +26,7 @@ export default function MentionsLegalesPage() {
               Siège social : Rue des Merles, 32 – 6001 Marcinelle, Belgique<br />
               N° d'entreprise : 441444624<br />
               Email : contact@wa-jutsu-charleroi.be<br />
-              Téléphone : 0476 70 38 80
+              Téléphone : 0473 83 80 75
             </p>
           </section>
 

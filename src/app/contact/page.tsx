@@ -17,8 +17,8 @@ const contactInfo = [
   {
     icon: PhoneIcon,
     title: 'Téléphone',
-    content: ['0476 70 38 80', '0478 95 38 05'],
-    link: 'tel:+32476703880',
+    content: ['0473 83 80 75', '0478 95 38 05'],
+    link: 'tel:+32473838075',
   },
   {
     icon: EnvelopeIcon,

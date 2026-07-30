@@ -74,8 +74,8 @@ export function Location() {
                   <h4 className="font-heading font-bold mb-1">Contact</h4>
                   <div className="text-dark-400 space-y-1">
                     <p>
-                      <a href="tel:+32476703880" className="hover:text-primary transition-colors">
-                        0476 70 38 80
+                      <a href="tel:+32473838075" className="hover:text-primary transition-colors">
+                        0473 83 80 75
                       </a>
                     </p>
                     <p>

@@ -85,9 +85,9 @@ export function Footer() {
             <h3 className="font-heading font-bold text-lg uppercase tracking-wide mb-6">Contact</h3>
             <ul className="space-y-4">
               <li>
-                <a href="tel:+32476703880" className="flex items-start gap-3 text-dark-400 hover:text-primary transition-colors text-sm">
+                <a href="tel:+32473838075" className="flex items-start gap-3 text-dark-400 hover:text-primary transition-colors text-sm">
                   <PhoneIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>0476 70 38 80<br />0478 95 38 05</span>
+                  <span>0473 83 80 75<br />0478 95 38 05</span>
                 </a>
               </li>
               <li>

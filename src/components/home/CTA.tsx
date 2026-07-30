@@ -36,8 +36,8 @@ export function CTA() {
         {/* Contact info */}
         <div className="mt-12 pt-8 border-t border-white/20">
           <div className="flex flex-wrap justify-center gap-8 text-white/80">
-            <a href="tel:+32476703880" className="hover:text-white transition-colors">
-              0476 70 38 80
+            <a href="tel:+32473838075" className="hover:text-white transition-colors">
+              0473 83 80 75
             </a>
             <a href="mailto:contact@wa-jutsu-charleroi.be" className="hover:text-white transition-colors">
               contact@wa-jutsu-charleroi.be

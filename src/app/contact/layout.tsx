@@ -13,7 +13,7 @@ const contactJsonLd = {
   mainEntity: {
     '@type': 'SportsClub',
     name: 'Wa-Jutsu Club l\'Asie Marcinelle',
-    telephone: '+32476703880',
+    telephone: '+32473838075',
     email: 'contact@wa-jutsu-charleroi.be',
     address: {
       '@type': 'PostalAddress',

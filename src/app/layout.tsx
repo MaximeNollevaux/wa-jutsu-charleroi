@@ -46,7 +46,7 @@ const organizationJsonLd = {
     latitude: 50.4011,
     longitude: 4.4447,
   },
-  telephone: '+32476703880',
+  telephone: '+32473838075',
   email: 'contact@wa-jutsu-charleroi.be',
   sport: ['Ju-Jutsu', 'Wa-Jutsu', 'Arts Martiaux', 'Self-Defense'],
   foundingDate: '1990',
@@ -82,7 +82,7 @@ const localBusinessJsonLd = {
   name: 'Wa-Jutsu Club l\'Asie Marcinelle',
   image: `${baseUrl}/og-image.jpg`,
   url: baseUrl,
-  telephone: '+32476703880',
+  telephone: '+32473838075',
   priceRange: '10-30 EUR',
   address: {
     '@type': 'PostalAddress',

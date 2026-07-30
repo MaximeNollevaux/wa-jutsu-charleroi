@@ -23,9 +23,9 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-10 text-sm">
             <div className="flex items-center gap-6">
-              <a href="tel:+32476703880" className="flex items-center gap-2 text-dark-300 hover:text-primary transition-colors">
+              <a href="tel:+32473838075" className="flex items-center gap-2 text-dark-300 hover:text-primary transition-colors">
                 <PhoneIcon className="h-4 w-4" />
-                <span className="hidden sm:inline">0476 70 38 80</span>
+                <span className="hidden sm:inline">0473 83 80 75</span>
               </a>
               <a href="mailto:contact@wa-jutsu-charleroi.be" className="flex items-center gap-2 text-dark-300 hover:text-primary transition-colors">
                 <EnvelopeIcon className="h-4 w-4" />

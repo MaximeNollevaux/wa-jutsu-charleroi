@@ -172,8 +172,8 @@ export default function InscriptionPage() {
             N'hésitez pas à nous contacter pour toute question concernant l'inscription.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-dark-300">
-            <a href="tel:+32476703880" className="hover:text-primary transition-colors">
-              0476 70 38 80
+            <a href="tel:+32473838075" className="hover:text-primary transition-colors">
+              0473 83 80 75
             </a>
             <span className="text-dark-600">|</span>
             <a href="mailto:contact@wa-jutsu-charleroi.be" className="hover:text-primary transition-colors">
