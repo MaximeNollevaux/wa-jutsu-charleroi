@@ -7,6 +7,37 @@ interface ApproveRequest {
   generation_id: string
 }
 
+// Le chemin du placeholder est ecrit sur disque : il doit rester confine dans
+// public/images (aucun point autorise dans les segments de dossier -> pas de '..').
+const IMAGE_PATH_REGEX = /^\/images\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.(?:png|jpg|jpeg|webp)$/
+
+// Liste blanche stricte des types acceptes (l'extension n'est jamais deduite
+// d'une valeur arbitraire fournie par l'appelant).
+const ALLOWED_MIME_TYPES: Record<string, string> = {
+  'image/png': 'png',
+  'image/jpeg': 'jpeg',
+  'image/webp': 'webp',
+}
+
+function hasValidImageSignature(buffer: Buffer, extension: string): boolean {
+  if (buffer.length < 12) return false
+  switch (extension) {
+    case 'png':
+      return buffer.subarray(0, 8).equals(
+        Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])
+      )
+    case 'jpeg':
+      return buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff
+    case 'webp':
+      return (
+        buffer.subarray(0, 4).toString('ascii') === 'RIFF' &&
+        buffer.subarray(8, 12).toString('ascii') === 'WEBP'
+      )
+    default:
+      return false
+  }
+}
+
 export async function POST(request: NextRequest) {
   const supabase = await createClient()
 
@@ -57,17 +88,36 @@ export async function POST(request: NextRequest) {
     const base64Data = dataUrlMatch[2]
     const buffer = Buffer.from(base64Data, 'base64')
 
-    // Determine file extension
-    const extension = mimeType.split('/')[1] || 'png'
+    // Determine file extension (liste blanche uniquement)
+    const extension = ALLOWED_MIME_TYPES[mimeType]
+    if (!extension) {
+      return NextResponse.json({ error: 'Type d\'image non autorisé' }, { status: 400 })
+    }
+
+    if (!hasValidImageSignature(buffer, extension)) {
+      return NextResponse.json({ error: 'Contenu d\'image invalide' }, { status: 400 })
+    }
 
     // Generate filename from placeholder path
     const originalPath = placeholder.path
+    if (typeof originalPath !== 'string' || !IMAGE_PATH_REGEX.test(originalPath)) {
+      return NextResponse.json({ error: 'Chemin de placeholder invalide' }, { status: 400 })
+    }
     const filename = path.basename(originalPath).replace(/\.[^.]+$/, `.${extension}`)
     const directory = path.dirname(originalPath)
 
     // Full path in public folder
-    const publicDir = path.join(process.cwd(), 'public', directory)
-    const fullPath = path.join(publicDir, filename)
+    const imagesRoot = path.resolve(process.cwd(), 'public', 'images')
+    const publicDir = path.resolve(process.cwd(), 'public', `.${directory}`)
+    const fullPath = path.resolve(publicDir, filename)
+
+    // Garde-fou final : l'ecriture doit rester sous public/images
+    if (
+      (publicDir !== imagesRoot && !publicDir.startsWith(imagesRoot + path.sep)) ||
+      !fullPath.startsWith(imagesRoot + path.sep)
+    ) {
+      return NextResponse.json({ error: 'Chemin de placeholder invalide' }, { status: 400 })
+    }
 
     // Create directory if it doesn't exist
     await mkdir(publicDir, { recursive: true })

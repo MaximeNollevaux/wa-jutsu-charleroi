@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
+// Un placeholder ne peut cibler qu'un fichier image sous /images (pas de traversee
+// de repertoire : aucun point autorise dans les segments de dossier).
+const IMAGE_PATH_REGEX = /^\/images\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.(?:png|jpg|jpeg|webp)$/
+
 // GET - List all placeholders
 export async function GET(request: NextRequest) {
   const supabase = await createClient()
@@ -91,6 +95,13 @@ export async function POST(request: NextRequest) {
     )
   }
 
+  if (typeof path !== 'string' || !IMAGE_PATH_REGEX.test(path)) {
+    return NextResponse.json(
+      { error: 'path invalide: attendu /images/nom-du-fichier.(png|jpg|jpeg|webp)' },
+      { status: 400 }
+    )
+  }
+
   const { data, error } = await supabase
     .from('image_placeholders')
     .insert({
@@ -140,6 +151,16 @@ export async function PATCH(request: NextRequest) {
 
   if (!id) {
     return NextResponse.json({ error: 'ID requis' }, { status: 400 })
+  }
+
+  if (
+    updates.path !== undefined &&
+    (typeof updates.path !== 'string' || !IMAGE_PATH_REGEX.test(updates.path))
+  ) {
+    return NextResponse.json(
+      { error: 'path invalide: attendu /images/nom-du-fichier.(png|jpg|jpeg|webp)' },
+      { status: 400 }
+    )
   }
 
   const { data, error } = await supabase

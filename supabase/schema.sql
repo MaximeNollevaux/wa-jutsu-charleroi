@@ -131,7 +131,10 @@ CREATE POLICY "Users can view their own profile"
 
 CREATE POLICY "Users can update their own profile"
     ON profiles FOR UPDATE
-    USING (auth.uid() = id);
+    USING (auth.uid() = id)
+    WITH CHECK (auth.uid() = id);
+-- NOTE: le verrouillage des colonnes sensibles (role, is_active) est assure par
+-- le trigger prevent_profile_privilege_escalation defini plus bas.
 
 CREATE POLICY "Admins can view all profiles"
     ON profiles FOR SELECT
@@ -286,6 +289,38 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Empeche un utilisateur de modifier lui-meme ses colonnes sensibles (escalade de privilege).
+-- SECURITY DEFINER : la lecture de profiles ici ne repasse pas par la RLS (pas de recursion).
+CREATE OR REPLACE FUNCTION prevent_profile_privilege_escalation()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Pas de contexte utilisateur (service_role, migrations, psql) : on laisse passer
+    IF auth.uid() IS NULL THEN
+        RETURN NEW;
+    END IF;
+
+    -- Les administrateurs peuvent gerer les roles et les activations
+    IF EXISTS (
+        SELECT 1 FROM public.profiles p
+        WHERE p.id = auth.uid() AND p.role = 'admin'
+    ) THEN
+        RETURN NEW;
+    END IF;
+
+    IF NEW.role IS DISTINCT FROM OLD.role
+       OR NEW.is_active IS DISTINCT FROM OLD.is_active THEN
+        RAISE EXCEPTION 'Modification du role ou du statut du compte interdite';
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+CREATE TRIGGER prevent_profile_privilege_escalation_trigger
+    BEFORE UPDATE ON profiles
+    FOR EACH ROW
+    EXECUTE FUNCTION prevent_profile_privilege_escalation();
 
 -- Triggers for updated_at
 CREATE TRIGGER update_profiles_updated_at

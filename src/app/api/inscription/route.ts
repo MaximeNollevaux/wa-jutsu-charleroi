@@ -6,6 +6,20 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
+// Les champs proviennent d'un formulaire public : ils doivent etre echappes
+// avant d'etre interpoles dans le HTML de l'email envoye a l'administrateur.
+const HTML_ESCAPES: Record<string, string> = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+}
+
+function esc(value: unknown): string {
+  return String(value ?? '').replace(/[&<>"']/g, (c) => HTML_ESCAPES[c])
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -76,19 +90,19 @@ export async function POST(request: Request) {
       await getResend().emails.send({
         from: 'Wa-Jutsu Club <noreply@synara.be>',
         to: ['maximenollevaux@gmail.com'],
-        subject: `Nouvelle inscription - ${firstName} ${lastName}`,
+        subject: `Nouvelle inscription - ${esc(firstName)} ${esc(lastName)}`,
         html: `
           <h2>Nouvelle pré-inscription au Wa-Jutsu Club</h2>
           <table style="border-collapse:collapse;width:100%;max-width:600px">
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Nom</td><td style="padding:8px;border:1px solid #ddd">${lastName}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Prénom</td><td style="padding:8px;border:1px solid #ddd">${firstName}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Téléphone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Date de naissance</td><td style="padding:8px;border:1px solid #ddd">${birthDate}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Adresse</td><td style="padding:8px;border:1px solid #ddd">${address}, ${postalCode} ${city}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Catégorie</td><td style="padding:8px;border:1px solid #ddd">${category}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Contact d'urgence</td><td style="padding:8px;border:1px solid #ddd">${emergencyContact} — ${emergencyPhone}</td></tr>
-            ${message ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Message</td><td style="padding:8px;border:1px solid #ddd">${message}</td></tr>` : ''}
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Nom</td><td style="padding:8px;border:1px solid #ddd">${esc(lastName)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Prénom</td><td style="padding:8px;border:1px solid #ddd">${esc(firstName)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${esc(email)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Téléphone</td><td style="padding:8px;border:1px solid #ddd">${esc(phone)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Date de naissance</td><td style="padding:8px;border:1px solid #ddd">${esc(birthDate)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Adresse</td><td style="padding:8px;border:1px solid #ddd">${esc(address)}, ${esc(postalCode)} ${esc(city)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Catégorie</td><td style="padding:8px;border:1px solid #ddd">${esc(category)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Contact d'urgence</td><td style="padding:8px;border:1px solid #ddd">${esc(emergencyContact)} — ${esc(emergencyPhone)}</td></tr>
+            ${message ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Message</td><td style="padding:8px;border:1px solid #ddd">${esc(message)}</td></tr>` : ''}
           </table>
         `,
       })
