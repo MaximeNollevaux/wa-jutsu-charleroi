@@ -218,6 +218,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${roboto.variable} ${robotoCondensed.variable}`}>
       <head>
+        <Script src="https://one.synara.be/origine.js" strategy="beforeInteractive" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* JSON-LD Structured Data */}
