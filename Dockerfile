@@ -1,5 +1,17 @@
+# ⚠ Version de Node EPINGLEE — ne pas revenir au tag flottant `node:20-alpine`.
+#
+# Le 2026-08-24, un rebuild sur le tag flottant a suffi a casser toutes les
+# requetes HTTP sortantes de Synara One : 193 webhooks en echec en trois jours,
+# contre zero avant, SANS qu'une seule ligne de code ait change. Node avait
+# change le contrat du lookup DNS personnalise (`autoSelectFamily`, defaut
+# depuis Node 20). Personne ne l'a vu : rien ne surveillait les envois sortants.
+#
+# Une montee de version doit etre un COMMIT, visible en revue — pas un effet de
+# bord silencieux du prochain build. Dependabot ouvre la PR quand une nouvelle
+# version sort (.github/dependabot.yml, ecosysteme `docker`).
+
 # Stage 1: Dependencies
-FROM node:20-alpine AS deps
+FROM node:20.20.2-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -7,7 +19,7 @@ COPY package.json package-lock.json* ./
 RUN npm ci
 
 # Stage 2: Builder
-FROM node:20-alpine AS builder
+FROM node:20.20.2-alpine AS builder
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
@@ -27,7 +39,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN npm run build
 
 # Stage 3: Runner
-FROM node:20-alpine AS runner
+FROM node:20.20.2-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
