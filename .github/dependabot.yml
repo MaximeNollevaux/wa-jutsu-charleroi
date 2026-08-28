@@ -23,3 +23,12 @@ updates:
     open-pull-requests-limit: 5
     commit-message:
       prefix: "build"
+    # Un saut de version MAJEURE de Node est une decision d'architecture, pas
+    # une mise a jour de routine : il change les API, parfois les contrats
+    # (c'est un changement de ce genre qui a casse les envois sortants le
+    # 2026-08-24). On veut les correctifs de securite, pas la version suivante
+    # imposee par une PR automatique. La montee majeure reste possible — a la
+    # main, quand on la decide.
+    ignore:
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
