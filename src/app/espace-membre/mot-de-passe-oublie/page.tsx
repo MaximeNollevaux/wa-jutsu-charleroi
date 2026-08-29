@@ -46,7 +46,8 @@ export default function MotDePasseOubliePage() {
             </h1>
             <p className="text-dark-400 mb-6">
               Si un compte existe avec cette adresse email, vous recevrez un lien
-              pour réinitialiser votre mot de passe.
+              pour réinitialiser votre mot de passe. Ouvrez le <strong>dernier</strong> message
+              reçu : chaque nouvelle demande annule le lien précédent.
             </p>
             <Link href="/espace-membre/connexion" className="text-primary hover:underline">
               Retour à la connexion
