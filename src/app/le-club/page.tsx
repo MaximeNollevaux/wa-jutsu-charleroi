@@ -71,7 +71,7 @@ export default function LeClubPage() {
       <section className="relative py-32 bg-dark-800">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url('/images/club-hero.jpg')` }}
+          style={{ backgroundImage: `url('/images/gallery/club-group.jpg')` }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-primary font-heading font-semibold uppercase tracking-widest mb-4">
@@ -120,10 +120,10 @@ export default function LeClubPage() {
             </div>
 
             <div className="relative">
-              <div className="aspect-[4/5] bg-dark-600 relative overflow-hidden">
+              <div className="aspect-video bg-dark-600 relative overflow-hidden">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url('/images/club-training.jpg')` }}
+                  style={{ backgroundImage: `url('/images/gallery/dojo.jpg')` }}
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary" />

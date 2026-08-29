@@ -7,14 +7,18 @@ export const metadata: Metadata = {
   description: 'Photos et vidéos du Wa-Jutsu Club l\'Asie Marcinelle. Découvrez nos entraînements, événements et moments partagés.',
 }
 
-// Images réelles du club (à enrichir avec vos propres photos dans public/images/)
+// Photos réelles du club, sélectionnées dans les archives du club.
 const galleryImages = [
-  { id: 1, src: '/images/about-training.jpg', alt: 'Entraînement au dojo', category: 'training' },
-  { id: 2, src: '/images/nage-waza.jpg', alt: 'Nage-Waza : technique de projection', category: 'training' },
-  { id: 3, src: '/images/kata.jpg', alt: 'Kata', category: 'training' },
-  { id: 4, src: '/images/self-defense.jpg', alt: 'Self-défense', category: 'training' },
-  { id: 5, src: '/images/ne-waza.jpg', alt: 'Ne-Waza : technique au sol', category: 'training' },
-  { id: 6, src: '/images/wa-jutsu-hero.jpg', alt: 'Pratique du Wa-Jutsu', category: 'training' },
+  { id: 1, src: '/images/gallery/gallery-01.jpg', alt: 'Moment partagé au Wa-Jutsu Club l’Asie', category: 'club' },
+  { id: 2, src: '/images/gallery/gallery-02.jpg', alt: 'Entraînement au dojo', category: 'training' },
+  { id: 3, src: '/images/gallery/gallery-03.jpg', alt: 'Pratique du Wa-Jutsu', category: 'training' },
+  { id: 4, src: '/images/gallery/gallery-04.jpg', alt: 'Cours et progression au club', category: 'training' },
+  { id: 5, src: '/images/gallery/gallery-05.jpg', alt: 'Technique de Wa-Jutsu', category: 'training' },
+  { id: 6, src: '/images/gallery/gallery-06.jpg', alt: 'Esprit de groupe au dojo', category: 'club' },
+  { id: 7, src: '/images/gallery/gallery-07.jpg', alt: 'Entraînement traditionnel', category: 'training' },
+  { id: 8, src: '/images/gallery/gallery-08.jpg', alt: 'Pratiquants du club', category: 'club' },
+  { id: 9, src: '/images/gallery/gallery-09.jpg', alt: 'Séance de Wa-Jutsu', category: 'training' },
+  { id: 10, src: '/images/gallery/gallery-10.jpg', alt: 'Vie du Wa-Jutsu Club l’Asie', category: 'club' },
 ]
 
 export default function GaleriePage() {
