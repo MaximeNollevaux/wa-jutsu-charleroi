@@ -40,7 +40,7 @@ export function About() {
             <div className="aspect-[4/5] bg-dark-600 relative overflow-hidden">
               <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url('/images/about-training.jpg')` }}
+                style={{ backgroundImage: `url('/images/about-club-2026.png')` }}
               />
               {/* Accent */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary" />
