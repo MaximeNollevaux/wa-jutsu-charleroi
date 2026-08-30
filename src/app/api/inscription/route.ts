@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createClient } from '@/lib/supabase/server'
+import { normaliserAttribution, resumerAttribution } from '@/lib/attribution'
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
@@ -37,6 +38,10 @@ export async function POST(request: Request) {
       emergencyPhone,
       message,
     } = body
+
+    // Vient du navigateur : filtre avant tout usage, en base comme dans l'email.
+    const attribution = normaliserAttribution(body.attribution)
+    const origine = resumerAttribution(attribution)
 
     // Validate required fields
     if (
@@ -75,6 +80,10 @@ export async function POST(request: Request) {
         emergency_contact: emergencyContact,
         emergency_phone: emergencyPhone,
         message: message || null,
+        attribution: Object.keys(attribution).length ? attribution : null,
+        utm_source: attribution.utm_source ?? null,
+        utm_medium: attribution.utm_medium ?? null,
+        utm_campaign: attribution.utm_campaign ?? null,
       })
 
     if (error) {
@@ -110,7 +119,9 @@ export async function POST(request: Request) {
             <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Catégorie</td><td style="padding:8px;border:1px solid #ddd">${esc(category)}</td></tr>
             <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Contact d'urgence</td><td style="padding:8px;border:1px solid #ddd">${esc(emergencyContact)} — ${esc(emergencyPhone)}</td></tr>
             ${message ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Message</td><td style="padding:8px;border:1px solid #ddd">${esc(message)}</td></tr>` : ''}
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Origine</td><td style="padding:8px;border:1px solid #ddd">${esc(origine)}</td></tr>
           </table>
+          <p style="color:#666;font-size:13px">« Origine » indique d'ou vient la demande : campagne publicitaire, moteur de recherche ou lien externe. C'est ce qui permet de savoir quelle campagne finance reellement des inscriptions.</p>
         `,
       })
     } catch (emailError) {

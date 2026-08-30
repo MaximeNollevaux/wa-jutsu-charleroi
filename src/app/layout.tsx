@@ -5,6 +5,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { WebVitals } from '@/components/WebVitals'
+import { OrigineTracker } from '@/components/OrigineTracker'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -251,6 +252,7 @@ export default function RootLayout({
         </Script>
 
         <WebVitals />
+        <OrigineTracker />
         <Header />
         <main className="flex-1">
           {children}

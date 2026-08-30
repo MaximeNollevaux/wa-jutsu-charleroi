@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { lireAttribution } from '@/lib/attribution'
+import { signalerDemande } from '@/lib/analytics'
 
 export function InscriptionForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -13,8 +15,15 @@ export function InscriptionForm() {
     setIsSubmitting(true)
     setError(null)
 
-    const formData = new FormData(e.currentTarget)
+    // Reference gardee avant le premier await : React remet `currentTarget` a
+    // null des que le gestionnaire rend la main, et le reset plus bas echouait.
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    // Lue au moment de l'envoi : le visiteur a pu arriver par une annonce puis
+    // naviguer, les parametres ne sont plus dans l'URL a cet instant.
+    const attribution = lireAttribution()
     const data = {
+      attribution,
       firstName: formData.get('firstName') as string,
       lastName: formData.get('lastName') as string,
       email: formData.get('email') as string,
@@ -40,8 +49,9 @@ export function InscriptionForm() {
         throw new Error('Erreur lors de l\'envoi de l\'inscription')
       }
 
+      signalerDemande('inscription', attribution)
       setIsSuccess(true)
-      e.currentTarget.reset()
+      form.reset()
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Une erreur est survenue')
     } finally {

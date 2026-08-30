@@ -301,8 +301,15 @@ export function AdminDashboard({
                         <p className="text-dark-400 text-sm">{reg.email}</p>
                         <p className="text-dark-400 text-sm">{reg.phone}</p>
                         <p className="text-dark-500 text-xs mt-1">
-                          Catégorie: {reg.category} | Inscrit le {new Date(reg.created_at).toLocaleDateString('fr-BE')}
+                          Catégorie: {reg.category} | Inscrit le {new Date(reg.created_at).toLocaleDateString('fr-BE', { timeZone: 'Europe/Brussels' })}
                         </p>
+                        {reg.utm_source && (
+                          <p className="text-primary-400 text-xs mt-1">
+                            Origine : {reg.utm_source}
+                            {reg.utm_medium ? ` / ${reg.utm_medium}` : ''}
+                            {reg.utm_campaign ? ` — ${reg.utm_campaign}` : ''}
+                          </p>
+                        )}
                       </div>
                       <div className="flex gap-2">
                         <button

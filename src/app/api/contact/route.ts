@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createClient } from '@/lib/supabase/server'
+import { normaliserAttribution, resumerAttribution } from '@/lib/attribution'
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
@@ -26,6 +27,10 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { name, email, phone, subject, message } = body
 
+    // Vient du navigateur : filtre avant tout usage, en base comme dans l'email.
+    const attribution = normaliserAttribution(body.attribution)
+    const origine = resumerAttribution(attribution)
+
     // Validate required fields
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
@@ -44,6 +49,10 @@ export async function POST(request: Request) {
         phone: phone || null,
         subject,
         message,
+        attribution: Object.keys(attribution).length ? attribution : null,
+        utm_source: attribution.utm_source ?? null,
+        utm_medium: attribution.utm_medium ?? null,
+        utm_campaign: attribution.utm_campaign ?? null,
       })
 
     if (error) {
@@ -73,6 +82,7 @@ export async function POST(request: Request) {
             <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Téléphone</td><td style="padding:8px;border:1px solid #ddd">${esc(phone) || '—'}</td></tr>
             <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Sujet</td><td style="padding:8px;border:1px solid #ddd">${esc(subject)}</td></tr>
             <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Message</td><td style="padding:8px;border:1px solid #ddd">${esc(message).replace(/\n/g, '<br>')}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Origine</td><td style="padding:8px;border:1px solid #ddd">${esc(origine)}</td></tr>
           </table>
           <p style="color:#666;font-size:13px">Répondre à ce mail répond directement à l'expéditeur.</p>
         `,

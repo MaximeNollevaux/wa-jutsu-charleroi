@@ -198,6 +198,10 @@ export interface Database {
           message: string
           is_read: boolean
           replied_at: string | null
+          attribution: Json | null
+          utm_source: string | null
+          utm_medium: string | null
+          utm_campaign: string | null
         }
         Insert: {
           id?: string
@@ -209,6 +213,10 @@ export interface Database {
           message: string
           is_read?: boolean
           replied_at?: string | null
+          attribution?: Json | null
+          utm_source?: string | null
+          utm_medium?: string | null
+          utm_campaign?: string | null
         }
         Update: {
           id?: string
@@ -220,6 +228,10 @@ export interface Database {
           message?: string
           is_read?: boolean
           replied_at?: string | null
+          attribution?: Json | null
+          utm_source?: string | null
+          utm_medium?: string | null
+          utm_campaign?: string | null
         }
       }
       registrations: {
@@ -241,6 +253,10 @@ export interface Database {
           status: 'pending' | 'approved' | 'rejected'
           processed_at: string | null
           processed_by: string | null
+          attribution: Json | null
+          utm_source: string | null
+          utm_medium: string | null
+          utm_campaign: string | null
         }
         Insert: {
           id?: string
@@ -260,6 +276,10 @@ export interface Database {
           status?: 'pending' | 'approved' | 'rejected'
           processed_at?: string | null
           processed_by?: string | null
+          attribution?: Json | null
+          utm_source?: string | null
+          utm_medium?: string | null
+          utm_campaign?: string | null
         }
         Update: {
           id?: string
@@ -279,6 +299,10 @@ export interface Database {
           status?: 'pending' | 'approved' | 'rejected'
           processed_at?: string | null
           processed_by?: string | null
+          attribution?: Json | null
+          utm_source?: string | null
+          utm_medium?: string | null
+          utm_campaign?: string | null
         }
       }
       image_placeholders: {
