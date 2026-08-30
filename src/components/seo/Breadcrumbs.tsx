@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/24/outline'
+import { blogBreadcrumbLabels } from '@/lib/blog/breadcrumb-labels'
 
 const pathLabels: Record<string, string> = {
   'le-wa-jutsu': 'Le Wa-Jutsu',
@@ -11,6 +12,7 @@ const pathLabels: Record<string, string> = {
   'contact': 'Contact',
   'inscription': 'Inscription',
   'galerie': 'Galerie',
+  'blog': 'Blog',
   'mentions-legales': 'Mentions Legales',
   'politique-confidentialite': 'Politique de Confidentialite',
   'reglement-interieur': 'Reglement Interieur',
@@ -28,7 +30,10 @@ export function Breadcrumbs() {
   let currentPath = ''
   segments.forEach((segment) => {
     currentPath += `/${segment}`
-    const label = pathLabels[segment] || segment.replace(/-/g, ' ')
+    const label =
+      pathLabels[segment] ||
+      blogBreadcrumbLabels[segment] ||
+      segment.replace(/-/g, ' ')
     breadcrumbs.push({
       label: label.charAt(0).toUpperCase() + label.slice(1),
       href: currentPath,

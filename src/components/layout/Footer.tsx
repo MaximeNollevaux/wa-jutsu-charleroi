@@ -6,6 +6,7 @@ const quickLinks = [
   { name: 'Le Wa-Jutsu', href: '/le-wa-jutsu' },
   { name: 'Le Club', href: '/le-club' },
   { name: 'Horaires & Tarifs', href: '/horaires-tarifs' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
   { name: 'Inscription', href: '/inscription' },
 ]

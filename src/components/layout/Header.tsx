@@ -10,6 +10,7 @@ const navigation = [
   { name: 'Le Club', href: '/le-club' },
   { name: 'Horaires & Tarifs', href: '/horaires-tarifs' },
   { name: 'Galerie', href: '/galerie' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ]
 
