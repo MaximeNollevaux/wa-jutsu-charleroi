@@ -14,6 +14,7 @@ export default function CertificatMedicalPage() {
         @media print {
           header, footer, nav, .no-print,
           .synara-loader-container,
+          #synara-consent-manage, #synara-consent-panel,
           iframe, [data-website-id] { display: none !important; visibility: hidden !important; }
           body { background: white !important; color: black !important; }
           main { padding: 0 !important; }
@@ -25,11 +26,11 @@ export default function CertificatMedicalPage() {
         <div className="flex items-center justify-between gap-6 mb-6 print:mb-3 border-b-2 border-black pb-4 print:pb-2">
           <img
             src="/images/logo-club-asie.png"
-            alt="Club Charleroi L'Asie"
+            alt="Wa-Jutsu Club l'Asie - Marcinelle"
             className="w-40 print:w-32 h-auto"
           />
           <div className="text-center text-sm print:text-xs leading-snug">
-            <p className="text-xl print:text-base font-bold">Club Charleroi L'Asie</p>
+            <p className="text-xl print:text-base font-bold">Wa-Jutsu Club l'Asie - Marcinelle</p>
             <p>De Ju-Jutsu Traditionnel Méthode Wa-Jutsu</p>
             <p>Association sans but lucratif</p>
             <p className="mt-1">Rue des Merles, 32 — 6001 Marcinelle</p>

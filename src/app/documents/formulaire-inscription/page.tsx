@@ -14,6 +14,7 @@ export default function FormulaireInscriptionPage() {
         @media print {
           header, footer, nav, .no-print,
           .synara-loader-container,
+          #synara-consent-manage, #synara-consent-panel,
           iframe, [data-website-id] { display: none !important; visibility: hidden !important; }
           body { background: white !important; color: black !important; }
           main { padding: 0 !important; }

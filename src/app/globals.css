@@ -58,6 +58,15 @@
   }
 }
 
+@media print {
+  #synara-consent-manage,
+  #synara-consent-panel,
+  .synara-loader-container {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
