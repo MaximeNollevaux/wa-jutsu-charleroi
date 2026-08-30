@@ -173,7 +173,8 @@ export default function ReglementInterieurPage() {
             <div className="text-dark-300 space-y-2">
               <p><strong className="text-white">Le Président :</strong> Dany Lacroix</p>
               <p><strong className="text-white">Le Représentant légal :</strong> Philippe Dorant</p>
-              <p><strong className="text-white">Les Enseignants :</strong> Didier Nollevaux et Abdelmonaïm Magaz</p>
+              <p><strong className="text-white">Le Directeur technique :</strong> Didier Nollevaux</p>
+              <p><strong className="text-white">L'Enseignant :</strong> Abdelmonaïm Magaz</p>
             </div>
           </section>
         </div>

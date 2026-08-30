@@ -49,7 +49,7 @@ const team = [
   },
   {
     name: 'Didier Nollevaux',
-    role: 'Enseignant',
+    role: 'Directeur technique',
     type: 'instructor',
   },
   {

@@ -3,7 +3,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 const instructors = [
   {
     name: 'Didier Nollevaux',
-    role: 'Enseignant',
+    role: 'Directeur technique',
     grade: 'Shihan',
     description: 'Passionné par l\'enseignement du Wa-Jutsu depuis de nombreuses années.',
     image: '/images/instructor-1.jpg',
