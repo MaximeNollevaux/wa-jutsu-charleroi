@@ -43,11 +43,6 @@ const team = [
     type: 'direction',
   },
   {
-    name: 'Fabrice Koos',
-    role: 'Représentant légal',
-    type: 'direction',
-  },
-  {
     name: 'Philippe Dorant',
     role: 'Représentant légal',
     type: 'direction',
@@ -174,7 +169,7 @@ export default function LeClubPage() {
             <h3 className="text-center font-heading font-semibold text-primary uppercase tracking-wide mb-8">
               Conseil d'Administration
             </h3>
-            <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {team.filter(m => m.type === 'direction').map((member) => (
                 <div key={member.name} className="bg-dark-800 p-6 text-center border border-dark-600">
                   <div className="w-20 h-20 bg-dark-600 rounded-full mx-auto mb-4" />

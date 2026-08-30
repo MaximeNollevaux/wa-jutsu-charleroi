@@ -64,10 +64,6 @@ export function Instructors() {
                 <p className="text-dark-400 text-sm">Président</p>
               </div>
               <div>
-                <p className="font-heading font-semibold">Fabrice Koos</p>
-                <p className="text-dark-400 text-sm">Représentant légal</p>
-              </div>
-              <div>
                 <p className="font-heading font-semibold">Philippe Dorant</p>
                 <p className="text-dark-400 text-sm">Représentant légal</p>
               </div>
