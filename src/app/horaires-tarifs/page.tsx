@@ -3,9 +3,12 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { CheckIcon, ClockIcon } from '@heroicons/react/24/solid'
 
+// Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
+// les metadonnees de la page ecrasent celles du layout. Les layouts en
+// declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Horaires & Tarifs',
-  description: 'Horaires des cours et tarifs du Wa-Jutsu Club l\'Asie Marcinelle. Enfants, jeunes, adultes et couples. Premier mois d\'essai gratuit.',
+  title: 'Horaires & Tarifs — Cours le jeudi soir, dès 10 €/mois',
+  description: 'Cours le jeudi de 19h à 23h et le dimanche de 9h à 12h, à Marcinelle. Enfants et jeunes 10 €/mois, adultes 20 €, couple 30 €, licence annuelle 60 €. Premier mois offert.',
 }
 
 const schedules = [

@@ -44,8 +44,8 @@ const faqJsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: 'Le Wa-Jutsu - Art Martial Traditionnel Japonais Non Competitif',
-  description: 'Decouvrez le Wa-Jutsu, art martial traditionnel japonais non competitif. Philosophie basee sur Shin-Ghi-Tai, techniques de self-defense, systeme de grades et valeurs du Bushido.',
+  title: 'Le Wa-Jutsu — Art martial japonais sans compétition',
+  description: 'Le Wa-Jutsu, art martial japonais traditionnel sans compétition. Philosophie Shin-Ghi-Tai, techniques de self-défense, système de grades et valeurs du Bushido.',
   keywords: [
     'wa-jutsu',
     'art martial traditionnel',
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
     'AEJT',
   ],
   openGraph: {
-    title: 'Le Wa-Jutsu - Art Martial Traditionnel Japonais',
-    description: 'Decouvrez le Wa-Jutsu : philosophie, techniques et systeme de grades de cet art martial non competitif.',
+    title: 'Le Wa-Jutsu — Art martial traditionnel japonais',
+    description: 'Le Wa-Jutsu : philosophie, techniques et système de grades d\'un art martial sans compétition.',
     url: `${baseUrl}/le-wa-jutsu`,
     type: 'article',
   },

@@ -116,7 +116,7 @@ const faqJsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: 'Horaires & Tarifs - Cours Ju-Jutsu Charleroi des 10EUR/mois',
+  title: 'Horaires & Tarifs — Cours le jeudi soir, dès 10 €/mois',
   description: 'Horaires des cours de Wa-Jutsu a Marcinelle : jeudi soir et dimanche matin. Tarifs accessibles des 10EUR/mois. Premier mois d\'essai gratuit. Licence annuelle 60EUR.',
   keywords: [
     'horaires cours arts martiaux charleroi',
@@ -128,7 +128,7 @@ export const metadata: Metadata = {
     'inscription jujitsu',
   ],
   openGraph: {
-    title: 'Horaires & Tarifs - Cours de Wa-Jutsu a Charleroi',
+    title: 'Horaires & Tarifs — Cours de Wa-Jutsu à Charleroi',
     description: 'Cours jeudi soir et dimanche. Tarifs des 10EUR/mois. Premier mois gratuit.',
     url: `${baseUrl}/horaires-tarifs`,
     type: 'website',

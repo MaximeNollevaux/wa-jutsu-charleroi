@@ -4,8 +4,8 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
-  title: 'Galerie Photos - Wa-Jutsu Club Charleroi',
-  description: 'Galerie photos du Wa-Jutsu Club l\'Asie Marcinelle. Decouvrez nos cours, evenements, passages de grades et demonstrations d\'arts martiaux.',
+  title: 'Photos du dojo et des cours — Wa-Jutsu Marcinelle',
+  description: 'Photos du dojo, des cours, des passages de grades et des démonstrations du Wa-Jutsu Club l\'Asie Marcinelle.',
   keywords: [
     'photos wa-jutsu',
     'galerie arts martiaux',
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     'demonstration ju-jutsu',
   ],
   openGraph: {
-    title: 'Galerie Photos - Wa-Jutsu Club Charleroi',
-    description: 'Photos de nos cours, evenements et demonstrations.',
+    title: 'Photos du dojo et des cours — Wa-Jutsu Marcinelle',
+    description: 'Photos de nos cours, événements et démonstrations.',
     url: `${baseUrl}/galerie`,
     type: 'website',
   },

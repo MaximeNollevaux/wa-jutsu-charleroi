@@ -4,8 +4,8 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
-  title: 'Inscription - Rejoignez le Wa-Jutsu Club Charleroi',
-  description: 'Inscrivez-vous au Wa-Jutsu Club l\'Asie Marcinelle. Premier mois d\'essai gratuit. Formulaire d\'inscription en ligne pour enfants et adultes.',
+  title: 'Inscription — Premier mois d\'essai gratuit, dès 5 ans',
+  description: 'Pré-inscription en ligne au Wa-Jutsu Club l\'Asie Marcinelle. Premier mois d\'essai gratuit, sans engagement, pour les enfants dès 5 ans et les adultes.',
   keywords: [
     'inscription arts martiaux charleroi',
     'inscription jujitsu',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Inscription - Wa-Jutsu Club Charleroi',
-    description: 'Inscrivez-vous et beneficiez d\'un mois d\'essai gratuit.',
+    description: 'Inscrivez-vous et bénéficiez d\'un mois d\'essai gratuit.',
     url: `${baseUrl}/inscription`,
     type: 'website',
   },

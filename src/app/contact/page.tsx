@@ -8,9 +8,12 @@ import {
   ClockIcon,
 } from '@heroicons/react/24/outline'
 
+// Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
+// les metadonnees de la page ecrasent celles du layout. Les layouts en
+// declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Contactez le Wa-Jutsu Club l\'Asie Marcinelle. Téléphone, email, adresse et formulaire de contact.',
+  title: 'Contact & accès — 4 Rue de l\'Asie, 6001 Marcinelle',
+  description: 'Le dojo se trouve au 4 Rue de l\'Asie, 6001 Marcinelle. Téléphone, email et formulaire pour joindre le club. Cours le jeudi soir et le dimanche matin.',
 }
 
 const contactInfo: Array<{

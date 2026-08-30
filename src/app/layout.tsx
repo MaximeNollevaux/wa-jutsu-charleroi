@@ -33,7 +33,7 @@ const organizationJsonLd = {
   url: baseUrl,
   logo: `${baseUrl}/logo.png`,
   image: `${baseUrl}/og-image.jpg`,
-  description: 'Club de Ju-Jutsu Traditionnel methode Wa-Jutsu a Marcinelle (Charleroi). Art martial non competitif, self-defense efficace. Cours enfants des 5 ans et adultes.',
+  description: 'Club de Ju-Jutsu traditionnel, méthode Wa-Jutsu, à Marcinelle (Charleroi). Art martial sans compétition, self-défense efficace. Cours enfants dès 5 ans et adultes.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '4 Rue de l\'Asie',
@@ -53,7 +53,7 @@ const organizationJsonLd = {
   foundingDate: '1990',
   memberOf: {
     '@type': 'Organization',
-    name: 'Academie Europeenne de Ju-Jutsu Traditionnel (AEJT)',
+    name: 'Académie Européenne de Ju-Jutsu Traditionnel (AEJT)',
   },
   sameAs: [
     'https://www.facebook.com/wajutsucharleroi',
@@ -128,7 +128,7 @@ const websiteJsonLd = {
   '@id': `${baseUrl}/#website`,
   name: 'Wa-Jutsu Charleroi',
   url: baseUrl,
-  description: 'Club de Ju-Jutsu Traditionnel methode Wa-Jutsu a Marcinelle. Art martial non competitif pour enfants et adultes.',
+  description: 'Club de Ju-Jutsu traditionnel, méthode Wa-Jutsu, à Marcinelle. Art martial sans compétition pour enfants et adultes.',
   publisher: {
     '@type': 'Organization',
     name: 'Wa-Jutsu Club l\'Asie Marcinelle',
@@ -138,11 +138,14 @@ const websiteJsonLd = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
+  // Le titre annonce un age et une offre verifiables plutot que de decrire la
+  // page. Mesure en Search Console sur 90 jours : l'accueil ressortait en
+  // position 8,2 pour 4,4 % de clics — bien vu, peu clique.
   title: {
-    default: 'Wa-Jutsu Charleroi | Club de Ju-Jutsu Traditionnel a Marcinelle',
+    default: 'Wa-Jutsu Charleroi — Ju-Jutsu à Marcinelle dès 5 ans, 1er mois offert',
     template: '%s | Wa-Jutsu Charleroi',
   },
-  description: 'Club de Ju-Jutsu Traditionnel methode Wa-Jutsu a Marcinelle (Charleroi). Art martial non competitif, self-defense efficace. Cours enfants des 5 ans et adultes. Premier mois d\'essai gratuit.',
+  description: 'Club de Ju-Jutsu traditionnel, méthode Wa-Jutsu, à Marcinelle (Charleroi). Art martial sans compétition. Cours enfants dès 5 ans le jeudi, adultes dès 20 €/mois. Premier mois d\'essai gratuit.',
   keywords: [
     'ju-jutsu charleroi',
     'jujitsu charleroi',
@@ -173,8 +176,8 @@ export const metadata: Metadata = {
     locale: 'fr_BE',
     url: baseUrl,
     siteName: 'Wa-Jutsu Charleroi',
-    title: 'Wa-Jutsu Charleroi | Club de Ju-Jutsu Traditionnel',
-    description: 'Art martial non competitif, self-defense efficace. Cours enfants et adultes a Marcinelle. Premier mois gratuit.',
+    title: 'Wa-Jutsu Charleroi — Ju-Jutsu traditionnel à Marcinelle',
+    description: 'Art martial sans compétition, self-défense efficace. Cours enfants dès 5 ans et adultes à Marcinelle. Premier mois offert.',
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
@@ -186,8 +189,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Wa-Jutsu Charleroi | Club de Ju-Jutsu Traditionnel',
-    description: 'Art martial non competitif, self-defense efficace. Cours enfants et adultes a Marcinelle.',
+    title: 'Wa-Jutsu Charleroi — Ju-Jutsu traditionnel à Marcinelle',
+    description: 'Art martial sans compétition, self-défense efficace. Cours enfants dès 5 ans et adultes à Marcinelle.',
     images: [`${baseUrl}/og-image.jpg`],
   },
   robots: {

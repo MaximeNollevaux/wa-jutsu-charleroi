@@ -8,7 +8,7 @@ const contactJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
   name: 'Contact - Wa-Jutsu Charleroi',
-  description: 'Contactez le Wa-Jutsu Club l\'Asie Marcinelle pour toute question sur les cours, inscriptions ou informations.',
+  description: 'Contactez le Wa-Jutsu Club l\'Asie Marcinelle pour toute question sur les cours, les inscriptions ou l\'accès au dojo.',
   url: `${baseUrl}/contact`,
   mainEntity: {
     '@type': 'SportsClub',
@@ -26,8 +26,8 @@ const contactJsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: 'Contact - Wa-Jutsu Club Charleroi',
-  description: 'Contactez le Wa-Jutsu Club l\'Asie Marcinelle. Adresse : 4 Rue de l\'Asie, 6001 Marcinelle. Telephone, email et formulaire de contact.',
+  title: 'Contact & accès — 4 Rue de l\'Asie, 6001 Marcinelle',
+  description: 'Le dojo se trouve au 4 Rue de l\'Asie, 6001 Marcinelle. Téléphone, email et formulaire pour joindre le club.',
   keywords: [
     'contact wa-jutsu charleroi',
     'adresse club jujitsu marcinelle',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     'inscription jujitsu',
   ],
   openGraph: {
-    title: 'Contact - Wa-Jutsu Club Charleroi',
+    title: 'Contact & accès — 4 Rue de l\'Asie, 6001 Marcinelle',
     description: 'Contactez-nous pour toute question. 4 Rue de l\'Asie, 6001 Marcinelle.',
     url: `${baseUrl}/contact`,
     type: 'website',

@@ -4,9 +4,12 @@ import { InscriptionForm } from '@/components/inscription/InscriptionForm'
 import { Button } from '@/components/ui/Button'
 import { CheckIcon, DocumentArrowDownIcon } from '@heroicons/react/24/solid'
 
+// Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
+// les metadonnees de la page ecrasent celles du layout. Les layouts en
+// declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Inscription',
-  description: 'Inscrivez-vous au Wa-Jutsu Club l\'Asie Marcinelle. Formulaire d\'inscription en ligne et premier mois d\'essai gratuit.',
+  title: 'Inscription — Premier mois d\'essai gratuit, dès 5 ans',
+  description: 'Pré-inscription en ligne au Wa-Jutsu Club l\'Asie Marcinelle. Premier mois d\'essai gratuit et sans engagement, pour les enfants dès 5 ans et les adultes débutants.',
 }
 
 const steps = [

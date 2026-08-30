@@ -2,9 +2,12 @@ import { Metadata } from 'next'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
+// Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
+// les metadonnees de la page ecrasent celles du layout. Les layouts en
+// declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Le Wa-Jutsu',
-  description: 'Découvrez le Wa-Jutsu, art martial traditionnel japonais non compétitif. Philosophie, techniques, système de grades et histoire de cette méthode de Ju-Jutsu.',
+  title: 'Le Wa-Jutsu — Art martial japonais sans compétition',
+  description: 'Le Wa-Jutsu, méthode de Ju-Jutsu traditionnel créée en 1982 par Maître J.J. Quero. Sans compétition ni classement. Philosophie, techniques et système de grades.',
 }
 
 const grades = [

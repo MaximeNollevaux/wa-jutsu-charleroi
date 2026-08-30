@@ -8,9 +8,12 @@ import {
   ShieldCheckIcon,
 } from '@heroicons/react/24/outline'
 
+// Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
+// les metadonnees de la page ecrasent celles du layout. Les layouts en
+// declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Le Club',
-  description: 'Découvrez le Wa-Jutsu Club l\'Asie Marcinelle, ASBL affiliée à l\'AEJT. Notre équipe, notre histoire et nos valeurs.',
+  title: 'Le Club — ASBL de Ju-Jutsu à Marcinelle depuis 1990',
+  description: 'Le Wa-Jutsu Club l\'Asie Marcinelle, ASBL fondée en 1990 et affiliée à l\'Académie Européenne de Ju-Jutsu Traditionnel. Notre équipe, notre histoire et nos valeurs.',
 }
 
 const values = [

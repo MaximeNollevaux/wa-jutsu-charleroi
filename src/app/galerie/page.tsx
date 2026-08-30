@@ -2,9 +2,12 @@ import { Metadata } from 'next'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
+// Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
+// les metadonnees de la page ecrasent celles du layout. Les layouts en
+// declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Galerie',
-  description: 'Photos et vidéos du Wa-Jutsu Club l\'Asie Marcinelle. Découvrez nos entraînements, événements et moments partagés.',
+  title: 'Photos du dojo et des cours — Wa-Jutsu Marcinelle',
+  description: 'Photos du dojo, des entraînements et des événements du Wa-Jutsu Club l\'Asie Marcinelle — à quoi ressemble vraiment un cours avant de venir essayer.',
 }
 
 // Photos réelles du club, sélectionnées dans les archives du club.
