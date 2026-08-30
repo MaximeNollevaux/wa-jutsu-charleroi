@@ -70,20 +70,36 @@ declare global {
   }
 }
 
-/** Ne garde que les cles connues et non vides. Evite d'envoyer du bruit au club. */
+/**
+ * Cles que SynaraOrigine nomme autrement que nous. Verifie en production le
+ * 2026-08-30 : `dernier()` renvoie `landing`, pas `landing_page`. Sans cet alias
+ * la page d'entree etait silencieusement jetee par le filtre.
+ */
+const ALIAS: Record<string, keyof Attribution> = {
+  landing: 'landing_page',
+  referer: 'referrer',
+}
+
+/**
+ * Ne garde que les cles connues et non vides. Le filtre sert deux fois : il evite
+ * d'envoyer du bruit au club — `parametres()` renvoie aussi les drapeaux de
+ * consentement, qui n'ont rien a faire dans une fiche d'inscription — et il borne
+ * ce qu'un tiers peut pousser dans la base via le formulaire.
+ */
 function nettoyer(source: Record<string, unknown> | undefined | null): Attribution {
   if (!source) return {}
 
   const resultat: Attribution = {}
   const cles = [...CHAMPS_UTM, ...CHAMPS_CLIC, 'referrer', 'landing_page'] as const
 
-  for (const cle of cles) {
-    const valeur = source[cle]
-    if (typeof valeur === 'string' && valeur.trim()) {
-      // Une valeur d'UTM manipulee peut etre arbitrairement longue : on borne.
-      resultat[cle] = valeur.trim().slice(0, 255)
-    }
+  const retenir = (cle: keyof Attribution, valeur: unknown) => {
+    if (typeof valeur !== 'string' || !valeur.trim()) return
+    // Une valeur d'UTM manipulee peut etre arbitrairement longue : on borne.
+    if (resultat[cle] === undefined) resultat[cle] = valeur.trim().slice(0, 255)
   }
+
+  for (const cle of cles) retenir(cle, source[cle])
+  for (const [alias, cle] of Object.entries(ALIAS)) retenir(cle, source[alias])
 
   return resultat
 }
