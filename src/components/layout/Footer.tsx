@@ -84,11 +84,16 @@ export function Footer() {
           <div>
             <h3 className="font-heading font-bold text-lg uppercase tracking-wide mb-6">Contact</h3>
             <ul className="space-y-4">
-              <li>
-                <a href="tel:+32473838075" className="flex items-start gap-3 text-dark-400 hover:text-primary transition-colors text-sm">
-                  <PhoneIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>0473 83 80 75<br />0478 95 38 05</span>
-                </a>
+              <li className="flex items-start gap-3 text-dark-400 text-sm">
+                <PhoneIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span className="flex flex-col gap-1">
+                  <a href="tel:+32473838075" className="hover:text-primary transition-colors">
+                    0473 83 80 75
+                  </a>
+                  <a href="tel:+32478953805" className="hover:text-primary transition-colors">
+                    0478 95 38 05
+                  </a>
+                </span>
               </li>
               <li>
                 <a href="mailto:contact@wa-jutsu-charleroi.be" className="flex items-start gap-3 text-dark-400 hover:text-primary transition-colors text-sm">

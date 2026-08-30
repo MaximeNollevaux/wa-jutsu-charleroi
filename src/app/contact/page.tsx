@@ -13,30 +13,37 @@ export const metadata: Metadata = {
   description: 'Contactez le Wa-Jutsu Club l\'Asie Marcinelle. Téléphone, email, adresse et formulaire de contact.',
 }
 
-const contactInfo = [
+const contactInfo: Array<{
+  icon: typeof PhoneIcon
+  title: string
+  content: Array<{ label: string; href?: string }>
+  href?: string
+}> = [
   {
     icon: PhoneIcon,
     title: 'Téléphone',
-    content: ['0473 83 80 75', '0478 95 38 05'],
-    link: 'tel:+32473838075',
+    content: [
+      { label: '0473 83 80 75', href: 'tel:+32473838075' },
+      { label: '0478 95 38 05', href: 'tel:+32478953805' },
+    ],
   },
   {
     icon: EnvelopeIcon,
     title: 'Email',
-    content: ['contact@wa-jutsu-charleroi.be'],
-    link: 'mailto:contact@wa-jutsu-charleroi.be',
+    content: [{ label: 'contact@wa-jutsu-charleroi.be' }],
+    href: 'mailto:contact@wa-jutsu-charleroi.be',
   },
   {
     icon: MapPinIcon,
     title: 'Adresse',
-    content: ['4 Rue de l\'Asie', '6001 Marcinelle'],
-    link: 'https://maps.google.com/?q=4+Rue+de+l\'Asie,+6001+Marcinelle',
+    content: [{ label: '4 Rue de l\'Asie' }, { label: '6001 Marcinelle' }],
+    href: 'https://maps.google.com/?q=4+Rue+de+l\'Asie,+6001+Marcinelle',
   },
   {
     icon: ClockIcon,
     title: 'Horaires',
-    content: ['Jeudi 19h-23h', 'Dimanche 9h-12h'],
-    link: '/horaires-tarifs',
+    content: [{ label: 'Jeudi 19h-23h' }, { label: 'Dimanche 9h-12h' }],
+    href: '/horaires-tarifs',
   },
 ]
 
@@ -69,23 +76,42 @@ export default function ContactPage() {
                 Informations
               </h2>
               <div className="space-y-6">
-                {contactInfo.map((info) => (
-                  <a
-                    key={info.title}
-                    href={info.link}
-                    className="flex gap-4 p-4 bg-dark-800 border border-dark-600 hover:border-primary transition-colors group"
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <info.icon className="w-6 h-6 text-primary" />
+                {contactInfo.map((info) => {
+                  const cardClass =
+                    'flex gap-4 p-4 bg-dark-800 border border-dark-600 hover:border-primary transition-colors group'
+                  const body = (
+                    <>
+                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                        <info.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-heading font-bold mb-1">{info.title}</h3>
+                        {info.content.map((line) =>
+                          line.href ? (
+                            <a
+                              key={line.label}
+                              href={line.href}
+                              className="block text-dark-400 text-sm hover:text-primary transition-colors"
+                            >
+                              {line.label}
+                            </a>
+                          ) : (
+                            <p key={line.label} className="text-dark-400 text-sm">{line.label}</p>
+                          )
+                        )}
+                      </div>
+                    </>
+                  )
+                  return info.href ? (
+                    <a key={info.title} href={info.href} className={cardClass}>
+                      {body}
+                    </a>
+                  ) : (
+                    <div key={info.title} className={cardClass}>
+                      {body}
                     </div>
-                    <div>
-                      <h3 className="font-heading font-bold mb-1">{info.title}</h3>
-                      {info.content.map((line, i) => (
-                        <p key={i} className="text-dark-400 text-sm">{line}</p>
-                      ))}
-                    </div>
-                  </a>
-                ))}
+                  )
+                })}
               </div>
 
               {/* Social */}
