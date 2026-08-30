@@ -89,7 +89,14 @@ export async function POST(request: Request) {
     try {
       await getResend().emails.send({
         from: 'Wa-Jutsu Club <noreply@synara.be>',
-        to: ['maximenollevaux@gmail.com'],
+        // Alias qui redistribue aux quatre boites du comite (president,
+        // secretaire, directeur, tresorier). Changer qui recoit se fait dans
+        // l'alias Mailu, pas ici : le code n'a pas a connaitre le comite.
+        // Avant le 30/08/2026, ces demandes partaient sur la boite Gmail
+        // personnelle de Maxime — le club ne recevait rien.
+        to: ['inscriptions@wa-jutsu-charleroi.be'],
+        // Repondre au message repond au candidat, pas a noreply@.
+        replyTo: email,
         subject: `Nouvelle inscription - ${esc(firstName)} ${esc(lastName)}`,
         html: `
           <h2>Nouvelle pré-inscription au Wa-Jutsu Club</h2>

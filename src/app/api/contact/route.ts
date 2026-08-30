@@ -1,5 +1,25 @@
 import { NextResponse } from 'next/server'
+import { Resend } from 'resend'
 import { createClient } from '@/lib/supabase/server'
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY)
+}
+
+// Les champs viennent d'un formulaire public : ils doivent etre echappes avant
+// d'etre interpoles dans le HTML de l'email. Meme garde que la route
+// d'inscription.
+const HTML_ESCAPES: Record<string, string> = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+}
+
+function esc(value: unknown): string {
+  return String(value ?? '').replace(/[&<>"']/g, (c) => HTML_ESCAPES[c])
+}
 
 export async function POST(request: Request) {
   try {
@@ -34,9 +54,32 @@ export async function POST(request: Request) {
       )
     }
 
-    // TODO: Send email notification to admin using Resend
-    // const resend = new Resend(process.env.RESEND_API_KEY)
-    // await resend.emails.send({...})
+    // Prevenir le club. Jusqu'au 30/08/2026 cet envoi etait un TODO commente :
+    // le message etait ecrit en base et personne n'etait averti. Un visiteur de
+    // Marcinelle a ainsi attendu une reponse pendant un mois.
+    // L'envoi ne doit pas faire echouer la requete : le message est deja
+    // enregistre, le perdre parce que Resend tousse serait pire.
+    try {
+      await getResend().emails.send({
+        from: 'Wa-Jutsu Club <noreply@synara.be>',
+        to: ['contact@wa-jutsu-charleroi.be'],
+        replyTo: email,
+        subject: `Message du site — ${esc(subject)}`,
+        html: `
+          <h2>Nouveau message depuis le site</h2>
+          <table style="border-collapse:collapse;width:100%;max-width:600px">
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Nom</td><td style="padding:8px;border:1px solid #ddd">${esc(name)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${esc(email)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Téléphone</td><td style="padding:8px;border:1px solid #ddd">${esc(phone) || '—'}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Sujet</td><td style="padding:8px;border:1px solid #ddd">${esc(subject)}</td></tr>
+            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Message</td><td style="padding:8px;border:1px solid #ddd">${esc(message).replace(/\n/g, '<br>')}</td></tr>
+          </table>
+          <p style="color:#666;font-size:13px">Répondre à ce mail répond directement à l'expéditeur.</p>
+        `,
+      })
+    } catch (mailError) {
+      console.error('[contact] Notification non envoyée:', mailError)
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {
