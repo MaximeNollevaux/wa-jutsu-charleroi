@@ -142,13 +142,13 @@ export const metadata: Metadata = {
   // page. Mesure en Search Console sur 90 jours : l'accueil ressortait en
   // position 8,2 pour 4,4 % de clics — bien vu, peu clique.
   title: {
-    default: 'Wa-Jutsu Charleroi — Ju-Jutsu à Marcinelle dès 5 ans, 1er mois offert',
+    default: 'Ju-Jutsu à Marcinelle — Dès 5 ans, 1er mois offert',
     // 11 caracteres et non 21 : « Charleroi » figure deja dans presque
     // tous les titres de page, et chaque caractere du suffixe repousse
     // la fin du titre hors de l'ecran de resultats.
     template: '%s | Wa-Jutsu',
   },
-  description: 'Club de Ju-Jutsu traditionnel, méthode Wa-Jutsu, à Marcinelle (Charleroi). Art martial sans compétition. Cours enfants dès 5 ans le jeudi, adultes dès 20 €/mois. Premier mois d\'essai gratuit.',
+  description: 'Club de ju-jutsu traditionnel à Marcinelle (Charleroi), sans compétition. Enfants dès 5 ans le jeudi, adultes 20 €/mois. Premier mois d\'essai offert.',
   keywords: [
     'ju-jutsu charleroi',
     'jujitsu charleroi',

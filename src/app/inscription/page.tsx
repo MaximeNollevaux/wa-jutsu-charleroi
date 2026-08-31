@@ -9,8 +9,8 @@ import { CheckIcon, DocumentArrowDownIcon } from '@heroicons/react/24/solid'
 // les metadonnees de la page ecrasent celles du layout. Les layouts en
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Inscription — Premier mois d\'essai gratuit, dès 5 ans',
-  description: 'Pré-inscription en ligne au Wa-Jutsu Club l\'Asie Marcinelle. Premier mois d\'essai gratuit et sans engagement, pour les enfants dès 5 ans et les adultes débutants.',
+  title: 'Inscription — 1er mois gratuit, dès 5 ans',
+  description: 'Pré-inscription en ligne au dojo de Marcinelle. Premier mois d\'essai gratuit et sans engagement, enfants dès 5 ans et adultes.',
 }
 
 const steps = [

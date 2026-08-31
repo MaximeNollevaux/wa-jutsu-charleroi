@@ -12,7 +12,7 @@ import {
 // les metadonnees de la page ecrasent celles du layout. Les layouts en
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Contact & accès — 4 Rue de l\'Asie, 6001 Marcinelle',
+  title: 'Contact & accès — 4 Rue de l\'Asie, Marcinelle',
   description: 'Le dojo se trouve au 4 Rue de l\'Asie, 6001 Marcinelle. Téléphone, email et formulaire pour joindre le club. Cours le jeudi soir et le dimanche matin.',
 }
 

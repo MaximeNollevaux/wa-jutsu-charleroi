@@ -13,7 +13,7 @@ import {
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
   title: 'Le Club — ASBL de Ju-Jutsu à Marcinelle depuis 1990',
-  description: 'Le Wa-Jutsu Club l\'Asie Marcinelle, ASBL fondée en 1990 et affiliée à l\'Académie Européenne de Ju-Jutsu Traditionnel. Notre équipe, notre histoire et nos valeurs.',
+  description: 'Le Wa-Jutsu Club l\'Asie Marcinelle, ASBL fondée en 1990, affiliée à l\'AEJT. Notre équipe, notre histoire et nos valeurs.',
 }
 
 const values = [

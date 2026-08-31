@@ -8,7 +8,7 @@ import { BlocReservation } from '@/components/reservation/BlocReservation'
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
   title: 'Le Wa-Jutsu — Art martial japonais sans compétition',
-  description: 'Le Wa-Jutsu, méthode de Ju-Jutsu traditionnel créée en 1982 par Maître J.J. Quero. Sans compétition ni classement. Philosophie, techniques et système de grades.',
+  description: 'Méthode de ju-jutsu traditionnel créée en 1982 par Maître J.J. Quero, sans compétition ni classement. Cours à Marcinelle, dès 10 €/mois.',
 }
 
 const grades = [
