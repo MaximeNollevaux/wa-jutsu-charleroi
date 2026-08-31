@@ -220,8 +220,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${roboto.variable} ${robotoCondensed.variable}`}>
+    <html
+      lang="fr"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${roboto.variable} ${robotoCondensed.variable}`}
+    >
       <head>
+        {/* Pose le theme avant la premiere peinture : sans ce script, un
+            visiteur en theme clair voit la page en sombre pendant un instant a
+            chaque chargement. Volontairement inline et synchrone. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('wj-theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
+          }}
+        />
         <Script src="https://one.synara.be/origine.js" strategy="beforeInteractive" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 

@@ -22,9 +22,11 @@ interface ButtonAsLink extends BaseButtonProps, Omit<AnchorHTMLAttributes<HTMLAn
 type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-primary text-white hover:bg-primary-700',
+  primary: 'bg-primary text-on-primary hover:bg-primary-700',
   secondary: 'bg-dark-900 text-white border border-white/20 hover:bg-dark-700',
-  outline: 'bg-transparent text-white border-2 border-white hover:bg-white hover:text-dark-900',
+  // Pas de couleur imposee : le bouton herite de son conteneur, ce qui le rend
+  // juste aussi bien sur un aplat violet que sur un fond de page clair.
+  outline: 'bg-transparent border-2 border-current hover:opacity-70',
   'outline-dark': 'bg-transparent text-dark-800 border-2 border-dark-800 hover:bg-dark-800 hover:text-white',
 }
 

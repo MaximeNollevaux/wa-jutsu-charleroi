@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Les deux themes.
+
+   Le site est concu en sombre : c'est donc le sombre qui occupe `:root`, et le
+   clair qui est la variante. L'echelle `dark-*` est semantique — 800 = fond de
+   page, 700 = fond de section, 600 = bordure, 400 = texte attenue — ce qui
+   permet de l'inverser en gardant tous les rapports de contraste.
+
+   `--c-white` est la couleur du TEXTE principal, pas le blanc : en clair elle
+   devient presque noire. Le blanc reel vit dans la classe `text-on-primary`,
+   pour le texte pose sur un aplat violet, dont le fond ne bascule pas.
+
+   Valeurs en canaux RGB separes par des espaces : c'est ce qu'attend la forme
+   `rgb(var(--x) / <alpha-value>)` de Tailwind pour que `text-white/90`
+   fonctionne encore.
+--------------------------------------------------------------------------- */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --c-white:    255 255 255;
+  --c-dark-50:  245 245 245;
+  --c-dark-100: 229 229 229;
+  --c-dark-200: 196 196 196;
+  --c-dark-300: 163 163 163;
+  --c-dark-400: 115 115 115;
+  --c-dark-500:  82  82  82;
+  --c-dark-600:  47  47  47;
+  --c-dark-700:  26  26  26;
+  --c-dark-800:  10  10  10;
+  --c-dark-900:   0   0   0;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --c-white:     20  23  28;   /* texte principal, presque noir */
+  --c-dark-50:   38  41  47;
+  --c-dark-100:  55  58  66;
+  --c-dark-200:  55  65  81;
+  --c-dark-300:  75  85  99;   /* texte secondaire */
+  --c-dark-400:  90  98 112;   /* texte attenue — 5,6:1 sur blanc, 4,9:1 sur le pied de page */
+  --c-dark-500:  95 103 117;   /* liens discrets — 5,0:1 sur le pied de page */
+  --c-dark-600: 221 225 231;   /* bordures */
+  --c-dark-700: 255 255 255;   /* fond de section */
+  --c-dark-800: 246 247 249;   /* fond de page */
+  --c-dark-900: 236 238 242;   /* pied de page */
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -14,7 +61,7 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white font-heading font-bold uppercase px-8 py-3
+    @apply bg-primary text-on-primary font-heading font-bold uppercase px-8 py-3
            hover:bg-primary-600 transition-colors duration-300
            focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark-800;
   }

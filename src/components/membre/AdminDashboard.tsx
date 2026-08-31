@@ -172,7 +172,7 @@ export function AdminDashboard({
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors ${
                 activeTab === tab.id
-                  ? 'bg-primary text-white'
+                  ? 'bg-primary text-on-primary'
                   : 'bg-dark-700 text-dark-300 hover:bg-dark-600'
               }`}
             >

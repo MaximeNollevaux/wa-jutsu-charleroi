@@ -125,7 +125,7 @@ export default function ContactPage() {
                     href="https://www.facebook.com/WajutsuCharleroi"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-dark-800 border border-dark-600 flex items-center justify-center text-dark-400 hover:bg-primary hover:text-white hover:border-primary transition-colors"
+                    className="w-12 h-12 bg-dark-800 border border-dark-600 flex items-center justify-center text-dark-400 hover:bg-primary hover:text-on-primary hover:border-primary transition-colors"
                     aria-label="Facebook"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

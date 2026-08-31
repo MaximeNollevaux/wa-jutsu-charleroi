@@ -116,12 +116,12 @@ export default function GaleriePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-primary">
+      <section className="py-20 bg-primary text-on-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl uppercase mb-6">
             Envie d'en faire partie ?
           </h2>
-          <p className="text-white/90 text-lg mb-8">
+          <p className="text-on-primary/90 text-lg mb-8">
             Rejoignez-nous et créez vos propres souvenirs avec notre communauté.
           </p>
           <Button href="/inscription" variant="outline" size="lg">

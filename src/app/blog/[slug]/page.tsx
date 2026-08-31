@@ -118,7 +118,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         <header className="py-16 lg:py-20 bg-dark-800">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap items-center gap-4 mb-6 text-sm">
-              <span className="bg-primary px-3 py-1 font-heading font-bold uppercase tracking-wide">
+              <span className="bg-primary text-on-primary px-3 py-1 font-heading font-bold uppercase tracking-wide">
                 {article.category}
               </span>
               <span className="text-dark-400 flex items-center gap-1">
@@ -205,7 +205,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               <div className="flex flex-wrap gap-4 mt-6">
                 <Link
                   href="/inscription"
-                  className="inline-flex items-center justify-center bg-primary text-white font-heading font-bold uppercase tracking-wide px-6 py-3 hover:bg-primary-700 transition-colors"
+                  className="inline-flex items-center justify-center bg-primary text-on-primary font-heading font-bold uppercase tracking-wide px-6 py-3 hover:bg-primary-700 transition-colors"
                 >
                   Cours d&apos;essai gratuit
                 </Link>

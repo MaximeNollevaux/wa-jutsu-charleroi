@@ -258,12 +258,12 @@ export default function LeClubPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-primary">
+      <section className="py-20 bg-primary text-on-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl uppercase mb-6">
             Rejoignez notre club
           </h2>
-          <p className="text-white/90 text-lg mb-8">
+          <p className="text-on-primary/90 text-lg mb-8">
             Premier mois d'essai gratuit. Venez découvrir le Wa-Jutsu et notre communauté.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -274,7 +274,7 @@ export default function LeClubPage() {
               href="/contact"
               size="lg"
               variant="outline"
-              className="!bg-white !text-primary !border-white hover:!bg-dark-100"
+              className="!bg-on-primary !text-primary !border-on-primary hover:!bg-primary-50"
             >
               Nous contacter
             </Button>

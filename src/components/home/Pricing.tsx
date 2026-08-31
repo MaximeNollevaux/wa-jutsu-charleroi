@@ -82,7 +82,7 @@ export function Pricing() {
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 text-sm font-heading font-bold uppercase">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 text-sm font-heading font-bold uppercase">
                   Populaire
                 </div>
               )}

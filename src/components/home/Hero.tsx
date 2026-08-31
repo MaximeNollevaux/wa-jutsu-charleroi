@@ -57,7 +57,7 @@ export function Hero() {
           <div className="lg:justify-self-end">
             <div className="bg-white text-dark-800 shadow-2xl max-w-md">
               <div className="bg-primary px-6 py-4">
-                <h3 className="font-heading font-bold text-xl uppercase text-white">Horaires des cours</h3>
+                <h3 className="font-heading font-bold text-xl uppercase text-on-primary">Horaires des cours</h3>
               </div>
               <div className="p-6 space-y-4">
                 <div className="flex justify-between items-start pb-4 border-b border-dark-100">

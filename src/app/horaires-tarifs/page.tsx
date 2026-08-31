@@ -126,8 +126,8 @@ export default function HorairesTarifsPage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {schedules.map((schedule) => (
               <div key={schedule.day} className="bg-dark-800 border border-dark-600">
-                <div className="bg-primary px-6 py-4">
-                  <h3 className="font-heading font-bold text-2xl uppercase text-white flex items-center gap-3">
+                <div className="bg-primary text-on-primary px-6 py-4">
+                  <h3 className="font-heading font-bold text-2xl uppercase text-on-primary flex items-center gap-3">
                     <ClockIcon className="w-6 h-6" />
                     {schedule.day}
                   </h3>
@@ -166,21 +166,21 @@ export default function HorairesTarifsPage() {
           />
 
           {/* Annual fee */}
-          <div className="bg-primary text-white p-8 mb-12 max-w-4xl mx-auto">
+          <div className="bg-primary text-on-primary p-8 mb-12 max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6 items-center">
               <div>
                 <h3 className="font-heading font-bold text-2xl uppercase mb-2">
                   Licence Annuelle
                 </h3>
-                <p className="text-white/90">
+                <p className="text-on-primary/90">
                   Obligatoire pour tous les pratiquants, payable une fois par saison sportive
                   (1er septembre au 30 juin).
                 </p>
               </div>
               <div className="text-center md:text-right">
                 <span className="font-heading font-extrabold text-5xl">60€</span>
-                <span className="text-white/80">/an</span>
-                <p className="text-white/80 text-sm mt-2">
+                <span className="text-on-primary/80">/an</span>
+                <p className="text-on-primary/80 text-sm mt-2">
                   Inclut : droit d'entrée, assurance RC, carte AEJT
                 </p>
               </div>
@@ -197,7 +197,7 @@ export default function HorairesTarifsPage() {
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 text-sm font-heading font-bold uppercase">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 text-sm font-heading font-bold uppercase">
                     Populaire
                   </div>
                 )}
@@ -299,12 +299,12 @@ export default function HorairesTarifsPage() {
       </section>
 
       {/* Trial offer */}
-      <section className="py-20 bg-primary">
+      <section className="py-20 bg-primary text-on-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl uppercase mb-6">
             Mois d'essai gratuit
           </h2>
-          <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-on-primary/90 text-lg mb-8 max-w-2xl mx-auto">
             Les nouveaux membres bénéficient d'un mois d'essai gratuit (4 cours).
             Aucun engagement, venez découvrir le Wa-Jutsu sans pression.
           </p>
@@ -316,7 +316,7 @@ export default function HorairesTarifsPage() {
               href="/contact"
               size="lg"
               variant="outline"
-              className="!bg-white !text-primary !border-white hover:!bg-dark-100"
+              className="!bg-on-primary !text-primary !border-on-primary hover:!bg-primary-50"
             >
               Poser une question
             </Button>

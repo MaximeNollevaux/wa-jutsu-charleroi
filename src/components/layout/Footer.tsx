@@ -44,7 +44,7 @@ export function Footer() {
                 href="https://www.facebook.com/WajutsuCharleroi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 rounded-full flex items-center justify-center text-dark-400 hover:bg-primary hover:text-white transition-colors"
+                className="w-10 h-10 bg-dark-800 rounded-full flex items-center justify-center text-dark-400 hover:bg-primary hover:text-on-primary transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -55,7 +55,7 @@ export function Footer() {
                 href="https://www.youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 rounded-full flex items-center justify-center text-dark-400 hover:bg-primary hover:text-white transition-colors"
+                className="w-10 h-10 bg-dark-800 rounded-full flex items-center justify-center text-dark-400 hover:bg-primary hover:text-on-primary transition-colors"
                 aria-label="YouTube"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

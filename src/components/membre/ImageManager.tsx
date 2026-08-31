@@ -364,7 +364,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
           </div>
           <button
             onClick={() => setShowCreateForm(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm hover:bg-primary-dark transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary text-sm hover:bg-primary-dark transition-colors"
           >
             <PlusIcon className="w-4 h-4" />
             Nouveau placeholder
@@ -376,7 +376,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
           <button
             onClick={() => setFilterStatus('all')}
             className={`px-3 py-1.5 text-sm transition-colors ${
-              filterStatus === 'all' ? 'bg-primary text-white' : 'bg-dark-700 text-dark-300 hover:bg-dark-600'
+              filterStatus === 'all' ? 'bg-primary text-on-primary' : 'bg-dark-700 text-dark-300 hover:bg-dark-600'
             }`}
           >
             Tous ({placeholders.length})
@@ -388,7 +388,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                 key={status}
                 onClick={() => setFilterStatus(status as ImagePlaceholderStatus)}
                 className={`px-3 py-1.5 text-sm transition-colors ${
-                  filterStatus === status ? 'bg-primary text-white' : 'bg-dark-700 text-dark-300 hover:bg-dark-600'
+                  filterStatus === status ? 'bg-primary text-on-primary' : 'bg-dark-700 text-dark-300 hover:bg-dark-600'
                 }`}
               >
                 {label} ({count})
@@ -607,7 +607,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                 <button
                   onClick={createPlaceholder}
                   disabled={!newPlaceholder.name || !newPlaceholder.prompt_initial}
-                  className="px-4 py-2 bg-primary text-white text-sm hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 py-2 bg-primary text-on-primary text-sm hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Creer
                 </button>
@@ -923,7 +923,7 @@ export function ImageManager({ initialPlaceholders }: ImageManagerProps) {
                 <button
                   onClick={generateImage}
                   disabled={isGenerating}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white hover:bg-primary-dark disabled:opacity-50"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary text-on-primary hover:bg-primary-dark disabled:opacity-50"
                 >
                   {isGenerating ? (
                     <>

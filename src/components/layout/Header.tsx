@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { ThemeToggle } from '@/components/layout/ThemeToggle'
 import { Bars3Icon, XMarkIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
@@ -34,12 +35,15 @@ export function Header() {
                 <span className="hidden sm:inline">contact@wa-jutsu-charleroi.be</span>
               </a>
             </div>
-            <Link
-              href="/espace-membre"
-              className="text-dark-300 hover:text-primary transition-colors font-medium"
-            >
-              Espace Membre
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/espace-membre"
+                className="text-dark-300 hover:text-primary transition-colors font-medium"
+              >
+                Espace Membre
+              </Link>
+              <ThemeToggle className="!w-7 !h-7 !border-dark-700" />
+            </div>
           </div>
         </div>
       </div>

@@ -98,11 +98,11 @@ export function ArticleBody({ blocks }: { blocks: Block[] }) {
 
           case 'cta':
             return (
-              <aside key={i} className="bg-primary text-white p-8 my-10">
+              <aside key={i} className="bg-primary text-on-primary p-8 my-10">
                 <p className="text-lg leading-relaxed mb-6">{block.text}</p>
                 <Link
                   href={block.href}
-                  className="inline-flex items-center justify-center bg-white text-primary font-heading font-bold uppercase tracking-wide px-6 py-3 hover:bg-dark-50 transition-colors"
+                  className="inline-flex items-center justify-center bg-on-primary text-primary font-heading font-bold uppercase tracking-wide px-6 py-3 hover:bg-primary-50 transition-colors"
                 >
                   {block.label}
                 </Link>

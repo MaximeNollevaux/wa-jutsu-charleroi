@@ -98,7 +98,7 @@ export default function BlogPage() {
             </div>
             <div className="p-8 lg:p-10 flex flex-col justify-center">
               <div className="flex items-center gap-4 mb-4 text-sm">
-                <span className="bg-primary px-3 py-1 font-heading font-bold uppercase tracking-wide">
+                <span className="bg-primary text-on-primary px-3 py-1 font-heading font-bold uppercase tracking-wide">
                   {featured.category}
                 </span>
                 <span className="text-dark-400 flex items-center gap-1">
@@ -170,18 +170,18 @@ export default function BlogPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-primary">
+      <section className="py-20 bg-primary text-on-primary">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading font-extrabold text-4xl uppercase mb-4">
             Le premier mois est gratuit
           </h2>
-          <p className="text-white/90 text-lg mb-8">
+          <p className="text-on-primary/90 text-lg mb-8">
             Lire est utile, essayer l&apos;est davantage. Le cours du jeudi soir,
             au 4 Rue de l&apos;Asie à Marcinelle, est ouvert aux débutants de tout âge.
           </p>
           <Link
             href="/inscription"
-            className="inline-flex items-center justify-center bg-white text-primary font-heading font-bold uppercase tracking-wide px-8 py-4 hover:bg-dark-50 transition-colors"
+            className="inline-flex items-center justify-center bg-on-primary text-primary font-heading font-bold uppercase tracking-wide px-8 py-4 hover:bg-primary-50 transition-colors"
           >
             Réserver un cours d&apos;essai
           </Link>
