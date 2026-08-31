@@ -15,4 +15,6 @@ export const blogBreadcrumbLabels: Record<string, string> = {
   'premier-cours-arts-martiaux-comment-ca-se-passe': 'Le premier cours',
   'debuter-un-art-martial-adulte-apres-30-ans': 'Débuter adulte',
   'pourquoi-un-art-martial-sans-competition': 'Sans compétition',
+  'bushido-les-vertus-code-honneur-samourai': 'Le Bushido',
+  'qui-est-maitre-jacques-jean-quero': 'Maître Quero',
 }

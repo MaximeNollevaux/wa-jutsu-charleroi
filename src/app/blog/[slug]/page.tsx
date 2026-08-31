@@ -215,6 +215,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 >
                   Horaires &amp; tarifs
                 </Link>
+                {/* Lien vers la page pilier : les articles doivent renvoyer vers
+                    elle, c'est elle qui vise « wa jutsu » — 1554 affichages sur
+                    16 mois, et la requete ou le club a le plus a gagner. */}
+                <Link
+                  href="/le-wa-jutsu"
+                  className="inline-flex items-center justify-center border-2 border-white text-white font-heading font-bold uppercase tracking-wide px-6 py-3 hover:bg-white hover:text-dark-800 transition-colors"
+                >
+                  Qu&apos;est-ce que le Wa-Jutsu ?
+                </Link>
               </div>
             </aside>
           </div>

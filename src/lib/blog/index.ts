@@ -1,6 +1,8 @@
 import type { Article } from './types'
 import { article as artMartialEnfant } from './articles/art-martial-enfant-charleroi'
+import { article as bushido } from './articles/bushido'
 import { article as debuterAdulte } from './articles/debuter-adulte'
+import { article as maitreQuero } from './articles/maitre-quero'
 import { article as premierCours } from './articles/premier-cours'
 import { article as rentree2026 } from './articles/rentree-2026'
 import { article as sansCompetition } from './articles/sans-competition'
@@ -13,6 +15,8 @@ const all: Article[] = [
   rentree2026,
   artMartialEnfant,
   waJutsuOuJuJitsu,
+  bushido,
+  maitreQuero,
   premierCours,
   debuterAdulte,
   sansCompetition,
