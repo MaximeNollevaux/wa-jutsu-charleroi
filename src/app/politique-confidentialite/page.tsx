@@ -99,6 +99,47 @@ export default function PolitiqueConfidentialitePage() {
             </ul>
           </section>
 
+          {/* Les outils tiers manquaient : le site charge une mesure d'audience,
+              un chat et, depuis le 31 aout 2026, un calendrier de reservation qui
+              collecte nom, courriel et telephone sur un AUTRE domaine. Un
+              traitement reel qu'aucune ligne ne mentionnait. */}
+          <section className="mb-12">
+            <h2 className="font-heading font-bold text-2xl uppercase mb-4 text-primary">
+              Outils utilisés sur ce site
+            </h2>
+            <p className="text-dark-300 mb-4">
+              Trois services techniques interviennent lors de votre visite :
+            </p>
+            <ul className="text-dark-400 space-y-3">
+              <li>
+                • <strong className="text-white">Mesure d'audience</strong> — Google
+                Analytics, pour savoir quelles pages sont consultées. Aucun cookie
+                de mesure n'est déposé avant votre accord : tant que vous n'avez
+                pas accepté, la mesure reste anonyme et rien n'est stocké sur
+                votre appareil.
+              </li>
+              <li>
+                • <strong className="text-white">Réservation d'un cours d'essai</strong> —
+                le calendrier est fourni par BookFlow (rdv.synara.be), opéré par
+                Synara. Les nom, prénom, adresse e-mail et numéro de téléphone que
+                vous y saisissez sont enregistrés chez ce prestataire, sur des
+                serveurs situés en Europe, et nous sont transmis pour vous
+                accueillir au cours.
+              </li>
+              <li>
+                • <strong className="text-white">Messagerie instantanée</strong> —
+                la fenêtre de discussion est fournie par Synara (chat.synara.be).
+                Le contenu de vos messages y est conservé pour permettre le suivi
+                de votre demande.
+              </li>
+            </ul>
+            <p className="text-dark-300 mt-4">
+              Le site est hébergé sur un serveur situé en France, exploité par
+              OVHcloud. Aucune donnée n'est transférée hors de l'Union européenne
+              par le club.
+            </p>
+          </section>
+
           <section className="mb-12">
             <h2 className="font-heading font-bold text-2xl uppercase mb-4 text-primary">
               Durée de conservation
