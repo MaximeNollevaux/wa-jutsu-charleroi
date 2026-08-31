@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 const quickLinks = [
   { name: 'Accueil', href: '/' },
@@ -28,9 +29,13 @@ export function Footer() {
           {/* Club info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <span className="font-heading font-bold text-xl">WJ</span>
-              </div>
+              <Image
+                src="/images/logo-sceau-96.png"
+                alt=""
+                width={96}
+                height={96}
+                className="w-12 h-12 rounded-full"
+              />
               <div>
                 <div className="font-heading font-bold text-lg leading-tight">WA-JUTSU</div>
                 <div className="text-xs text-dark-400 uppercase tracking-wider">Club l'Asie Marcinelle</div>

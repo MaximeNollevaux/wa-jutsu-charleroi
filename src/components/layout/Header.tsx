@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
 import { Bars3Icon, XMarkIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Accueil', href: '/' },
@@ -54,9 +55,14 @@ export function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <span className="font-heading font-bold text-xl">WJ</span>
-              </div>
+              <Image
+                src="/images/logo-sceau-96.png"
+                alt=""
+                width={96}
+                height={96}
+                priority
+                className="w-12 h-12 rounded-full"
+              />
               <div className="hidden sm:block">
                 <div className="font-heading font-bold text-lg leading-tight">WA-JUTSU</div>
                 <div className="text-xs text-dark-400 uppercase tracking-wider">Charleroi</div>
