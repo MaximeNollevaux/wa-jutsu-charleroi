@@ -3,8 +3,8 @@ import type { Article } from '../types'
 export const article: Article = {
   slug: 'rentree-sportive-2026-inscriptions-marcinelle',
   title: `Rentrée sportive 2026 : les inscriptions sont ouvertes`,
-  seoTitle: `Inscriptions rentrée 2026 — Arts martiaux Marcinelle dès 10 €/mois`,
-  description: `La saison 2026-2027 démarre en septembre au dojo de Marcinelle. Horaires, tarifs, premier mois d'essai gratuit et démarches d'inscription pour les enfants dès 5 ans et les adultes.`,
+  seoTitle: `Inscriptions 2026 — Arts martiaux à Marcinelle`,
+  description: `La saison 2026-2027 démarre en septembre à Marcinelle. Horaires, tarifs et inscription, enfants dès 5 ans et adultes. Premier mois offert.`,
   keywords: [
     'inscription arts martiaux charleroi',
     'rentrée sportive 2026 marcinelle',

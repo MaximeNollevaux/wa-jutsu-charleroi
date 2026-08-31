@@ -3,12 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ClockIcon } from '@heroicons/react/24/outline'
 import { articles, formatDate } from '@/lib/blog'
+import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
-  title: `Conseils arts martiaux à Charleroi — Le blog du club`,
-  description: `Choisir un art martial pour son enfant, débuter adulte, comprendre le Wa-Jutsu : les articles du Wa-Jutsu Club l'Asie Marcinelle, écrits par les enseignants du club.`,
+  title: `Conseils arts martiaux à Charleroi`,
+  description: `Choisir un art martial pour son enfant, débuter adulte, comprendre le Wa-Jutsu : les articles écrits par les enseignants du club.`,
   keywords: [
     'blog arts martiaux charleroi',
     'conseils arts martiaux',
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     description: `Conseils pratiques et repères sur les arts martiaux, par les enseignants du club de Marcinelle.`,
     url: `${baseUrl}/blog`,
     type: 'website',
+    images: IMAGE_PARTAGE,
   },
   alternates: {
     canonical: `${baseUrl}/blog`,

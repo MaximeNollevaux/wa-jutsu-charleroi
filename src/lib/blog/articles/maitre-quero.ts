@@ -3,8 +3,8 @@ import type { Article } from '../types'
 export const article: Article = {
   slug: 'qui-est-maitre-jacques-jean-quero',
   title: `Qui est Maître J.J. Quero, fondateur du Wa-Jutsu ?`,
-  seoTitle: `Maître Jacques-Jean Quero : parcours et fondation du Wa-Jutsu`,
-  description: `Diplômé d'État en 1969, entraîneur en Belgique dès 1970, Shihan au retour du Japon en 1975 : le parcours de J.J. Quero et la création de la méthode Wa-Jutsu le 25 décembre 1982.`,
+  seoTitle: `Maître Jacques-Jean Quero, fondateur du Wa-Jutsu`,
+  description: `Diplômé d'État en 1969, entraîneur en Belgique dès 1970, Shihan en 1975 : le parcours de J.J. Quero et la création du Wa-Jutsu en 1982.`,
   keywords: [
     'jacques jean quero',
     'maître quero',

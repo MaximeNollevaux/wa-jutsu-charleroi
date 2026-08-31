@@ -3,8 +3,8 @@ import type { Article } from '../types'
 export const article: Article = {
   slug: 'debuter-un-art-martial-adulte-apres-30-ans',
   title: `Débuter un art martial adulte après 30, 40 ou 50 ans`,
-  seoTitle: `Débuter les arts martiaux adulte à Charleroi : 20 €/mois, jeudi soir`,
-  description: `Commencer un art martial à 35 ou 50 ans, sans passé sportif : ce qui est réaliste, ce qui ne l'est pas, et pourquoi le ju-jutsu traditionnel se prête bien à une reprise tardive.`,
+  seoTitle: `Débuter un art martial adulte à Charleroi`,
+  description: `Commencer un art martial à 35 ou 50 ans sans passé sportif : ce qui est réaliste, ce qui ne l'est pas. Cours adultes à Marcinelle, 20 €/mois.`,
   keywords: [
     'débuter arts martiaux adulte',
     'arts martiaux adulte charleroi',

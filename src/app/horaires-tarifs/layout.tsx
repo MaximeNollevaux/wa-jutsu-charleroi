@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
+import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
@@ -13,7 +14,7 @@ const offerJsonLd = {
     name: 'Wa-Jutsu Club l\'Asie Marcinelle',
     url: baseUrl,
   },
-  description: 'Cours de Ju-Jutsu Traditionnel methode Wa-Jutsu pour enfants, jeunes et adultes. Self-defense et developpement personnel.',
+  description: 'Cours de ju-jutsu traditionnel, méthode Wa-Jutsu, pour enfants, jeunes et adultes. Self-défense et développement personnel, sans compétition.',
   areaServed: {
     '@type': 'City',
     name: 'Charleroi',
@@ -36,7 +37,7 @@ const offerJsonLd = {
     {
       '@type': 'Offer',
       name: 'Cours Jeunes',
-      description: 'Cours du jeudi pour jeunes de 13 a 18 ans',
+      description: 'Cours du jeudi pour jeunes de 13 à 18 ans',
       price: '10',
       priceCurrency: 'EUR',
       priceSpecification: {
@@ -93,7 +94,7 @@ const faqJsonLd = {
       name: 'Combien coutent les cours de Wa-Jutsu ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Les tarifs mensuels sont : 10EUR pour les enfants et jeunes (jusqu\'a 18 ans), 20EUR pour les adultes, et 30EUR pour les couples. Une licence annuelle de 60EUR est requise (assurance et carte AEJT incluses).',
+        text: 'Les tarifs mensuels sont de 10 € pour les enfants et les jeunes (jusqu\'à 18 ans), 20 € pour les adultes et 30 € pour un couple. Une licence annuelle de 60 € est demandée, assurance et carte AEJT comprises.',
       },
     },
     {
@@ -116,8 +117,8 @@ const faqJsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: 'Horaires & Tarifs — Cours le jeudi soir, dès 10 €/mois',
-  description: 'Horaires des cours de Wa-Jutsu a Marcinelle : jeudi soir et dimanche matin. Tarifs accessibles des 10EUR/mois. Premier mois d\'essai gratuit. Licence annuelle 60EUR.',
+  title: 'Horaires & tarifs — Jeudi soir, dès 10 €/mois',
+  description: 'Horaires des cours de Wa-Jutsu à Marcinelle : jeudi soir et dimanche matin. Dès 10 €/mois, licence annuelle 60 €. Premier mois d\'essai gratuit.',
   keywords: [
     'horaires cours arts martiaux charleroi',
     'tarifs jujitsu charleroi',
@@ -129,9 +130,10 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Horaires & Tarifs — Cours de Wa-Jutsu à Charleroi',
-    description: 'Cours jeudi soir et dimanche. Tarifs des 10EUR/mois. Premier mois gratuit.',
+    description: 'Cours le jeudi soir et le dimanche matin. Dès 10 €/mois. Premier mois gratuit.',
     url: `${baseUrl}/horaires-tarifs`,
     type: 'website',
+    images: IMAGE_PARTAGE,
   },
   alternates: {
     canonical: `${baseUrl}/horaires-tarifs`,

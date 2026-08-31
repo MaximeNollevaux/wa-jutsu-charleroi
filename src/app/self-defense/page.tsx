@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { BlocReservation } from '@/components/reservation/BlocReservation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CheckIcon } from '@heroicons/react/24/solid'
+import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
@@ -14,9 +15,9 @@ const baseUrl = 'https://wa-jutsu-charleroi.be'
 // meilleure requete de decouverte du site — 352 affichages en 16 mois, position
 // 7,3 — et aucune page ne lui repondait.
 export const metadata: Metadata = {
-  title: 'Self-défense à Charleroi — Cours adultes le jeudi soir',
+  title: 'Self-défense à Charleroi — Cours du jeudi soir',
   description:
-    "Apprendre à se défendre à Marcinelle, près de Charleroi : dégagements, projections, clés et travail au sol du ju-jutsu traditionnel. Cours adultes le jeudi 20h30-23h. Premier mois gratuit.",
+    "Se défendre à Marcinelle, près de Charleroi : dégagements, projections, clés et travail au sol. Cours adultes le jeudi 20h30. 1er mois gratuit.",
   keywords: [
     'self defense charleroi',
     'self défense marcinelle',
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
       "Les techniques de défense du ju-jutsu traditionnel, apprises dans la durée plutôt qu'en stage express. Cours adultes le jeudi soir à Marcinelle.",
     url: `${baseUrl}/self-defense`,
     type: 'website',
+    images: IMAGE_PARTAGE,
   },
   alternates: {
     canonical: `${baseUrl}/self-defense`,

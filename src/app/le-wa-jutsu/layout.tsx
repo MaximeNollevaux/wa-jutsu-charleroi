@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
+import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
@@ -44,8 +45,8 @@ const faqJsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: 'Le Wa-Jutsu — Art martial japonais sans compétition',
-  description: 'Le Wa-Jutsu, art martial japonais traditionnel sans compétition. Philosophie Shin-Ghi-Tai, techniques de self-défense, système de grades et valeurs du Bushido.',
+  title: 'Le Wa-Jutsu — Art martial sans compétition',
+  description: 'Art martial japonais traditionnel sans compétition : philosophie Shin-Ghi-Tai, self-défense, grades et Bushido. Cours à Marcinelle, dès 10 €/mois.',
   keywords: [
     'wa-jutsu',
     'art martial traditionnel',
@@ -63,6 +64,7 @@ export const metadata: Metadata = {
     description: 'Le Wa-Jutsu : philosophie, techniques et système de grades d\'un art martial sans compétition.',
     url: `${baseUrl}/le-wa-jutsu`,
     type: 'article',
+    images: IMAGE_PARTAGE,
   },
   alternates: {
     canonical: `${baseUrl}/le-wa-jutsu`,

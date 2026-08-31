@@ -3,8 +3,8 @@ import type { Article } from '../types'
 export const article: Article = {
   slug: 'wa-jutsu-ou-ju-jitsu-quelle-difference',
   title: `Wa-Jutsu ou Ju-Jitsu : quelle différence exactement ?`,
-  seoTitle: `Wa-Jutsu ou Ju-Jitsu : la différence, expliquée simplement`,
-  description: `Le Wa-Jutsu est une méthode de ju-jutsu traditionnel créée en 1982 par Maître J.J. Quero. Ce qu'elle garde du ju-jitsu, ce qu'elle en retire, et pourquoi elle ne délivre pas de Dan.`,
+  seoTitle: `Wa-Jutsu ou Ju-Jitsu : quelle différence ?`,
+  description: `Méthode de ju-jutsu traditionnel créée en 1982 par Maître J.J. Quero : ce qu'elle garde du ju-jitsu, et pourquoi elle ne délivre pas de Dan.`,
   keywords: [
     'wa-jutsu',
     'différence wa-jutsu ju-jitsu',

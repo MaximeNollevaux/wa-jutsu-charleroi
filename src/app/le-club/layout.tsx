@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
+import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
-  title: 'Le Club — ASBL de Ju-Jutsu à Marcinelle depuis 1990',
+  title: 'Le club — Ju-Jutsu à Marcinelle depuis 1990',
   description: 'Le Wa-Jutsu Club l\'Asie Marcinelle, ASBL fondée en 1990. Notre équipe d\'enseignants, nos valeurs et notre façon d\'enseigner le Ju-Jutsu traditionnel.',
   keywords: [
     'club ju-jutsu charleroi',
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     description: 'Notre club, fondé en 1990, enseigne le Ju-Jutsu traditionnel selon la méthode Wa-Jutsu.',
     url: `${baseUrl}/le-club`,
     type: 'website',
+    images: IMAGE_PARTAGE,
   },
   alternates: {
     canonical: `${baseUrl}/le-club`,

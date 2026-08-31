@@ -45,7 +45,18 @@ export function BlocReservation({
 
         <CalendrierReservation />
 
+        {/* Le prix, sous le calendrier plutot qu'ailleurs sur le site : un
+            visiteur venu d'une annonce ne changera pas de page pour aller le
+            chercher, et l'objection du cout se leve avant la reservation, pas
+            apres. Deux pages d'arrivee sur quatre ne l'affichaient nulle part. */}
         <p className="text-center text-dark-300 mt-6">
+          <span className="text-white">Après l&apos;essai, si vous continuez :</span>{' '}
+          10 €/mois pour les enfants et les jeunes, 20 € pour les adultes,
+          30 € pour un couple. Licence annuelle 60 €, assurance comprise.
+          Le premier mois complet reste offert.
+        </p>
+
+        <p className="text-center text-dark-300 mt-4">
           Le jeudi : 19h00 pour les enfants et ados, 20h30 pour les adultes.
           Une difficulté pour réserver ? Appelez le{' '}
           <a

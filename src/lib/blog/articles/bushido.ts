@@ -3,8 +3,8 @@ import type { Article } from '../types'
 export const article: Article = {
   slug: 'bushido-les-vertus-code-honneur-samourai',
   title: `Le Bushido : les vertus du code d'honneur des samouraïs`,
-  seoTitle: `Bushido : les 15 vertus du code d'honneur, expliquées`,
-  description: `Rectitude, courage, bonté, politesse, loyauté : ce que recouvre chaque vertu du Bushido, d'où vient le mot, et ce qu'il en reste dans la pratique d'un art martial aujourd'hui.`,
+  seoTitle: `Bushido : les 15 vertus du code d'honneur`,
+  description: `Rectitude, courage, bonté, politesse, loyauté : ce que recouvre chaque vertu du Bushido, et ce qu'il en reste sur un tatami aujourd'hui.`,
   keywords: [
     'bushido',
     'code du bushido',

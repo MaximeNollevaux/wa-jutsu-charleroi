@@ -3,15 +3,16 @@ import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CalendrierReservation } from '@/components/reservation/CalendrierReservation'
 import { CheckIcon } from '@heroicons/react/24/solid'
+import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 // Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
 // les metadonnees de la page ecrasent celles du layout.
 export const metadata: Metadata = {
-  title: 'Réserver un cours d\'essai gratuit — Jeudi soir à Marcinelle',
+  title: 'Cours d\'essai gratuit — Jeudi soir à Marcinelle',
   description:
-    "Choisissez votre date en ligne et venez essayer le ju-jutsu au Wa-Jutsu Club l'Asie, à Marcinelle. Cours d'essai gratuit et sans engagement, le jeudi : 19h00 pour les enfants, 20h30 pour les adultes.",
+    "Réservez en ligne votre cours d'essai gratuit à Marcinelle. Le jeudi : 19h00 pour les enfants, 20h30 pour les adultes. Sans engagement.",
   keywords: [
     'cours essai arts martiaux charleroi',
     'essayer jujitsu marcinelle',
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
       "Réservez votre cours d'essai gratuit en ligne. Jeudi 19h00 (enfants) ou 20h30 (adultes), à Marcinelle.",
     url: `${baseUrl}/reserver`,
     type: 'website',
+    images: IMAGE_PARTAGE,
   },
   alternates: {
     canonical: `${baseUrl}/reserver`,

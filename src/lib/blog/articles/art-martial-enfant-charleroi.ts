@@ -3,8 +3,8 @@ import type { Article } from '../types'
 export const article: Article = {
   slug: 'quel-art-martial-pour-mon-enfant-charleroi',
   title: `Quel art martial choisir pour son enfant à Charleroi ?`,
-  seoTitle: `Art martial enfant à Charleroi : comment choisir dès 5 ans`,
-  description: `Judo, karaté, ju-jutsu, boxe : ce qui les distingue vraiment pour un enfant de 5 à 12 ans. Critères concrets, questions à poser au club, et ce que change l'absence de compétition.`,
+  seoTitle: `Art martial enfant à Charleroi : comment choisir`,
+  description: `Judo, karaté, ju-jutsu, boxe : ce qui les distingue vraiment pour un enfant de 5 à 12 ans, et les questions à poser avant d'inscrire.`,
   keywords: [
     'art martial enfant charleroi',
     'arts martiaux enfant 5 ans',

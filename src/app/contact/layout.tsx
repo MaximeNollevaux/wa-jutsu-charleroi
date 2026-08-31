@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs'
+import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
@@ -26,7 +27,7 @@ const contactJsonLd = {
 }
 
 export const metadata: Metadata = {
-  title: 'Contact & accès — 4 Rue de l\'Asie, 6001 Marcinelle',
+  title: 'Contact & accès — 4 Rue de l\'Asie, Marcinelle',
   description: 'Le dojo se trouve au 4 Rue de l\'Asie, 6001 Marcinelle. Téléphone, email et formulaire pour joindre le club.',
   keywords: [
     'contact wa-jutsu charleroi',
@@ -39,6 +40,7 @@ export const metadata: Metadata = {
     description: 'Contactez-nous pour toute question. 4 Rue de l\'Asie, 6001 Marcinelle.',
     url: `${baseUrl}/contact`,
     type: 'website',
+    images: IMAGE_PARTAGE,
   },
   alternates: {
     canonical: `${baseUrl}/contact`,

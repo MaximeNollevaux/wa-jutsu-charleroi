@@ -3,8 +3,8 @@ import type { Article } from '../types'
 export const article: Article = {
   slug: 'premier-cours-arts-martiaux-comment-ca-se-passe',
   title: `Votre premier cours : ce qui vous attend vraiment`,
-  seoTitle: `Premier cours d'arts martiaux à Marcinelle : le déroulé, jeudi 19h`,
-  description: `Tenue, salut, échauffement, techniques : le déroulé exact d'un premier cours de Wa-Jutsu à Marcinelle. Ce qu'il faut apporter, et ce que personne n'attend de vous.`,
+  seoTitle: `Premier cours d'arts martiaux : le déroulé exact`,
+  description: `Tenue, salut, échauffement, techniques : le déroulé exact d'un premier cours à Marcinelle, et ce que personne n'attend de vous.`,
   keywords: [
     'premier cours arts martiaux',
     'cours essai ju-jutsu charleroi',
