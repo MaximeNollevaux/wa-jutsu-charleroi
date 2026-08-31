@@ -4,7 +4,7 @@ export const article: Article = {
   slug: 'pourquoi-un-art-martial-sans-competition',
   title: `Pourquoi pratiquer un art martial sans compétition ?`,
   seoTitle: `Art martial sans compétition : ce que ça change`,
-  description: `Ni tournoi, ni classement, ni catégorie de poids. Ce que l'absence de compétition retire à la pratique, ce qu'elle apporte, et à qui elle convient vraiment.`,
+  description: `Ni tournoi, ni classement, ni catégorie de poids : ce que l'absence de compétition retire à la pratique, et ce qu'elle apporte.`,
   keywords: [
     'art martial sans compétition',
     'arts martiaux non compétitifs',

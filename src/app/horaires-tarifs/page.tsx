@@ -7,7 +7,7 @@ import { CheckIcon, ClockIcon } from '@heroicons/react/24/solid'
 // les metadonnees de la page ecrasent celles du layout. Les layouts en
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Horaires & Tarifs — Cours le jeudi soir, dès 10 €/mois',
+  title: 'Horaires & tarifs — Jeudi soir, dès 10 €/mois',
   description: 'Cours le jeudi de 19h à 23h et le dimanche matin, à Marcinelle. Enfants 10 €/mois, adultes 20 €, couple 30 €. Premier mois offert.',
 }
 
