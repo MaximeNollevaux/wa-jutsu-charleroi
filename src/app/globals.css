@@ -131,13 +131,33 @@
   --c-dark-900: 0 0 0;
 }
 
-/* Le violet du club sur une photo assombrie donne 3,1:1 — sous le seuil pour du
- * texte courant. C'est l'ecart signale des l'audit du 30 aout, laisse en l'etat
- * parce qu'il relevait de la charte : on ne le corrige donc pas en changeant la
- * couleur du club, mais en eclaircissant la seule teinte posee SUR du sombre.
- * Le violet reste le violet partout ailleurs. */
+/* Le violet du club en TEXTE sur fond sombre : 2,4 a 3,7:1 selon le fond, la ou
+ * il en faut 4,5. C'est l'ecart releve des l'audit du 30 aout et laisse en
+ * l'etat parce qu'il touchait a la charte — il concernait 26 elements, dont
+ * tous les sur-titres de section et le mot « TARIFS » du menu.
+ *
+ * La couleur du club ne change pas : #9333EA reste l'aplat des boutons, des
+ * cartes et du logo, ou il porte du blanc sans difficulte. Seule la variante
+ * ECRITE sur du sombre est eclaircie, et elle passe alors a 7,9:1.
+ *
+ * L'ordre compte : cette regle vit hors des couches Tailwind, donc apres elles,
+ * et l'emporte a specificite egale. Le theme clair la neutralise par un
+ * selecteur plus fort. */
 .sur-fond-sombre .text-primary,
 .sur-fond-sombre .section-subtitle {
+  color: #C4A0FF;
+}
+
+/* Un essai a ete fait pour eclaircir ce violet PARTOUT en theme sombre, et il a
+ * ete annule : `text-primary` sert aussi sur des fonds clairs — le menu
+ * deroulant, les cartes blanches — ou la teinte claire tombe a 1,96:1.
+ *
+ * Restent les SUR-TITRES de section, mesures a 3,2-3,6:1 sur fond sombre : onze
+ * elements, dont « Nos disciplines », « Nos enseignants » et « Nous trouver ».
+ * Eux sont toujours poses sur un fond de section, jamais sur du blanc — le cas
+ * `light` du composant d'en-tete est exclu explicitement. La couleur du club ne
+ * change pas ailleurs. */
+:root:not([data-theme='light']) .section-subtitle:not(.text-primary-400) {
   color: #C4A0FF;
 }
 
