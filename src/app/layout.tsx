@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Roboto, Roboto_Condensed } from 'next/font/google'
+import { Fraunces, Barlow } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
@@ -7,17 +7,21 @@ import { Footer } from '@/components/layout/Footer'
 import { WebVitals } from '@/components/WebVitals'
 import { OrigineTracker } from '@/components/OrigineTracker'
 
-const roboto = Roboto({
+// Le texte courant, les boutons et les etiquettes en capitales.
+const barlow = Barlow({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-roboto',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-barlow',
   display: 'swap',
 })
 
-const robotoCondensed = Roboto_Condensed({
+// Les titres de premier et deuxieme niveau, en casse normale.
+// `opsz` est l'axe optique : la lettre se resserre en grand et s'ouvre en petit,
+// ce qu'une fonte statique ne sait pas faire.
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-roboto-condensed',
+  axes: ['opsz'],
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
@@ -227,7 +231,7 @@ export default function RootLayout({
       lang="fr"
       data-theme="dark"
       suppressHydrationWarning
-      className={`${roboto.variable} ${robotoCondensed.variable}`}
+      className={`${barlow.variable} ${fraunces.variable}`}
     >
       <head>
         {/* Pose le theme avant la premiere peinture : sans ce script, un

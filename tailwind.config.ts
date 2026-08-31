@@ -55,8 +55,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-roboto)', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-roboto-condensed)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-barlow)', 'system-ui', 'sans-serif'],
+        // `font-heading` sert autant aux titres qu'aux boutons et aux
+        // etiquettes en capitales : elle reste donc en sans-serif. Le serif est
+        // pose sur les seuls h1 et h2, par globals.css.
+        heading: ['var(--font-barlow)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-fraunces)', 'Georgia', 'serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

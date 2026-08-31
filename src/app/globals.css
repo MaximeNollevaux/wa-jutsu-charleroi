@@ -21,16 +21,23 @@
 :root,
 :root[data-theme='dark'] {
   color-scheme: dark;
+  /* Les gris penchent de quelques points vers le violet du club plutot que
+   * d'etre neutres purs (245 245 245, 26 26 26...). Un gris parfaitement neutre
+   * se lit comme une valeur jamais touchee ; teinte vers l'accent, il se lit
+   * comme un choix, et les aplats violets cessent de flotter sur un fond
+   * etranger. L'ecart est de deux a huit points, invisible isolement, sensible
+   * a l'echelle d'une page — et sans effet sur les rapports de contraste, qui
+   * restent ceux qui ont ete verifies. */
   --c-white:    255 255 255;
-  --c-dark-50:  245 245 245;
-  --c-dark-100: 229 229 229;
-  --c-dark-200: 196 196 196;
-  --c-dark-300: 163 163 163;
-  --c-dark-400: 115 115 115;
-  --c-dark-500:  82  82  82;
-  --c-dark-600:  47  47  47;
-  --c-dark-700:  26  26  26;
-  --c-dark-800:  10  10  10;
+  --c-dark-50:  246 244 249;
+  --c-dark-100: 230 227 234;
+  --c-dark-200: 197 193 203;
+  --c-dark-300: 164 160 172;
+  --c-dark-400: 116 112 125;
+  --c-dark-500:  84  80  93;
+  --c-dark-600:  49  46  56;
+  --c-dark-700:  27  25  32;
+  --c-dark-800:  12  11  15;
   --c-dark-900:   0   0   0;
 }
 
@@ -57,9 +64,55 @@
   body {
     @apply bg-dark-800 text-white antialiased;
   }
+
+  /* Les deux premiers niveaux de titre passent au serif, en casse normale.
+   *
+   * Pourquoi ici et pas dans les 147 endroits qui portent `font-heading
+   * uppercase` : la police de titre sert aussi aux boutons et aux etiquettes,
+   * ou un serif en capitales se lit mal. On pose donc le serif sur les seuls
+   * h1 et h2, et on y neutralise la capitale.
+   *
+   * Le selecteur combine l'element et la classe pour l'emporter sur l'utilitaire
+   * `uppercase`, qui aurait sinon la meme force. Les h3 et le reste gardent la
+   * sans-serif : c'est ce qui rend la hierarchie lisible d'un coup d'oeil. */
+  h1,
+  h2,
+  h1.font-heading,
+  h2.font-heading {
+    font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+    font-weight: 600;
+  }
+
+  h1.uppercase,
+  h2.uppercase {
+    text-transform: none;
+    letter-spacing: -0.02em;
+  }
+
+  /* Un serif a fort contraste supporte mal d'etre trop serre en grand. */
+  h1 {
+    line-height: 1.08;
+  }
 }
 
 @layer components {
+  /* Ce qui se touche au doigt doit faire 44 px de haut.
+   *
+   * Releve du 2026-08-31 : 32 liens et boutons sous ce seuil, dont 17 dans le
+   * pied de page a 17 px de haut et les numeros de telephone a 16 px. Sur un
+   * telephone — 78 % des visites — appeler le club demandait de viser une ligne
+   * de deux millimetres.
+   *
+   * La contrainte ne s'applique qu'aux petits ecrans : au-dela, on pointe a la
+   * souris, et etirer chaque lien du pied de page allongerait la mise en page
+   * sans rien apporter. */
+  footer nav a,
+  footer ul a,
+  a[href^='tel:'],
+  a[href^='mailto:'] {
+    @apply inline-flex items-center min-h-[44px] md:min-h-0;
+  }
+
   .btn-primary {
     @apply bg-primary text-on-primary font-heading font-bold uppercase px-8 py-3
            hover:bg-primary-600 transition-colors duration-300
