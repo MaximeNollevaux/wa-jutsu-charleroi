@@ -17,10 +17,10 @@ import {
   ClockIcon,
 } from '@heroicons/react/24/outline'
 
-type Profile = Database['public']['Tables']['profiles']['Row']
-type Payment = Database['public']['Tables']['payments']['Row']
-type Grade = Database['public']['Tables']['grades']['Row']
-type Announcement = Database['public']['Tables']['announcements']['Row']
+type Profile = Database['wajutsu']['Tables']['profiles']['Row']
+type Payment = Database['wajutsu']['Tables']['payments']['Row']
+type Grade = Database['wajutsu']['Tables']['grades']['Row']
+type Announcement = Database['wajutsu']['Tables']['announcements']['Row']
 
 interface DashboardContentProps {
   profile: Profile

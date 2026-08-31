@@ -20,13 +20,13 @@ import {
 import { ImageManager } from './ImageManager'
 import type { ImagePlaceholderStatus, ImageGenerationStatus } from '@/lib/supabase/types'
 
-type Profile = Database['public']['Tables']['profiles']['Row']
-type Registration = Database['public']['Tables']['registrations']['Row']
-type Payment = Database['public']['Tables']['payments']['Row'] & {
+type Profile = Database['wajutsu']['Tables']['profiles']['Row']
+type Registration = Database['wajutsu']['Tables']['registrations']['Row']
+type Payment = Database['wajutsu']['Tables']['payments']['Row'] & {
   profiles?: { first_name: string; last_name: string } | null
 }
-type ContactMessage = Database['public']['Tables']['contact_messages']['Row']
-type Announcement = Database['public']['Tables']['announcements']['Row']
+type ContactMessage = Database['wajutsu']['Tables']['contact_messages']['Row']
+type Announcement = Database['wajutsu']['Tables']['announcements']['Row']
 
 interface ImageGeneration {
   id: string

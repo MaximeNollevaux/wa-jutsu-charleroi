@@ -15,7 +15,7 @@ export type ImagePlaceholderStatus = 'pending' | 'generating' | 'review' | 'appr
 export type ImageGenerationStatus = 'generated' | 'rejected' | 'approved'
 
 export interface Database {
-  public: {
+  wajutsu: {
     Tables: {
       profiles: {
         Row: {
