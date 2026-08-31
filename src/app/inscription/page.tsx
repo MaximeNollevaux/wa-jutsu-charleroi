@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { InscriptionForm } from '@/components/inscription/InscriptionForm'
 import { Button } from '@/components/ui/Button'
@@ -59,6 +60,19 @@ export default function InscriptionPage() {
           <p className="text-dark-300 text-xl max-w-3xl mx-auto">
             Inscrivez-vous en quelques clics et bénéficiez d'un mois d'essai gratuit
             pour découvrir le Wa-Jutsu.
+          </p>
+          {/* Le formulaire demande un engagement que le visiteur venu d'une
+              annonce n'a pas encore. La reservation d'un seul cours est le pas
+              d'avant : on l'offre ici plutot que de le laisser fermer la page. */}
+          <p className="text-dark-400 mt-6">
+            Vous préférez venir voir avant de vous décider ?{' '}
+            <Link
+              href="/reserver"
+              className="text-white font-medium underline underline-offset-4 decoration-primary hover:decoration-2"
+            >
+              Réservez un cours d&apos;essai
+            </Link>
+            , c&apos;est gratuit et sans engagement.
           </p>
         </div>
       </section>

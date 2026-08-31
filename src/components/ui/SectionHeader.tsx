@@ -24,7 +24,7 @@ export function SectionHeader({
         {title}
       </h2>
       {description && (
-        <p className={`mt-4 text-lg max-w-3xl ${centered ? 'mx-auto' : ''} ${light ? 'text-dark-600' : 'text-dark-400'}`}>
+        <p className={`mt-4 text-lg max-w-3xl ${centered ? 'mx-auto' : ''} ${light ? 'text-dark-600' : 'text-dark-300'}`}>
           {description}
         </p>
       )}

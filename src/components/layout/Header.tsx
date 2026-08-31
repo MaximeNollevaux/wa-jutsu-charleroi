@@ -64,7 +64,7 @@ export function Header() {
             </Link>
 
             {/* Desktop navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -74,7 +74,10 @@ export function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link href="/inscription" className="btn-primary text-sm">
+              <Link href="/reserver" className="btn-outline text-sm whitespace-nowrap">
+                Cours d&apos;essai
+              </Link>
+              <Link href="/inscription" className="btn-primary text-sm whitespace-nowrap">
                 S'inscrire
               </Link>
             </div>
@@ -110,8 +113,15 @@ export function Header() {
                 </Link>
               ))}
               <Link
+                href="/reserver"
+                className="block w-full btn-outline text-center mt-4"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Réserver un cours d&apos;essai
+              </Link>
+              <Link
                 href="/inscription"
-                className="block w-full btn-primary text-center mt-4"
+                className="block w-full btn-primary text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 S'inscrire

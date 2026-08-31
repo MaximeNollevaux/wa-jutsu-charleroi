@@ -253,7 +253,7 @@ export default function SelfDefensePage() {
               </dl>
 
               <div className="flex flex-wrap gap-4 mt-8">
-                <Link href="/inscription" className="btn-primary text-sm">
+                <Link href="/reserver" className="btn-primary text-sm">
                   Réserver un cours d&apos;essai
                 </Link>
                 <Link
