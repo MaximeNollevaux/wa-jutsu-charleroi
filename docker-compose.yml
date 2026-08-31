@@ -1,22 +1,30 @@
 services:
   app:
     image: ghcr.io/maximenollevaux/wa-jutsu-charleroi:latest
-    container_name: wajutsu-app
+    container_name: wa-jutsu-charleroi-app
     restart: unless-stopped
     environment:
+      - NODE_ENV=production
+      - RESEND_API_KEY=${RESEND_API_KEY}
       - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
-      - RESEND_API_KEY=${RESEND_API_KEY}
       - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
+      - NEXT_PUBLIC_SITE_URL=https://wa-jutsu-charleroi.be
     networks:
-      - dokploy-network
+      - synara-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wajutsu.rule=Host(`wa-jutsu-charleroi.be`)"
-      - "traefik.http.routers.wajutsu.entrypoints=websecure"
-      - "traefik.http.routers.wajutsu.tls.certresolver=letsencrypt"
-      - "traefik.http.services.wajutsu.loadbalancer.server.port=3000"
+      - "traefik.http.routers.wajutsu-app.rule=Host(`wa-jutsu-charleroi.be`) || Host(`www.wa-jutsu-charleroi.be`)"
+      - "traefik.http.routers.wajutsu-app.entrypoints=websecure"
+      - "traefik.http.routers.wajutsu-app.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.wajutsu-app.tls.domains[0].main=wa-jutsu-charleroi.be"
+      - "traefik.http.services.wajutsu-app.loadbalancer.server.port=3000"
+      - "traefik.http.routers.wajutsu-app-http.rule=Host(`wa-jutsu-charleroi.be`) || Host(`www.wa-jutsu-charleroi.be`)"
+      - "traefik.http.routers.wajutsu-app-http.entrypoints=web"
+      - "traefik.http.routers.wajutsu-app-http.middlewares=wajutsu-https-redirect"
+      - "traefik.http.middlewares.wajutsu-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.wajutsu-https-redirect.redirectscheme.permanent=true"
 
 networks:
-  dokploy-network:
+  synara-net:
     external: true
