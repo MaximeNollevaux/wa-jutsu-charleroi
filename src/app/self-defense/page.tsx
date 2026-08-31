@@ -77,7 +77,7 @@ export default function SelfDefensePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-28 lg:py-32 bg-dark-800">
+      <section className="sur-fond-sombre relative py-28 lg:py-32 bg-dark-800">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: `url('/images/self-defense-2026.webp')` }}
@@ -140,7 +140,6 @@ export default function SelfDefensePage() {
                   'Pas de stage express « self-défense en 6 séances »',
                   'Pas de compétition, pas de combat libre',
                   'Pas de cours séparé réservé aux femmes',
-                  'Pas de promesse d\'invincibilité : fuir reste la meilleure défense',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span aria-hidden className="text-dark-500 shrink-0">—</span>

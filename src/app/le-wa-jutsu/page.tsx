@@ -44,7 +44,7 @@ export default function LeWaJutsuPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-32 bg-dark-800">
+      <section className="sur-fond-sombre relative py-32 bg-dark-800">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: `url('/images/wa-jutsu-aejt-group.webp')` }}
@@ -236,7 +236,7 @@ export default function LeWaJutsuPage() {
       </section>
 
       {/* AEJT */}
-      <section className="py-20 lg:py-28 bg-dark-800">
+      <section className="sur-fond-sombre py-20 lg:py-28 bg-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="aspect-video bg-dark-700 relative">

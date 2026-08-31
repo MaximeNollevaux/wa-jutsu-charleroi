@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/Button'
 
 export function CTA() {
   return (
-    <section className="relative py-20 lg:py-28 text-on-primary">
+    <section className="sur-fond-sombre relative py-20 lg:py-28 text-on-primary">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"

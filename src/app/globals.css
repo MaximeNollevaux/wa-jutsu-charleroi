@@ -95,6 +95,52 @@
   }
 }
 
+/* Une section qui pose sa propre image sombre ne suit pas le theme.
+ *
+ * Constat du 2026-09-01, capture a l'appui : en theme clair, le titre du hero
+ * virait au gris fonce sur une photo assombrie — illisible. La cause est que
+ * `text-white` et `text-dark-300` pointent vers des variables qui s'inversent
+ * avec le theme, alors que le fond, lui, est une image : il reste sombre dans
+ * les deux cas.
+ *
+ * Plutot que de figer des couleurs dans chaque section — ce qui casserait le
+ * jour ou la palette bouge — on redeclare ici les variables du theme sombre,
+ * localement. Les classes du site continuent de fonctionner telles quelles ;
+ * seules les valeurs derriere changent. C'est le meme mecanisme que la bascule
+ * de theme, applique a un morceau de page.
+ *
+ * A poser sur toute section dont le fond est une photo assombrie ou un aplat
+ * violet. */
+.sur-fond-sombre {
+  /* Redeclarer les variables ne suffit pas pour le texte qui n'a AUCUNE classe
+   * de couleur : celui-la herite du `color` deja calcule sur le body, et une
+   * valeur calculee ne se recalcule pas. Le titre du hero restait donc noir.
+   * On repose donc explicitement la couleur de texte au niveau de la section. */
+  color: rgb(var(--c-white));
+
+  --c-white: 255 255 255;
+  --c-dark-50: 246 244 249;
+  --c-dark-100: 230 227 234;
+  --c-dark-200: 197 193 203;
+  --c-dark-300: 164 160 172;
+  --c-dark-400: 116 112 125;
+  --c-dark-500: 84 80 93;
+  --c-dark-600: 49 46 56;
+  --c-dark-700: 27 25 32;
+  --c-dark-800: 12 11 15;
+  --c-dark-900: 0 0 0;
+}
+
+/* Le violet du club sur une photo assombrie donne 3,1:1 — sous le seuil pour du
+ * texte courant. C'est l'ecart signale des l'audit du 30 aout, laisse en l'etat
+ * parce qu'il relevait de la charte : on ne le corrige donc pas en changeant la
+ * couleur du club, mais en eclaircissant la seule teinte posee SUR du sombre.
+ * Le violet reste le violet partout ailleurs. */
+.sur-fond-sombre .text-primary,
+.sur-fond-sombre .section-subtitle {
+  color: #C4A0FF;
+}
+
 @layer components {
   /* Ce qui se touche au doigt doit faire 44 px de haut.
    *

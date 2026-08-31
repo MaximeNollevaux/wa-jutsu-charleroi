@@ -66,7 +66,7 @@ export default function LeClubPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-32 bg-dark-800">
+      <section className="sur-fond-sombre relative py-32 bg-dark-800">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: `url('/images/gallery/club-group.jpg')` }}
