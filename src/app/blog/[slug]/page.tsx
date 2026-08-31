@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { ClockIcon } from '@heroicons/react/24/outline'
 import { ArticleBody } from '@/components/blog/ArticleBody'
 import { articles, formatDate, getArticle, getRelated } from '@/lib/blog'
+import { BlocReservation } from '@/components/reservation/BlocReservation'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
@@ -228,6 +229,12 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             </aside>
           </div>
         </div>
+
+        <BlocReservation
+          titre="Le plus simple reste de venir voir"
+          texte="Un cours d'essai gratuit répond mieux qu'un article : le jeudi soir, à Marcinelle, en tenue de sport."
+          fond="bg-dark-700"
+        />
 
         {/* Articles lies */}
         {related.length > 0 && (

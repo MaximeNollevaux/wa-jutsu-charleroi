@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { BlocReservation } from '@/components/reservation/BlocReservation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CheckIcon } from '@heroicons/react/24/solid'
 
@@ -91,6 +92,12 @@ export default function SelfDefensePage() {
             apprises dans la durée plutôt qu&apos;en stage de six semaines.
             Cours adultes le jeudi soir, premier mois gratuit.
           </p>
+
+          <div className="mt-8">
+            <a href="#reserver" className="btn-primary text-sm">
+              Réserver un cours d&apos;essai gratuit
+            </a>
+          </div>
         </div>
       </section>
 
@@ -267,6 +274,12 @@ export default function SelfDefensePage() {
           </div>
         </div>
       </section>
+
+      <BlocReservation
+        titre="Le premier cours est le meilleur test"
+        texte="Aucune vidéo ne dit ce que fait un tatami. Choisissez un jeudi, venez en tenue de sport, et jugez sur pièce."
+        fond="bg-dark-700"
+      />
     </>
   )
 }

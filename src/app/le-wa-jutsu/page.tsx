@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
+import { BlocReservation } from '@/components/reservation/BlocReservation'
 
 // Le titre et la description vivent ICI, pas dans layout.tsx : en App Router,
 // les metadonnees de la page ecrasent celles du layout. Les layouts en
@@ -59,6 +60,14 @@ export default function LeWaJutsuPage() {
             Un art martial traditionnel japonais non compétitif, axé sur la transformation personnelle
             et le développement d'une self-défense efficace.
           </p>
+
+          {/* L'action des le premier ecran : le visiteur venu d'une annonce ne
+              devrait pas avoir a lire toute la page pour trouver comment venir. */}
+          <div className="mt-8">
+            <a href="#reserver" className="btn-primary text-sm">
+              Réserver un cours d&apos;essai gratuit
+            </a>
+          </div>
         </div>
       </section>
 
@@ -274,6 +283,13 @@ export default function LeWaJutsuPage() {
           </Button>
         </div>
       </section>
+
+      <BlocReservation
+        titre="Le judo, l'aïkido et le ju-jutsu partent d'ici"
+        texte="Si vous cherchiez du judo, du JJB ou de l'aïkido, vous êtes à la source. Le plus simple est de venir voir un jeudi soir."
+        fond="bg-dark-800"
+      />
+
     </>
   )
 }
