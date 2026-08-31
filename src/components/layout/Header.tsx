@@ -8,6 +8,7 @@ const navigation = [
   { name: 'Accueil', href: '/' },
   { name: 'Le Wa-Jutsu', href: '/le-wa-jutsu' },
   { name: 'Le Club', href: '/le-club' },
+  { name: 'Self-défense', href: '/self-defense' },
   { name: 'Horaires & Tarifs', href: '/horaires-tarifs' },
   { name: 'Galerie', href: '/galerie' },
   { name: 'Blog', href: '/blog' },

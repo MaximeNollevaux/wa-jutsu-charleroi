@@ -13,6 +13,7 @@ const pathLabels: Record<string, string> = {
   'inscription': 'Inscription',
   'galerie': 'Galerie',
   'blog': 'Blog',
+  'self-defense': 'Self-défense',
   'mentions-legales': 'Mentions Legales',
   'politique-confidentialite': 'Politique de Confidentialite',
   'reglement-interieur': 'Reglement Interieur',
