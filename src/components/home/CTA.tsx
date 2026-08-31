@@ -7,7 +7,7 @@ export function CTA() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: `linear-gradient(rgba(88,28,135,0.9), rgba(76,29,149,0.95)), url('/images/about-club-2026.png')`,
+          backgroundImage: `linear-gradient(rgba(88,28,135,0.9), rgba(76,29,149,0.95)), url('/images/about-club-2026.webp')`,
         }}
       />
 

@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 
 // Photos réelles du club, sélectionnées dans les archives du club.
 const galleryImages = [
-  { id: 1, src: '/images/gallery/gallery-01.jpg', alt: 'Moment partagé au Wa-Jutsu Club l’Asie', category: 'club' },
-  { id: 2, src: '/images/gallery/gallery-02.jpg', alt: 'Entraînement au dojo', category: 'training' },
-  { id: 3, src: '/images/gallery/gallery-03.jpg', alt: 'Pratique du Wa-Jutsu', category: 'training' },
-  { id: 4, src: '/images/gallery/gallery-04.jpg', alt: 'Cours et progression au club', category: 'training' },
-  { id: 5, src: '/images/gallery/gallery-05.jpg', alt: 'Technique de Wa-Jutsu', category: 'training' },
-  { id: 6, src: '/images/gallery/gallery-06.jpg', alt: 'Esprit de groupe au dojo', category: 'club' },
-  { id: 7, src: '/images/gallery/gallery-07.jpg', alt: 'Entraînement traditionnel', category: 'training' },
-  { id: 8, src: '/images/gallery/gallery-08.jpg', alt: 'Pratiquants du club', category: 'club' },
-  { id: 9, src: '/images/gallery/gallery-09.jpg', alt: 'Séance de Wa-Jutsu', category: 'training' },
-  { id: 10, src: '/images/gallery/gallery-10.jpg', alt: 'Vie du Wa-Jutsu Club l’Asie', category: 'club' },
+  { id: 1, src: '/images/gallery/gallery-01.webp', alt: 'Moment partagé au Wa-Jutsu Club l’Asie', category: 'club' },
+  { id: 2, src: '/images/gallery/gallery-02.webp', alt: 'Entraînement au dojo', category: 'training' },
+  { id: 3, src: '/images/gallery/gallery-03.webp', alt: 'Pratique du Wa-Jutsu', category: 'training' },
+  { id: 4, src: '/images/gallery/gallery-04.webp', alt: 'Cours et progression au club', category: 'training' },
+  { id: 5, src: '/images/gallery/gallery-05.webp', alt: 'Technique de Wa-Jutsu', category: 'training' },
+  { id: 6, src: '/images/gallery/gallery-06.webp', alt: 'Esprit de groupe au dojo', category: 'club' },
+  { id: 7, src: '/images/gallery/gallery-07.webp', alt: 'Entraînement traditionnel', category: 'training' },
+  { id: 8, src: '/images/gallery/gallery-08.webp', alt: 'Pratiquants du club', category: 'club' },
+  { id: 9, src: '/images/gallery/gallery-09.webp', alt: 'Séance de Wa-Jutsu', category: 'training' },
+  { id: 10, src: '/images/gallery/gallery-10.webp', alt: 'Vie du Wa-Jutsu Club l’Asie', category: 'club' },
 ]
 
 export default function GaleriePage() {

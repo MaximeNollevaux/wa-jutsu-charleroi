@@ -17,7 +17,7 @@ export const article: Article = {
   author: `Wa-Jutsu Club l'Asie Marcinelle`,
   category: 'Vie du club',
   readingMinutes: 4,
-  image: '/images/about-club-2026.png',
+  image: '/images/about-club-2026.webp',
   imageAlt: `Le Wa-Jutsu Club l'Asie de Marcinelle à la reprise de saison`,
   excerpt: `La saison démarre en septembre. Tout ce qu'il faut savoir pour inscrire un enfant ou vous inscrire : horaires, tarifs, documents, essai gratuit.`,
   body: [

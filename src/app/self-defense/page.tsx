@@ -80,7 +80,7 @@ export default function SelfDefensePage() {
       <section className="relative py-28 lg:py-32 bg-dark-800">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url('/images/self-defense-2026.png')` }}
+          style={{ backgroundImage: `url('/images/self-defense-2026.webp')` }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-primary font-heading font-semibold uppercase tracking-widest mb-4">

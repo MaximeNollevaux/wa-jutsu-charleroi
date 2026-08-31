@@ -5,12 +5,12 @@ const disciplines = [
   {
     title: 'Self-Défense',
     description: 'Techniques de défense personnelle efficaces et réalistes, adaptées aux situations de la vie quotidienne.',
-    image: '/images/self-defense-2026.png',
+    image: '/images/self-defense-2026.webp',
   },
   {
     title: 'Kata',
     description: 'Formes traditionnelles codifiées permettant de perfectionner les mouvements et la concentration.',
-    image: '/images/kata-2026.png',
+    image: '/images/kata-2026.webp',
   },
   {
     title: 'Techniques au Sol',
@@ -20,7 +20,7 @@ const disciplines = [
   {
     title: 'Projections',
     description: 'L\'art de déséquilibrer et projeter l\'adversaire en utilisant sa propre force contre lui.',
-    image: '/images/nage-waza-2026.png',
+    image: '/images/nage-waza-2026.webp',
   },
 ]
 

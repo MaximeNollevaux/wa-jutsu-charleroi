@@ -17,7 +17,7 @@ export const article: Article = {
   author: `Wa-Jutsu Club l'Asie Marcinelle`,
   category: 'Comprendre la discipline',
   readingMinutes: 6,
-  image: '/images/wa-jutsu-aejt-group.jpg',
+  image: '/images/wa-jutsu-aejt-group.webp',
   imageAlt: `Pratiquants de Wa-Jutsu réunis lors d'un stage de l'AEJT`,
   excerpt: `Retirer la compétition d'un art martial n'est pas l'affaiblir. C'est déplacer l'endroit où se mesure le progrès — et cela change tout au bout de dix ans.`,
   body: [

@@ -17,7 +17,7 @@ export const article: Article = {
   author: `Wa-Jutsu Club l'Asie Marcinelle`,
   category: 'Bien choisir',
   readingMinutes: 7,
-  image: '/images/kata-2026.png',
+  image: '/images/kata-2026.webp',
   imageAlt: `Enfants en kimono pendant un cours d'arts martiaux à Marcinelle`,
   excerpt: `Tous les arts martiaux ne développent pas la même chose chez un enfant. Voici les vraies différences, et les questions à poser avant de signer.`,
   body: [

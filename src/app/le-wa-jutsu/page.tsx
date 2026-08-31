@@ -47,7 +47,7 @@ export default function LeWaJutsuPage() {
       <section className="relative py-32 bg-dark-800">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url('/images/wa-jutsu-aejt-group.jpg')` }}
+          style={{ backgroundImage: `url('/images/wa-jutsu-aejt-group.webp')` }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-primary font-heading font-semibold uppercase tracking-widest mb-4">

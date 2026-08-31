@@ -8,7 +8,7 @@ export function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.66), rgba(0,0,0,0.82)), url('/images/hero-training-2026.png')`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.66), rgba(0,0,0,0.82)), url('/images/hero-training-2026.webp')`,
         }}
       />
 

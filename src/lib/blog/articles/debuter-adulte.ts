@@ -17,7 +17,7 @@ export const article: Article = {
   author: `Wa-Jutsu Club l'Asie Marcinelle`,
   category: 'Débuter',
   readingMinutes: 6,
-  image: '/images/self-defense-2026.png',
+  image: '/images/self-defense-2026.webp',
   imageAlt: `Adultes travaillant une technique de self-défense en Wa-Jutsu`,
   excerpt: `Sans passé sportif, sans souplesse, sans temps : les trois objections classiques, examinées sérieusement.`,
   body: [

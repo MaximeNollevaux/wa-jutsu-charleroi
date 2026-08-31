@@ -18,7 +18,7 @@ export const article: Article = {
   author: `Wa-Jutsu Club l'Asie Marcinelle`,
   category: 'Comprendre la discipline',
   readingMinutes: 6,
-  image: '/images/nage-waza-2026.png',
+  image: '/images/nage-waza-2026.webp',
   imageAlt: `Démonstration d'une projection nage-waza en Wa-Jutsu`,
   excerpt: `Même famille technique, finalité différente. Le point sur ce qui distingue réellement le Wa-Jutsu du ju-jitsu que vous connaissez.`,
   body: [

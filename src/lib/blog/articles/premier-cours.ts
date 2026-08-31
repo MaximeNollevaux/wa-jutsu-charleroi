@@ -17,7 +17,7 @@ export const article: Article = {
   author: `Wa-Jutsu Club l'Asie Marcinelle`,
   category: 'Débuter',
   readingMinutes: 5,
-  image: '/images/hero-training-2026.png',
+  image: '/images/hero-training-2026.webp',
   imageAlt: `Cours de Wa-Jutsu au dojo de Marcinelle`,
   excerpt: `Pas de kimono, pas de niveau, pas de test. Le déroulé minute par minute d'un premier cours, pour arriver sans appréhension.`,
   body: [
