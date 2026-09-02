@@ -1,3 +1,29 @@
+/*
+ * Les cinq couleurs du Wa-Jutsu.
+ *
+ * La methode est commune a tous nos sites (voir marketing.synara.be, ecran
+ * « Identite » d'une activite) ; les teintes n'appartiennent qu'au club.
+ *
+ *   fond       60 %   --c-dark-800, qui bascule avec le theme
+ *   encre      ~30 %  --c-white, presque noire en theme clair
+ *   primaire   --     #9333EA, le violet, qui vient de Synara One
+ *   secondaire --     les nuances primary-100 a primary-900
+ *   accent     10 %   primary-400 (#C084FC) sur les fonds sombres
+ *
+ * Releve du 2026-09-02 : ce site n'avait RIEN a corriger. Il porte deja la
+ * distinction que les autres decouvraient — `white` bascule avec le theme,
+ * `on-primary` ne bascule jamais et sert au texte pose sur l'aplat violet.
+ * C'est exactement « une couleur de texte a deux declinaisons, une par
+ * famille de fond ».
+ *
+ * ⚠ La mesure automatique donne ce site pour fautif a une vingtaine
+ * d'endroits : c'est faux. Le hero est sombre par IMAGE, alors que le body est
+ * clair — ni la remontee des ancetres ni elementsFromPoint ne lisent une
+ * photo. Verifie a l'ecran : le violet clair sur le hero sombre est
+ * parfaitement lisible. Ne pas « corriger » ce que la mesure signale ici sans
+ * regarder.
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
