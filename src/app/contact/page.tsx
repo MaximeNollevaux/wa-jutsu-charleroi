@@ -89,19 +89,34 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-heading font-bold mb-1">{info.title}</h3>
-                        {info.content.map((line) =>
-                          line.href ? (
-                            <a
-                              key={line.label}
-                              href={line.href}
-                              className="block text-dark-400 text-sm hover:text-primary transition-colors"
-                            >
-                              {line.label}
-                            </a>
-                          ) : (
-                            <p key={line.label} className="text-dark-400 text-sm">{line.label}</p>
-                          )
-                        )}
+                        {/*
+                          Empile les lignes au lieu de compter sur `block` : la
+                          regle tactile de `globals.css` pose
+                          `a[href^='tel:'] { display: inline-flex }` pour garantir
+                          44 px de hauteur au doigt, et un selecteur d'attribut
+                          (0,1,1) l'emporte sur la classe `.block` (0,1,0). Les
+                          deux numeros du club se retrouvaient donc cote a cote
+                          des que la colonne etait assez large — « 0473 83 80
+                          750478 95 38 05 » sur un ecran de 1600 px, et empiles
+                          sur un ecran etroit, ce qui rendait le defaut
+                          intermittent. `items-start` evite que les liens
+                          s'etirent sur toute la largeur de la carte.
+                        */}
+                        <div className="flex flex-col items-start">
+                          {info.content.map((line) =>
+                            line.href ? (
+                              <a
+                                key={line.label}
+                                href={line.href}
+                                className="text-dark-400 text-sm hover:text-primary transition-colors"
+                              >
+                                {line.label}
+                              </a>
+                            ) : (
+                              <p key={line.label} className="text-dark-400 text-sm">{line.label}</p>
+                            )
+                          )}
+                        </div>
                       </div>
                     </>
                   )
