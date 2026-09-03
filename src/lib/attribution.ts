@@ -129,7 +129,7 @@ function depuisUrl(url: string): Attribution {
 
   const brut: Record<string, string> = {}
   for (const cle of [...CHAMPS_UTM, ...CHAMPS_CLIC]) {
-    const valeur = params.get(cle)
+    const valeur = params.get(cle) || params.get(`premier_${cle}`)
     if (valeur) brut[cle] = valeur
   }
 
