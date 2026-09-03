@@ -14,7 +14,7 @@ export const article: Article = {
     'club arts martiaux enfants hainaut',
   ],
   publishedAt: '2026-08-31',
-  author: `Wa-Jutsu Club l'Asie Marcinelle`,
+  author: `Club CCAJT Wa-Jutsu Marcinelle`,
   category: 'Bien choisir',
   readingMinutes: 7,
   image: '/images/kata-2026.webp',
@@ -127,7 +127,7 @@ export const article: Article = {
   faq: [
     {
       question: `À partir de quel âge un enfant peut-il commencer les arts martiaux ?`,
-      answer: `Cinq ans est le repère le plus courant, et l'âge à partir duquel le Wa-Jutsu Club l'Asie de Marcinelle accueille les enfants. Avant cet âge, la coordination et la capacité d'attention nécessaires à un cours d'une heure trente ne sont généralement pas encore acquises.`,
+      answer: `Cinq ans est le repère le plus courant, et l'âge à partir duquel le Club CCAJT Wa-Jutsu de Marcinelle accueille les enfants. Avant cet âge, la coordination et la capacité d'attention nécessaires à un cours d'une heure trente ne sont généralement pas encore acquises.`,
     },
     {
       question: `Les arts martiaux rendent-ils les enfants violents ?`,
@@ -135,7 +135,7 @@ export const article: Article = {
     },
     {
       question: `Combien coûte un art martial pour un enfant à Charleroi ?`,
-      answer: `Au Wa-Jutsu Club l'Asie de Marcinelle, un enfant de moins de 13 ans paie 10 € par mois, plus une licence annuelle de 60 € incluant l'assurance et la carte AEJT. Le premier mois d'essai est gratuit.`,
+      answer: `Au Club CCAJT Wa-Jutsu de Marcinelle, un enfant de moins de 13 ans paie 10 € par mois, plus une licence annuelle de 60 € incluant l'assurance et la carte AEJT. Le premier mois d'essai est gratuit.`,
     },
     {
       question: `Faut-il faire des compétitions ?`,

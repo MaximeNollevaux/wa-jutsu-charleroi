@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Espace Membre',
-  description: 'Espace membre du Wa-Jutsu Club l\'Asie Marcinelle. Gérez vos cotisations, suivez votre progression.',
+  description: 'Espace membre du Club CCAJT Wa-Jutsu Marcinelle. Gérez vos cotisations, suivez votre progression.',
   robots: {
     index: false,
     follow: false,

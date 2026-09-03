@@ -15,7 +15,7 @@ export const article: Article = {
     'art martial japonais traditionnel',
   ],
   publishedAt: '2026-08-31',
-  author: `Wa-Jutsu Club l'Asie Marcinelle`,
+  author: `Club CCAJT Wa-Jutsu Marcinelle`,
   category: 'Comprendre la discipline',
   readingMinutes: 6,
   image: '/images/nage-waza-2026.webp',
@@ -126,7 +126,7 @@ export const article: Article = {
     },
     {
       question: `Le Wa-Jutsu se pratique-t-il en Belgique ?`,
-      answer: `Oui. Le Wa-Jutsu Club l'Asie de Marcinelle enseigne la méthode à Charleroi, au 4 Rue de l'Asie à 6001 Marcinelle, en affiliation avec l'AEJT.`,
+      answer: `Oui. Le Club CCAJT Wa-Jutsu de Marcinelle enseigne la méthode à Charleroi, au 4 Rue de l'Asie à 6001 Marcinelle, en affiliation avec l'AEJT.`,
     },
   ],
   related: [

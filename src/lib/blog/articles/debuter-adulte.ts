@@ -14,7 +14,7 @@ export const article: Article = {
     'reprendre le sport à 40 ans',
   ],
   publishedAt: '2026-08-31',
-  author: `Wa-Jutsu Club l'Asie Marcinelle`,
+  author: `Club CCAJT Wa-Jutsu Marcinelle`,
   category: 'Débuter',
   readingMinutes: 6,
   image: '/images/self-defense-2026.webp',
@@ -104,7 +104,7 @@ export const article: Article = {
   faq: [
     {
       question: `Peut-on commencer les arts martiaux à 40 ou 50 ans ?`,
-      answer: `Oui. Le ju-jutsu traditionnel repose sur le placement et le déséquilibre plutôt que sur la puissance, ce qui le rend accessible à une reprise tardive. Le cours adulte du Wa-Jutsu Club l'Asie accueille des débutants complets sans niveau minimum requis.`,
+      answer: `Oui. Le ju-jutsu traditionnel repose sur le placement et le déséquilibre plutôt que sur la puissance, ce qui le rend accessible à une reprise tardive. Le cours adulte du Club CCAJT Wa-Jutsu accueille des débutants complets sans niveau minimum requis.`,
     },
     {
       question: `Combien de séances par semaine faut-il pour progresser ?`,
@@ -112,7 +112,7 @@ export const article: Article = {
     },
     {
       question: `Combien coûte un cours d'arts martiaux adulte à Charleroi ?`,
-      answer: `Au Wa-Jutsu Club l'Asie de Marcinelle : 20 € par mois pour un adulte, 30 € pour un couple, plus une licence annuelle de 60 € incluant l'assurance et la carte AEJT. Le premier mois d'essai est gratuit.`,
+      answer: `Au Club CCAJT Wa-Jutsu de Marcinelle : 20 € par mois pour un adulte, 30 € pour un couple, plus une licence annuelle de 60 € incluant l'assurance et la carte AEJT. Le premier mois d'essai est gratuit.`,
     },
     {
       question: `Faut-il être en bonne condition physique pour commencer ?`,

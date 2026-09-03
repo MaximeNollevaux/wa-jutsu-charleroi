@@ -312,11 +312,11 @@ export function DashboardContent({
               <h3 className="font-heading font-bold uppercase mb-4">Liens utiles</h3>
               <div className="space-y-2">
                 <a
-                  href="/docs/fiche_inscription_wajutsucharleroi.pdf"
+                  href="/documents/formulaire-inscription"
                   target="_blank"
                   className="block text-dark-400 hover:text-primary text-sm transition-colors"
                 >
-                  Fiche d'inscription (PDF)
+                  Fiche d&apos;inscription (à imprimer)
                 </a>
                 <a
                   href="/documents/certificat-medical"

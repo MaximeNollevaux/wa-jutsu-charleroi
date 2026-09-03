@@ -13,7 +13,7 @@ import {
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
   title: 'Le Club — ASBL de Ju-Jutsu à Marcinelle depuis 1990',
-  description: 'Le Wa-Jutsu Club l\'Asie Marcinelle, ASBL fondée en 1990, affiliée à l\'AEJT. Notre équipe, notre histoire et nos valeurs.',
+  description: 'Le Club CCAJT Wa-Jutsu Marcinelle, ASBL fondée en 1990, affiliée à l\'AEJT. Notre équipe, notre histoire et nos valeurs.',
 }
 
 const values = [
@@ -79,7 +79,7 @@ export default function LeClubPage() {
             Le Club
           </h1>
           <p className="text-dark-300 text-xl max-w-3xl mx-auto">
-            Wa-Jutsu Club l'Asie Marcinelle - Un club familial dédié à la pratique
+            Club CCAJT Wa-Jutsu Marcinelle - Un club familial dédié à la pratique
             du Ju-Jutsu Traditionnel depuis plus de 30 ans.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function LeClubPage() {
                 centered={false}
               />
               <p className="text-dark-300 mb-6">
-                L'<strong className="text-white">ASBL Wa-Jutsu Club l'Asie</strong> est une association
+                L'<strong className="text-white">ASBL CCAJT Wa-Jutsu</strong> est une association
                 sans but lucratif déclarée sous le n° d'entreprise 441444624, avec son siège social
                 situé Rue des Merles, 32 à 6001 Marcinelle.
               </p>

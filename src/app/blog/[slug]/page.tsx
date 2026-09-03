@@ -196,7 +196,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 À propos du club
               </p>
               <p className="text-dark-300 leading-relaxed">
-                Le <strong className="text-white">Wa-Jutsu Club l&apos;Asie</strong> enseigne le
+                Le <strong className="text-white">Club CCAJT Wa-Jutsu</strong> enseigne le
                 ju-jutsu traditionnel japonais à Marcinelle depuis plus de trente
                 ans. ASBL affiliée à l&apos;Académie Européenne de Ju-Jutsu
                 Traditionnel, il accueille les enfants dès 5 ans et les adultes de

@@ -14,7 +14,7 @@ export const article: Article = {
     'jita kyoei',
   ],
   publishedAt: '2026-08-31',
-  author: `Wa-Jutsu Club l'Asie Marcinelle`,
+  author: `Club CCAJT Wa-Jutsu Marcinelle`,
   category: 'Comprendre la discipline',
   readingMinutes: 6,
   image: '/images/wa-jutsu-aejt-group.webp',

@@ -14,7 +14,7 @@ export const article: Article = {
     'dojo charleroi',
   ],
   publishedAt: '2026-08-31',
-  author: `Wa-Jutsu Club l'Asie Marcinelle`,
+  author: `Club CCAJT Wa-Jutsu Marcinelle`,
   category: 'Débuter',
   readingMinutes: 5,
   image: '/images/hero-training-2026.webp',

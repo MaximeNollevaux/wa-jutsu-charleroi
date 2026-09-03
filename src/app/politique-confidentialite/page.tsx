@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
-  description: 'Politique de confidentialité et protection des données du Wa-Jutsu Club l\'Asie Marcinelle.',
+  description: 'Politique de confidentialité et protection des données du Club CCAJT Wa-Jutsu Marcinelle.',
   alternates: {
     canonical: 'https://wa-jutsu-charleroi.be/politique-confidentialite',
   },
@@ -22,7 +22,7 @@ export default function PolitiqueConfidentialitePage() {
               Introduction
             </h2>
             <p className="text-dark-300">
-              L'ASBL Wa-Jutsu Club l'Asie Marcinelle s'engage à protéger la vie privée
+              L’ASBL CCAJT Wa-Jutsu s'engage à protéger la vie privée
               de ses membres et visiteurs. Cette politique de confidentialité explique
               comment nous collectons, utilisons et protégeons vos données personnelles.
             </p>
@@ -33,7 +33,7 @@ export default function PolitiqueConfidentialitePage() {
               Responsable du traitement
             </h2>
             <p className="text-dark-300">
-              <strong className="text-white">ASBL Wa-Jutsu Club l'Asie Marcinelle</strong><br />
+              <strong className="text-white">ASBL CCAJT Wa-Jutsu</strong><br />
               Rue des Merles, 32 – 6001 Marcinelle, Belgique<br />
               N° d'entreprise : 441444624<br />
               Contact : contact@wa-jutsu-charleroi.be
@@ -206,7 +206,7 @@ export default function PolitiqueConfidentialitePage() {
         </div>
 
         <p className="text-dark-500 text-sm mt-12">
-          Dernière mise à jour : Février 2024
+          Dernière mise à jour : Septembre 2026
         </p>
       </div>
     </div>

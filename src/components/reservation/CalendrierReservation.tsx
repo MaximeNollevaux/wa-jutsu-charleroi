@@ -62,7 +62,7 @@ export function CalendrierReservation() {
       {src ? (
         <iframe
           src={src}
-          title="Réserver un cours d'essai au Wa-Jutsu Club l'Asie"
+          title="Réserver un cours d'essai au Club CCAJT Wa-Jutsu"
           loading="lazy"
           className="w-full block"
           style={{ minHeight: 820, border: 0 }}

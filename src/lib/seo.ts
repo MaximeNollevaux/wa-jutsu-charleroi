@@ -20,6 +20,6 @@ export const IMAGE_PARTAGE = [
     url: `${baseUrl}/og-image.jpg`,
     width: 1200,
     height: 630,
-    alt: "Wa-Jutsu Club l'Asie — dojo de Marcinelle, Charleroi",
+    alt: "Club CCAJT Wa-Jutsu — dojo de Marcinelle, Charleroi",
   },
 ]

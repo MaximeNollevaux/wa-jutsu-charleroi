@@ -9,11 +9,11 @@ const contactJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
   name: 'Contact - Wa-Jutsu Charleroi',
-  description: 'Contactez le Wa-Jutsu Club l\'Asie Marcinelle pour toute question sur les cours, les inscriptions ou l\'accès au dojo.',
+  description: 'Contactez le Club CCAJT Wa-Jutsu Marcinelle pour toute question sur les cours, les inscriptions ou l\'accès au dojo.',
   url: `${baseUrl}/contact`,
   mainEntity: {
     '@type': 'SportsClub',
-    name: 'Wa-Jutsu Club l\'Asie Marcinelle',
+    name: 'Club CCAJT Wa-Jutsu Marcinelle',
     telephone: '+32473838075',
     email: 'contact@wa-jutsu-charleroi.be',
     address: {

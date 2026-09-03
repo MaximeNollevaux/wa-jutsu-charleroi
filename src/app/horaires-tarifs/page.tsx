@@ -274,7 +274,7 @@ export default function HorairesTarifsPage() {
                 <li>• Motif (cotisation mois/année ou licence saison)</li>
               </ul>
               <p className="text-dark-400 text-sm mt-4 italic">
-                Ex: "Jean DUPONT cotisation janvier 2024"
+                Ex: "Jean DUPONT cotisation septembre 2026"
               </p>
             </div>
 

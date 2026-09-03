@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'arts martiaux marcinelle',
   ],
   openGraph: {
-    title: `Le blog du Wa-Jutsu Club l'Asie Marcinelle`,
+    title: `Le blog du Club CCAJT Wa-Jutsu Marcinelle`,
     description: `Conseils pratiques et repères sur les arts martiaux, par les enseignants du club de Marcinelle.`,
     url: `${baseUrl}/blog`,
     type: 'website',
@@ -36,7 +36,7 @@ const blogJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
   '@id': `${baseUrl}/blog#blog`,
-  name: `Le blog du Wa-Jutsu Club l'Asie Marcinelle`,
+  name: `Le blog du Club CCAJT Wa-Jutsu Marcinelle`,
   description: `Conseils et reperes sur les arts martiaux a Charleroi, par les enseignants du club.`,
   url: `${baseUrl}/blog`,
   inLanguage: 'fr-BE',

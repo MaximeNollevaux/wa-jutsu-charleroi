@@ -3,13 +3,13 @@ import { PrintButton } from '@/components/ui/PrintButton'
 
 export const metadata: Metadata = {
   title: 'Formulaire d\'inscription',
-  description: 'Formulaire d\'inscription imprimable du Wa-Jutsu Club l\'Asie Marcinelle.',
+  description: 'Formulaire d\'inscription imprimable du Club CCAJT Wa-Jutsu Marcinelle.',
   robots: { index: false },
 }
 
 export default function FormulaireInscriptionPage() {
   return (
-    <div className="bg-white text-black min-h-screen print:bg-white">
+    <div className="feuille min-h-screen print:min-h-0">
       <style>{`
         @media print {
           header, footer, nav, .no-print,
@@ -25,7 +25,7 @@ export default function FormulaireInscriptionPage() {
         {/* En-tête */}
         <div className="text-center mb-8 border-b-2 border-black pb-6">
           <h1 className="text-2xl font-bold uppercase mb-2">
-            Wa-Jutsu Club l'Asie - Marcinelle
+            Club CCAJT Wa-Jutsu - Marcinelle
           </h1>
           <p className="text-sm">ASBL N° 441444624</p>
           <p className="text-sm">Siège social : Rue des Merles, 32 — 6001 Marcinelle</p>
@@ -180,7 +180,7 @@ export default function FormulaireInscriptionPage() {
         <section className="mb-8 border border-gray-400 p-4">
           <p className="text-sm mb-4">
             Je soussigné(e) déclare avoir pris connaissance du règlement d'ordre intérieur du
-            Wa-Jutsu Club l'Asie et m'engage à le respecter. J'autorise l'utilisation de mon image
+            Club CCAJT Wa-Jutsu et m'engage à le respecter. J'autorise l'utilisation de mon image
             (ou celle de mon enfant) dans le cadre des activités du club (site web, réseaux sociaux).
           </p>
           <div className="flex gap-8 mt-6">

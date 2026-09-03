@@ -7,12 +7,12 @@ import { Button } from '@/components/ui/Button'
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
   title: 'Photos du dojo et des cours — Wa-Jutsu Marcinelle',
-  description: 'Photos du dojo, des entraînements et des événements du Wa-Jutsu Club l\'Asie Marcinelle — à quoi ressemble vraiment un cours avant de venir essayer.',
+  description: 'Photos du dojo, des entraînements et des événements du Club CCAJT Wa-Jutsu Marcinelle — à quoi ressemble vraiment un cours avant de venir essayer.',
 }
 
 // Photos réelles du club, sélectionnées dans les archives du club.
 const galleryImages = [
-  { id: 1, src: '/images/gallery/gallery-01.webp', alt: 'Moment partagé au Wa-Jutsu Club l’Asie', category: 'club' },
+  { id: 1, src: '/images/gallery/gallery-01.webp', alt: 'Moment partagé au Club CCAJT Wa-Jutsu', category: 'club' },
   { id: 2, src: '/images/gallery/gallery-02.webp', alt: 'Entraînement au dojo', category: 'training' },
   { id: 3, src: '/images/gallery/gallery-03.webp', alt: 'Pratique du Wa-Jutsu', category: 'training' },
   { id: 4, src: '/images/gallery/gallery-04.webp', alt: 'Cours et progression au club', category: 'training' },
@@ -21,7 +21,7 @@ const galleryImages = [
   { id: 7, src: '/images/gallery/gallery-07.webp', alt: 'Entraînement traditionnel', category: 'training' },
   { id: 8, src: '/images/gallery/gallery-08.webp', alt: 'Pratiquants du club', category: 'club' },
   { id: 9, src: '/images/gallery/gallery-09.webp', alt: 'Séance de Wa-Jutsu', category: 'training' },
-  { id: 10, src: '/images/gallery/gallery-10.webp', alt: 'Vie du Wa-Jutsu Club l’Asie', category: 'club' },
+  { id: 10, src: '/images/gallery/gallery-10.webp', alt: 'Vie du Club CCAJT Wa-Jutsu', category: 'club' },
 ]
 
 export default function GaleriePage() {

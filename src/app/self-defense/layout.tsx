@@ -15,7 +15,7 @@ const faqJsonLd = {
       name: 'Où apprendre la self-défense à Charleroi ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Le Wa-Jutsu Club l'Asie enseigne le ju-jutsu traditionnel au 4 Rue de l'Asie, 6001 Marcinelle, à Charleroi. Les techniques de défense y sont apprises dans le cadre d'une pratique régulière : cours adultes le jeudi de 20h30 à 23h00. Premier mois d'essai gratuit.",
+        text: "Le Club CCAJT Wa-Jutsu enseigne le ju-jutsu traditionnel au 4 Rue de l'Asie, 6001 Marcinelle, à Charleroi. Les techniques de défense y sont apprises dans le cadre d'une pratique régulière : cours adultes le jeudi de 20h30 à 23h00. Premier mois d'essai gratuit.",
       },
     },
     {

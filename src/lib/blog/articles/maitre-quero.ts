@@ -15,7 +15,7 @@ export const article: Article = {
     'shihan ju-jutsu',
   ],
   publishedAt: '2026-08-31',
-  author: `Wa-Jutsu Club l'Asie Marcinelle`,
+  author: `Club CCAJT Wa-Jutsu Marcinelle`,
   category: 'Culture martiale',
   readingMinutes: 6,
   image: '/images/aejt.jpg',
@@ -101,7 +101,7 @@ export const article: Article = {
     { type: 'h2', text: `Et à Marcinelle ?` },
     {
       type: 'p',
-      text: `Le Wa-Jutsu Club l'Asie enseigne la méthode à Marcinelle, près de Charleroi, depuis 1990. C'est une ASBL affiliée à l'Académie : nous n'inventons pas le programme, nous le transmettons, et nos passages de stades relèvent de l'école.`,
+      text: `Le Club CCAJT Wa-Jutsu enseigne la méthode à Marcinelle, près de Charleroi, depuis 1990. C'est une ASBL affiliée à l'Académie : nous n'inventons pas le programme, nous le transmettons, et nos passages de stades relèvent de l'école.`,
     },
     {
       type: 'cta',
@@ -125,7 +125,7 @@ export const article: Article = {
     },
     {
       question: `Qu'est-ce que l'AEJT ?`,
-      answer: `L'Académie Européenne de Ju-Jutsu Traditionnel, fondée en 1975 par Maître J.J. Quero. Son Dojo Central se situe à Saint-Jean-de-Védas, dans l'Hérault. Le Wa-Jutsu Club l'Asie de Marcinelle en est un club affilié.`,
+      answer: `L'Académie Européenne de Ju-Jutsu Traditionnel, fondée en 1975 par Maître J.J. Quero. Son Dojo Central se situe à Saint-Jean-de-Védas, dans l'Hérault. Le Club CCAJT Wa-Jutsu de Marcinelle en est un club affilié.`,
     },
     {
       question: `Pourquoi l'AEJT ne délivre-t-elle pas de ceintures noires ?`,

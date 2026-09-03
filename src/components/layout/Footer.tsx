@@ -38,7 +38,7 @@ export function Footer() {
               />
               <div>
                 <div className="font-heading font-bold text-lg leading-tight">WA-JUTSU</div>
-                <div className="text-xs text-dark-400 uppercase tracking-wider">Club l'Asie Marcinelle</div>
+                <div className="text-xs text-dark-400 uppercase tracking-wider">CCAJT Marcinelle</div>
               </div>
             </Link>
             <p className="text-dark-400 text-sm leading-relaxed mb-6">
@@ -144,7 +144,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-dark-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-dark-500 text-sm">
-              &copy; {currentYear} ASBL Wa-Jutsu Club l'Asie Marcinelle. Tous droits réservés.
+              &copy; {currentYear} ASBL CCAJT Wa-Jutsu. Tous droits réservés.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               {legalLinks.map((link) => (

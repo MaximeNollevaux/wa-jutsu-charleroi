@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function CertificatMedicalPage() {
   return (
-    <div className="bg-white text-black min-h-screen print:bg-white">
+    <div className="feuille min-h-screen print:min-h-0">
       <style>{`
         @media print {
           header, footer, nav, .no-print,
@@ -26,11 +26,11 @@ export default function CertificatMedicalPage() {
         <div className="flex items-center justify-between gap-6 mb-6 print:mb-3 border-b-2 border-black pb-4 print:pb-2">
           <img
             src="/images/logo-club-asie.png"
-            alt="Wa-Jutsu Club l'Asie - Marcinelle"
+            alt="Club CCAJT Wa-Jutsu - Marcinelle"
             className="w-40 print:w-32 h-auto"
           />
           <div className="text-center text-sm print:text-xs leading-snug">
-            <p className="text-xl print:text-base font-bold">Wa-Jutsu Club l'Asie - Marcinelle</p>
+            <p className="text-xl print:text-base font-bold">Club CCAJT Wa-Jutsu - Marcinelle</p>
             <p>De Ju-Jutsu Traditionnel Méthode Wa-Jutsu</p>
             <p>Association sans but lucratif</p>
             <p className="mt-1">Rue des Merles, 32 — 6001 Marcinelle</p>

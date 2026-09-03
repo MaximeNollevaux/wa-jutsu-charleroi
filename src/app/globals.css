@@ -244,6 +244,26 @@
            placeholder:text-dark-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary;
   }
 
+  /* Une feuille destinee a etre imprimee ne suit PAS le theme : elle est
+     blanche, toujours.
+
+     `bg-white` ne convient pas ici — `--c-white` est la couleur du TEXTE
+     principal, qui devient presque noire en theme clair. Marie a `text-black`,
+     lui fixe, il donnait un formulaire NOIR SUR NOIR : contraste mesure a
+     1,17:1 le 2026-09-03, la ou il en faut 4,5. Chaque moitie etait defendable ;
+     c'est d'avoir mele une couleur qui bascule a une couleur qui ne bascule pas
+     que vient le defaut. Le club l'avait signale : « les formulaires sont en
+     noir = peu ou pas de lisibilite ».
+
+     `print-color-adjust` garde le fond blanc meme quand le navigateur decide de
+     ne pas imprimer les arriere-plans. */
+  .feuille {
+    background-color: #ffffff;
+    color: #000000;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
   .input-field-light {
     @apply w-full px-4 py-3 bg-white border border-dark-200 text-dark-800
            placeholder:text-dark-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary;
@@ -251,11 +271,27 @@
 }
 
 @media print {
+  /* Ce que personne ne veut sur du papier. La barre de navigation est `sticky` :
+     non masquee, elle se REPETE en haut de chaque page imprimee. Le club
+     imprime surtout le formulaire d'inscription et le certificat medical —
+     autant que la feuille ne porte que le document. */
   #synara-consent-manage,
   #synara-consent-panel,
-  .synara-loader-container {
+  .synara-loader-container,
+  header,
+  nav,
+  footer,
+  .synara-iframe {
     display: none !important;
     visibility: hidden !important;
+  }
+
+  /* Le fond de page suit le theme a l'ecran ; sur papier il est toujours blanc,
+     et l'encre toujours noire, quel que soit le theme au moment d'imprimer. */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
   }
 }
 

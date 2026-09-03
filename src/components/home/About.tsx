@@ -56,11 +56,11 @@ export function About() {
           <div>
             <SectionHeader
               subtitle="À propos du club"
-              title="Le Wa-Jutsu Club l'Asie"
+              title="Le Club CCAJT Wa-Jutsu"
               centered={false}
             />
             <p className="text-dark-300 mb-6">
-              Le <strong className="text-white">Wa-Jutsu Club l'Asie Marcinelle</strong> pratique un art martial
+              Le <strong className="text-white">Club CCAJT Wa-Jutsu Marcinelle</strong> pratique un art martial
               traditionnel japonais non compétitif. Notre méthode, le Wa-Jutsu, signifie littéralement
               "l'art de l'harmonie" et vise la transformation personnelle profonde.
             </p>

@@ -6,7 +6,7 @@ const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
   title: 'Photos du dojo et des cours à Marcinelle',
-  description: 'Photos du dojo, des cours, des passages de grades et des démonstrations du Wa-Jutsu Club l\'Asie Marcinelle.',
+  description: 'Photos du dojo, des cours, des passages de grades et des démonstrations du Club CCAJT Wa-Jutsu Marcinelle.',
   keywords: [
     'photos wa-jutsu',
     'galerie arts martiaux',

@@ -32,7 +32,7 @@ const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SportsClub',
   '@id': `${baseUrl}/#organization`,
-  name: 'Wa-Jutsu Club l\'Asie Marcinelle',
+  name: 'Club CCAJT Wa-Jutsu Marcinelle',
   alternateName: 'Wa-Jutsu Charleroi',
   url: baseUrl,
   logo: `${baseUrl}/logo.png`,
@@ -60,7 +60,10 @@ const organizationJsonLd = {
     name: 'Académie Européenne de Ju-Jutsu Traditionnel (AEJT)',
   },
   sameAs: [
-    'https://www.facebook.com/wajutsucharleroi',
+    // Meme casse que les trois liens visibles du site : `sameAs` sert a
+    // rattacher la page Facebook a l'organisation, et deux graphies du meme
+    // profil affaiblissent ce rattachement.
+    'https://www.facebook.com/WajutsuCharleroi',
   ],
   openingHoursSpecification: [
     {
@@ -84,7 +87,7 @@ const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': `${baseUrl}/#business`,
-  name: 'Wa-Jutsu Club l\'Asie Marcinelle',
+  name: 'Club CCAJT Wa-Jutsu Marcinelle',
   image: `${baseUrl}/og-image.jpg`,
   url: baseUrl,
   telephone: '+32473838075',
@@ -135,7 +138,7 @@ const websiteJsonLd = {
   description: 'Club de Ju-Jutsu traditionnel, méthode Wa-Jutsu, à Marcinelle. Art martial sans compétition pour enfants et adultes.',
   publisher: {
     '@type': 'Organization',
-    name: 'Wa-Jutsu Club l\'Asie Marcinelle',
+    name: 'Club CCAJT Wa-Jutsu Marcinelle',
   },
   inLanguage: 'fr-BE',
 }
@@ -170,9 +173,9 @@ export const metadata: Metadata = {
     'ju-jutsu traditionnel',
     'arts martiaux adultes',
   ],
-  authors: [{ name: 'Wa-Jutsu Club l\'Asie Marcinelle' }],
-  creator: 'Wa-Jutsu Club l\'Asie Marcinelle',
-  publisher: 'Wa-Jutsu Club l\'Asie Marcinelle',
+  authors: [{ name: 'Club CCAJT Wa-Jutsu Marcinelle' }],
+  creator: 'Club CCAJT Wa-Jutsu Marcinelle',
+  publisher: 'Club CCAJT Wa-Jutsu Marcinelle',
   formatDetection: {
     email: false,
     address: false,

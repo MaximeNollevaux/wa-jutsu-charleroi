@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'arts martiaux charleroi essai',
   ],
   openGraph: {
-    title: 'Réserver un cours d\'essai — Wa-Jutsu Club l\'Asie',
+    title: 'Réserver un cours d\'essai — Club CCAJT Wa-Jutsu',
     description:
       "Réservez votre cours d'essai gratuit en ligne. Jeudi 19h00 (enfants) ou 20h30 (adultes), à Marcinelle.",
     url: `${baseUrl}/reserver`,

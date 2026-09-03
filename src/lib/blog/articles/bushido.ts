@@ -15,7 +15,7 @@ export const article: Article = {
     'bushido définition',
   ],
   publishedAt: '2026-08-31',
-  author: `Wa-Jutsu Club l'Asie Marcinelle`,
+  author: `Club CCAJT Wa-Jutsu Marcinelle`,
   category: 'Culture martiale',
   readingMinutes: 8,
   image: '/images/kata.jpg',
@@ -165,7 +165,7 @@ export const article: Article = {
     },
     {
       question: `Le Bushido se pratique-t-il encore aujourd'hui ?`,
-      answer: `Pas comme un code juridique, mais comme une exigence quotidienne dans les écoles de Budo traditionnel. La méthode Wa-Jutsu, enseignée notamment au Wa-Jutsu Club l'Asie de Marcinelle, s'en réclame explicitement : dans une école sans compétition, ces vertus sont ce qui définit un bon pratiquant.`,
+      answer: `Pas comme un code juridique, mais comme une exigence quotidienne dans les écoles de Budo traditionnel. La méthode Wa-Jutsu, enseignée notamment au Club CCAJT Wa-Jutsu de Marcinelle, s'en réclame explicitement : dans une école sans compétition, ces vertus sont ce qui définit un bon pratiquant.`,
     },
   ],
   related: [

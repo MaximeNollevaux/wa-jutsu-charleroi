@@ -11,7 +11,7 @@ const offerJsonLd = {
   name: 'Cours de Wa-Jutsu',
   provider: {
     '@type': 'SportsClub',
-    name: 'Wa-Jutsu Club l\'Asie Marcinelle',
+    name: 'Club CCAJT Wa-Jutsu Marcinelle',
     url: baseUrl,
   },
   description: 'Cours de ju-jutsu traditionnel, méthode Wa-Jutsu, pour enfants, jeunes et adultes. Self-défense et développement personnel, sans compétition.',
