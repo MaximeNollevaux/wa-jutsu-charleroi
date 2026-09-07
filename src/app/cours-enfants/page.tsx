@@ -6,64 +6,89 @@ import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
-// Page ecrite le 2026-09-07 a partir du releve marketing, et destinee au PARENT,
-// pas a l'enfant.
+// Page ecrite pour le PARENT, pas pour l'enfant.
 //
-// Deux constats l'ont dictee. D'abord la mesure : sur 28 jours, « self defense
-// charleroi » fait 42 affichages pour 2 clics — quarante parents sur quarante-deux
-// voient le club et n'entrent pas. Ensuite le releve des cinq clubs du bassin :
-// sur leurs dix promesses, AUCUNE ne parle de combat, de podium ni de palmares.
-// Tout le marche rassure sur une peur que personne ne nomme. On la nomme.
+// La mesure : sur 28 jours, « self defense charleroi » fait 42 affichages pour
+// 2 clics. Quarante parents sur quarante-deux voient le club et n'entrent pas.
+// Et la page self-defense existante s'adresse aux adultes.
+//
+// ⚠ Premiere version corrigee le 2026-09-07 : elle promettait que l'enfant
+// « n'apprend pas a frapper ». C'etait faux — le Wa-Jutsu enseigne les
+// Atemi-Waza — et surtout c'etait une promesse NEGATIVE, qui ne donne envie de
+// rien. La self-defense est efficace, le club l'ecrit lui-meme. Ce qui le
+// distingue n'est pas ce qu'il retire, c'est ce qu'il ajoute : l'absence de
+// competition libere le temps qu'ailleurs on passe a preparer des tournois, et
+// ce temps va au Shin — la maitrise de soi.
 export const metadata: Metadata = {
-  title: "Arts martiaux pour enfants à Charleroi — sans compétition",
+  title: 'Arts martiaux pour enfants à Charleroi — self-défense sans compétition',
   description:
-    "Un art martial où votre enfant n'apprend pas à frapper : le premier geste enseigné est la chute. Cours enfants dès 5 ans à Marcinelle, premier mois gratuit.",
+    "Votre enfant apprendra à se défendre, et d'abord à éviter d'avoir à le faire. Ju-jutsu traditionnel sans compétition, dès 5 ans à Marcinelle. Premier mois gratuit.",
   keywords: [
     'arts martiaux enfant charleroi',
-    'art martial enfant marcinelle',
     'self defense enfant charleroi',
+    'art martial enfant marcinelle',
     'ju-jutsu enfant charleroi',
     'sport enfant 5 ans charleroi',
     'art martial sans competition enfant',
+    'confiance en soi enfant art martial',
   ],
   openGraph: {
-    title: "Un art martial où votre enfant n'apprend pas à frapper",
+    title: "Il apprendra à se défendre. Et d'abord à éviter d'avoir à le faire.",
     description:
-      "Ni podium, ni palmarès, ni tournoi le dimanche. Le premier geste enseigné est la chute. Cours enfants dès 5 ans à Marcinelle.",
+      "Une self-défense qui fonctionne, apprise sans compétition : pas de tournoi, pas de classement, pas de stress de résultat. Dès 5 ans à Marcinelle.",
     url: `${baseUrl}/cours-enfants`,
     type: 'website',
     images: IMAGE_PARTAGE,
   },
-  alternates: {
-    canonical: `${baseUrl}/cours-enfants`,
-  },
+  alternates: { canonical: `${baseUrl}/cours-enfants` },
 }
 
-// Chaque objection est reprise dans les mots du parent, puis on lui donne raison
-// avant de repondre. C'est la regle tiree du releve : on ne rassure que sur ce
-// dont on a eu peur, et un dementi qui commence par « mais non » ne rassure
-// personne.
+// Ce que l'enfant apprend, dans l'ordre ou il l'apprend. L'esquive et la chute
+// viennent avant la technique — ce n'est pas une precaution de communication,
+// c'est la progression reelle.
+const apprentissages = [
+  {
+    titre: 'Éviter, avant tout le reste',
+    texte:
+      "Reconnaître qu'une situation dégénère et s'en extraire. C'est la première compétence enseignée, et de loin la plus utilisée : un conflit évité ne se raconte pas le soir, mais il n'a pas eu lieu.",
+  },
+  {
+    titre: 'Esquiver et se dégager',
+    texte:
+      "Se libérer d'une saisie au poignet, au col, par-derrière. La plupart des empoignades de cour de récréation commencent par une prise, pas par un coup — savoir s'en défaire suffit souvent à mettre fin à l'histoire.",
+  },
+  {
+    titre: 'Tomber sans se blesser',
+    texte:
+      "Les ukemi, les chutes. C'est le premier geste enseigné dans le dojo, avant toute technique offensive, et c'est aussi celui qui sert le plus souvent en dehors : à vélo, dans les escaliers, au football.",
+  },
+  {
+    titre: 'Répondre, dans les règles',
+    texte:
+      "Clés, projections, immobilisations, et les atemi — les frappes. Le ju-jutsu est une self-défense efficace, y compris contre plus grand et plus lourd que soi. Ce qui s'apprend en même temps, c'est le cadre : une riposte doit être immédiate et proportionnée à l'attaque. C'est la règle de la légitime défense, et un enfant la comprend très bien quand on la lui explique sur le tatami.",
+  },
+]
+
 const objections = [
   {
     dite: "Un art martial, ça va le rendre bagarreur.",
-    aveu:
-      "Oui, on lui apprend des prises. Des clés, des immobilisations, des façons de faire tomber quelqu'un — et oui, serrées trop fort, elles font mal.",
     reponse:
-      "C'est exactement pour cette raison que le premier geste enseigné n'est pas une prise : c'est la chute. Avant de savoir faire tomber, il apprend à tomber lui-même. On ne serre pas une clé sur quelqu'un dont on a d'abord appris à protéger la nuque. Et le wa-jutsu ne se pratique pas en compétition : ni podium, ni palmarès, ni tournoi le dimanche. Un enfant qui vient chercher un classement s'ennuiera ici, et c'est assumé.",
+      "C'est le contraire qui se produit, et il y a une raison technique. Ici, il n'y a ni tournoi, ni classement, ni podium. Le temps que les autres clubs passent à préparer des compétitions, nous le passons sur ce que le Wa-Jutsu appelle le Shin — l'état d'esprit : se maîtriser, garder son calme, savoir s'arrêter. La devise du club est « Amitié, entraide et prospérité partagée », et la maxime qu'on y répète est « un seul ennemi à vaincre : soi-même ». Un enfant qui s'entraîne toutes les semaines à contrôler une clé sur un partenaire apprend surtout à doser sa force.",
   },
   {
-    dite: "Je veux surtout qu'il sache se défendre s'il se fait embêter à l'école.",
-    aveu:
-      "Non. Une heure par semaine ne fera pas de votre enfant quelqu'un qui sait se battre, et aucun club sérieux ne peut vous promettre le contraire.",
+    dite: "Est-ce qu'il saura vraiment se défendre s'il se fait embêter à l'école ?",
     reponse:
-      "Ce qu'une heure par semaine change, c'est autre chose : il apprend à tomber sans se blesser, à tenir sa place dans un groupe, et à reconnaître le moment où une situation dégénère. Ce sont trois choses qui servent bien plus souvent qu'un dégagement de saisie.",
+      "Oui, et nous ne prétendrons pas le contraire pour vous rassurer : le ju-jutsu traditionnel est une self-défense qui fonctionne. Mais ce n'est pas le premier réflexe qu'on lui apprend. On lui apprend d'abord à repérer et à éviter, ensuite à esquiver et à se dégager — et seulement ensuite à répondre, dans le cadre de la légitime défense : immédiatement, et proportionnellement. Dans une cour de récréation, les trois premières compétences règlent presque tout.",
   },
   {
-    dite: "Il est petit et il n'est pas costaud. Les autres vont lui tomber dessus.",
-    aveu:
-      "Il va tomber. Souvent, et dès le premier cours — c'est ce qu'on lui apprend en premier, avant toute prise.",
+    dite: "Il est petit et il n'est pas costaud.",
     reponse:
-      "La taille compte peu dans une discipline construite pour que le plus léger puisse contrôler le plus lourd : c'est son principe de départ, pas une consolation. Le travail se fait avec un partenaire, jamais contre un adversaire, et l'intensité se règle enfant par enfant.",
+      "C'est précisément le point de départ du ju-jutsu : utiliser le déséquilibre et l'élan de l'autre plutôt que sa propre force. Une technique bien placée fonctionne contre plus lourd que soi — c'est ce qui distingue cette discipline d'un sport de force. Le travail se fait avec un partenaire, jamais contre un adversaire, et l'intensité se règle enfant par enfant.",
+  },
+  {
+    dite: "Est-ce qu'il va aimer ? Je ne vais pas décider ça tout seul à sa place.",
+    reponse:
+      "Le premier mois est gratuit — pas une séance, un mois. De quoi voir passer l'enthousiasme du premier jour et savoir ce qu'il en reste au quatrième cours. Et comme il n'y a pas de compétition, il n'y a pas non plus de sélection, pas de niveau à tenir, pas de résultat à ramener : personne ne sera écarté parce qu'il progresse moins vite.",
   },
 ]
 
@@ -76,13 +101,15 @@ export default function CoursEnfantsPage() {
             Marcinelle · Charleroi · dès 5 ans
           </p>
           <h1 className="font-heading font-extrabold text-4xl md:text-6xl uppercase mb-6">
-            Un art martial où votre enfant n&apos;apprend pas à frapper
+            Il apprendra à se défendre
+            <br />
+            et d&apos;abord à éviter d&apos;avoir à le faire
           </h1>
           <p className="text-dark-300 text-xl max-w-3xl mx-auto">
-            Vous n&apos;avez pas tapé « club de sport ». Vous avez tapé
-            « self-défense ». C&apos;est rarement une envie de sport qui amène
-            ici — c&apos;est une remarque de l&apos;école, un enfant qui rentre
-            en silence, une histoire de cour de récréation.
+            Une self-défense qui fonctionne, apprise sans compétition : pas de
+            tournoi, pas de classement, pas de résultat à ramener le dimanche.
+            Le temps que d&apos;autres passent à préparer des championnats, nous
+            le passons sur la maîtrise de soi.
           </p>
           <div className="mt-8">
             <Link href="/reserver" className="btn-primary text-sm">
@@ -95,21 +122,19 @@ export default function CoursEnfantsPage() {
       <section className="py-20 lg:py-28 bg-dark-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            subtitle="Disons-le à votre place"
-            title="Ce qui vous retient"
+            subtitle="Dans cet ordre"
+            title="Ce que votre enfant apprend"
           />
-
-          <div className="space-y-6">
-            {objections.map((o) => (
+          <div className="grid md:grid-cols-2 gap-6">
+            {apprentissages.map((a, i) => (
               <div
-                key={o.dite}
+                key={a.titre}
                 className="bg-dark-800 border border-dark-600 border-l-4 border-l-primary p-6"
               >
-                <p className="font-heading font-bold text-lg text-primary mb-4">
-                  « {o.dite} »
+                <p className="text-primary font-heading font-bold text-sm uppercase tracking-wide mb-2">
+                  {i + 1}. {a.titre}
                 </p>
-                <p className="text-dark-200 mb-3">{o.aveu}</p>
-                <p className="text-dark-300">{o.reponse}</p>
+                <p className="text-dark-300">{a.texte}</p>
               </div>
             ))}
           </div>
@@ -119,28 +144,26 @@ export default function CoursEnfantsPage() {
       <section className="py-20 lg:py-28 bg-dark-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            subtitle="Sans décider à sa place"
-            title="Le premier mois est gratuit"
+            subtitle="Les questions qu'on nous pose"
+            title="Ce que les parents demandent"
           />
-          <div className="text-dark-300 space-y-4 text-lg">
-            <p>
-              Pas une séance : un mois. De quoi voir passer l&apos;enthousiasme
-              du premier jour et savoir ce qu&apos;il en reste au quatrième
-              cours — c&apos;est la seule chose qui réponde vraiment à « est-ce
-              qu&apos;il va tenir ».
-            </p>
-            <p>
-              Restez au bord du tatami, regardez comment on parle aux enfants,
-              comptez-les. Et repartez sans rien signer.
-            </p>
-            <p>
-              Si vous vous êtes déjà déplacé pour rien ailleurs — un club fermé,
-              personne pour vous accueillir — écrivez-nous avant : nous
-              confirmons l&apos;horaire, et quelqu&apos;un vous attend.
-            </p>
+          <div className="space-y-6">
+            {objections.map((o) => (
+              <div key={o.dite} className="bg-dark-700 border border-dark-600 p-6">
+                <p className="font-heading font-bold text-lg text-primary mb-3">
+                  « {o.dite} »
+                </p>
+                <p className="text-dark-300">{o.reponse}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <dl className="grid sm:grid-cols-2 gap-6 mt-10 text-dark-300">
+      <section className="py-20 lg:py-28 bg-dark-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader subtitle="Concrètement" title="Le cours enfants" />
+          <dl className="grid sm:grid-cols-2 gap-6 text-dark-300">
             <div>
               <dt className="text-primary font-heading font-bold uppercase text-sm tracking-wide">
                 Quand
@@ -158,17 +181,28 @@ export default function CoursEnfantsPage() {
                 Le wa-jutsu, c&apos;est quoi
               </dt>
               <dd>
-                Un art martial japonais dérivé du ju-jutsu, fondé sur les clés,
-                les projections et les immobilisations plutôt que sur les coups.
+                Une méthode de ju-jutsu traditionnel créée en 1982, sans
+                compétition ni classement, qui se travaille sur trois plans :
+                l&apos;état d&apos;esprit, la technique et le physique.
               </dd>
             </div>
             <div>
               <dt className="text-primary font-heading font-bold uppercase text-sm tracking-wide">
                 Pour venir
               </dt>
-              <dd>Un jogging, un t-shirt, une bouteille d&apos;eau.</dd>
+              <dd>
+                Un jogging, un t-shirt, une bouteille d&apos;eau. Le kimono
+                attendra.
+              </dd>
             </div>
           </dl>
+
+          <p className="text-dark-300 mt-8">
+            Restez au bord du tatami le premier soir, regardez comment on parle
+            aux enfants, comptez-les. Si vous vous êtes déjà déplacé pour rien
+            ailleurs, écrivez-nous avant : nous confirmons l&apos;horaire, et
+            quelqu&apos;un vous attend.
+          </p>
 
           <div className="flex flex-wrap gap-4 mt-8">
             <Link href="/reserver" className="btn-primary text-sm">
@@ -185,9 +219,9 @@ export default function CoursEnfantsPage() {
       </section>
 
       <BlocReservation
-        titre="Votre enfant vous dira lui-même s'il veut revenir"
-        texte="Un mois pour voir. Choisissez un jeudi, venez en tenue de sport, et jugez sur pièce."
-        fond="bg-dark-700"
+        titre="Un mois pour voir, sans rien signer"
+        texte="Votre enfant vous dira lui-même s'il veut revenir. Choisissez un jeudi, venez en tenue de sport."
+        fond="bg-dark-800"
       />
     </>
   )
