@@ -53,9 +53,14 @@ export function Header() {
       {/* Main navigation */}
       <nav className="bg-dark-800/95 backdrop-blur-sm border-b border-dark-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          {/* gap-6 : le logo et la navigation etaient colles, ecart mesure a
+              ZERO pixel. Tant que la barre n'etait pas pleine, ca ne se voyait
+              pas ; des qu'une entree de plus l'a remplie, le logo s'est
+              comprime et casse en trois lignes. La marge repare la cause, pas
+              le symptome. */}
+          <div className="flex items-center justify-between gap-6 xl:gap-10 h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex shrink-0 items-center gap-3">
               <Image
                 src="/images/logo-sceau-96.png"
                 alt=""
