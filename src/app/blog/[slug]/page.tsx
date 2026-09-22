@@ -4,11 +4,21 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ClockIcon } from '@heroicons/react/24/outline'
 import { ArticleBody } from '@/components/blog/ArticleBody'
-import { articles, formatDate, getArticle, getRelated } from '@/lib/blog'
+import { ArticleMarkdown } from '@/components/blog/ArticleMarkdown'
+import {
+  articles,
+  estImageDistante,
+  formatDate,
+  getRelated,
+  urlAbsolueImage,
+} from '@/lib/blog'
+import { chargerArticle, chargerArticles } from '@/lib/blog/from-one'
 import { BlocReservation } from '@/components/reservation/BlocReservation'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
+// Les slugs du depot sont construits au build ; ceux de One sont rendus a la
+// demande (dynamicParams reste a true, sa valeur par defaut).
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
 }
@@ -18,8 +28,9 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }): Promise<Metadata> {
-  const article = getArticle(params.slug)
+  const article = await chargerArticle(params.slug)
   if (!article) return {}
+  const image = urlAbsolueImage(article.image, baseUrl)
 
   const url = `${baseUrl}/blog/${article.slug}`
 
@@ -38,13 +49,13 @@ export async function generateMetadata({
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt ?? article.publishedAt,
       authors: [article.author],
-      images: [{ url: `${baseUrl}${article.image}`, alt: article.imageAlt }],
+      images: [{ url: image, alt: article.imageAlt }],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.description,
-      images: [`${baseUrl}${article.image}`],
+      images: [image],
     },
     alternates: {
       canonical: url,
@@ -52,11 +63,16 @@ export async function generateMetadata({
   }
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = getArticle(params.slug)
+export default async function ArticlePage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const tous = await chargerArticles()
+  const article = tous.find((a) => a.slug === params.slug)
   if (!article) notFound()
 
-  const related = getRelated(article)
+  const related = getRelated(article, 3, tous)
   const url = `${baseUrl}/blog/${article.slug}`
 
   const articleJsonLd = {
@@ -70,15 +86,17 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     inLanguage: 'fr-BE',
-    image: [`${baseUrl}${article.image}`],
+    image: [urlAbsolueImage(article.image, baseUrl)],
     articleSection: article.category,
     keywords: article.keywords.join(', '),
-    wordCount: article.body.reduce((total, block) => {
-      if ('text' in block) return total + block.text.split(/\s+/).length
-      if ('items' in block)
-        return total + block.items.join(' ').split(/\s+/).length
-      return total
-    }, 0),
+    wordCount: article.contentMd
+      ? article.contentMd.split(/\s+/).filter(Boolean).length
+      : article.body.reduce((total, block) => {
+          if ('text' in block) return total + block.text.split(/\s+/).length
+          if ('items' in block)
+            return total + block.items.join(' ').split(/\s+/).length
+          return total
+        }, 0),
     author: {
       '@type': 'Organization',
       name: article.author,
@@ -147,6 +165,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <Image
               src={article.image}
               alt={article.imageAlt}
+              unoptimized={estImageDistante(article.image)}
               fill
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"
@@ -158,7 +177,11 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         {/* Corps */}
         <div className="py-16 bg-dark-700">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ArticleBody blocks={article.body} />
+            {article.contentMd ? (
+              <ArticleMarkdown markdown={article.contentMd} />
+            ) : (
+              <ArticleBody blocks={article.body} />
+            )}
 
             {/* FAQ */}
             {article.faq?.length ? (
@@ -254,6 +277,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                       <Image
                         src={item.image}
                         alt={item.imageAlt}
+                        unoptimized={estImageDistante(item.image)}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover"

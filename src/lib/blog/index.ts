@@ -37,21 +37,35 @@ export function getArticle(slug: string): Article | undefined {
  * rien est ignore silencieusement : renommer un article ne doit pas casser le
  * build des cinq autres.
  */
-export function getRelated(article: Article, limit = 3): Article[] {
+export function getRelated(
+  article: Article,
+  limit = 3,
+  liste: Article[] = articles
+): Article[] {
   const explicit = (article.related ?? [])
-    .map(getArticle)
+    .map((slug) => liste.find((a) => a.slug === slug))
     .filter((a): a is Article => Boolean(a) && a!.slug !== article.slug)
 
   if (explicit.length >= limit) return explicit.slice(0, limit)
 
   // Completer avec les articles les plus recents qui ne sont pas deja listes.
   const seen = new Set([article.slug, ...explicit.map((a) => a.slug)])
-  const fillers = articles.filter((a) => !seen.has(a.slug))
+  const fillers = liste.filter((a) => !seen.has(a.slug))
   return [...explicit, ...fillers].slice(0, limit)
 }
 
 export function getCategories(): string[] {
   return Array.from(new Set(articles.map((a) => a.category)))
+}
+
+/** Image venue de One : adresse absolue, hors de l'optimiseur d'images. */
+export function estImageDistante(src: string): boolean {
+  return /^https?:\/\//.test(src)
+}
+
+/** Adresse absolue d'une image, pour Open Graph et le JSON-LD. */
+export function urlAbsolueImage(src: string, baseUrl: string): string {
+  return estImageDistante(src) ? src : `${baseUrl}${src}`
 }
 
 /** Format long en francais, pour l'affichage. Le JSON-LD garde l'ISO. */

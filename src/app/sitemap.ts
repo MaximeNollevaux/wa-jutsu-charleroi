@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next'
-import { articles } from '@/lib/blog'
+import { chargerArticles } from '@/lib/blog/from-one'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://wa-jutsu-charleroi.be'
+  // Articles du depot + ceux de Synara One (repli silencieux sur le depot).
+  const articles = await chargerArticles()
 
   // lastModified porte la vraie date de l'article, pas new Date() : annoncer
   // chaque page comme modifiee a chaque build apprend a Google a ne plus faire

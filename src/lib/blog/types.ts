@@ -42,6 +42,11 @@ export type Article = {
   imageAlt: string
   excerpt: string
   body: Block[]
+  /**
+   * Corps en Markdown, pour les articles ecrits dans Synara One. Quand il est
+   * present, il remplace `body` (vide dans ce cas).
+   */
+  contentMd?: string
   /** Alimente le JSON-LD FAQPage de l'article. Facultatif. */
   faq?: FaqEntry[]
   /** Slugs d'articles lies, pour le maillage interne. */

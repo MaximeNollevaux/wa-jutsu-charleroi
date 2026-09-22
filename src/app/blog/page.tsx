@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ClockIcon } from '@heroicons/react/24/outline'
-import { articles, formatDate } from '@/lib/blog'
+import { estImageDistante, formatDate, urlAbsolueImage } from '@/lib/blog'
+import { chargerArticles } from '@/lib/blog/from-one'
+import type { Article } from '@/lib/blog'
 import { IMAGE_PARTAGE } from '@/lib/seo'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
 
 // Blog + liste des articles : permet a Google de comprendre la section comme un
 // ensemble, et pas comme six pages sans lien entre elles.
-const blogJsonLd = {
+const blogJsonLd = (articles: Article[]) => ({
   '@context': 'https://schema.org',
   '@type': 'Blog',
   '@id': `${baseUrl}/blog#blog`,
@@ -49,19 +51,20 @@ const blogJsonLd = {
     url: `${baseUrl}/blog/${a.slug}`,
     datePublished: a.publishedAt,
     dateModified: a.updatedAt ?? a.publishedAt,
-    image: `${baseUrl}${a.image}`,
+    image: urlAbsolueImage(a.image, baseUrl),
     author: { '@type': 'Organization', name: a.author },
   })),
-}
+})
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const articles = await chargerArticles()
   const [featured, ...rest] = articles
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd(articles)) }}
       />
 
       {/* Hero */}
@@ -92,6 +95,7 @@ export default function BlogPage() {
               <Image
                 src={featured.image}
                 alt={featured.imageAlt}
+                unoptimized={estImageDistante(featured.image)}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -136,6 +140,7 @@ export default function BlogPage() {
                     <Image
                       src={article.image}
                       alt={article.imageAlt}
+                      unoptimized={estImageDistante(article.image)}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
