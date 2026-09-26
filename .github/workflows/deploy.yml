@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    # Un commit qui ne touche que de la documentation ne change pas l'image :
+    # la construire coute plusieurs minutes de quota Actions pour un resultat
+    # identique a l'octet pres.
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
 
 env:
   REGISTRY: ghcr.io
