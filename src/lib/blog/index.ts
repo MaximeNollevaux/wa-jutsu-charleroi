@@ -1,61 +1,49 @@
 import type { Article } from './types'
-import { article as artMartialEnfant } from './articles/art-martial-enfant-charleroi'
-import { article as bushido } from './articles/bushido'
-import { article as debuterAdulte } from './articles/debuter-adulte'
-import { article as maitreQuero } from './articles/maitre-quero'
-import { article as premierCours } from './articles/premier-cours'
-import { article as rentree2026 } from './articles/rentree-2026'
-import { article as sansCompetition } from './articles/sans-competition'
-import { article as waJutsuOuJuJitsu } from './articles/wa-jutsu-ou-ju-jitsu'
 
-export type { Article, Block, FaqEntry } from './types'
-
-/** Tries du plus recent au plus ancien, a slug egal l'ordre est stable. */
-const all: Article[] = [
-  rentree2026,
-  artMartialEnfant,
-  waJutsuOuJuJitsu,
-  bushido,
-  maitreQuero,
-  premierCours,
-  debuterAdulte,
-  sansCompetition,
-]
-
-export const articles: Article[] = [...all].sort((a, b) =>
-  a.publishedAt === b.publishedAt
-    ? a.slug.localeCompare(b.slug)
-    : b.publishedAt.localeCompare(a.publishedAt)
-)
-
-export function getArticle(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug)
-}
+export type { Article } from './types'
 
 /**
- * Articles lies, dans l'ordre declare par l'auteur. Un slug qui ne correspond a
- * rien est ignore silencieusement : renommer un article ne doit pas casser le
- * build des cinq autres.
+ * Articles lies, pour le maillage interne.
+ *
+ * Les articles en dur declaraient leurs voisins a la main (`related`). Synara
+ * One ne porte pas ce champ : le maillage se recalcule donc depuis ce que One
+ * sert, avec une regle unique plutot qu'une liste a tenir a jour article par
+ * article.
+ *   1. meme categorie : +3 ;
+ *   2. chaque mot-cle partage : +2 ;
+ *   3. chaque mot significatif (> 3 lettres) partage entre les mots-cles : +1 ;
+ *   4. a score egal, le plus recent d'abord.
+ * Si les scores ne remplissent pas la liste, on complete avec les plus recents :
+ * un article ne finit jamais en cul-de-sac.
  */
-export function getRelated(
-  article: Article,
-  limit = 3,
-  liste: Article[] = articles
-): Article[] {
-  const explicit = (article.related ?? [])
-    .map((slug) => liste.find((a) => a.slug === slug))
-    .filter((a): a is Article => Boolean(a) && a!.slug !== article.slug)
+export function getRelated(article: Article, limit = 3, liste: Article[]): Article[] {
+  const motsCles = new Set(article.keywords.map((k) => k.toLowerCase().trim()))
+  const mots = new Set(
+    article.keywords.flatMap((k) =>
+      k.toLowerCase().split(/[^a-z0-9à-ÿ]+/i).filter((m) => m.length > 3)
+    )
+  )
 
-  if (explicit.length >= limit) return explicit.slice(0, limit)
+  const autres = liste.filter((a) => a.slug !== article.slug)
+  const notes = autres.map((a) => {
+    let score = a.category === article.category ? 3 : 0
+    const sesMotsCles = a.keywords.map((k) => k.toLowerCase().trim())
+    score += 2 * sesMotsCles.filter((k) => motsCles.has(k)).length
+    const sesMots = new Set(
+      sesMotsCles.flatMap((k) => k.split(/[^a-z0-9à-ÿ]+/i).filter((m) => m.length > 3))
+    )
+    sesMots.forEach((m) => {
+      if (mots.has(m)) score += 1
+    })
+    return { a, score }
+  })
 
-  // Completer avec les articles les plus recents qui ne sont pas deja listes.
-  const seen = new Set([article.slug, ...explicit.map((a) => a.slug)])
-  const fillers = liste.filter((a) => !seen.has(a.slug))
-  return [...explicit, ...fillers].slice(0, limit)
-}
-
-export function getCategories(): string[] {
-  return Array.from(new Set(articles.map((a) => a.category)))
+  return notes
+    .sort((x, y) =>
+      y.score !== x.score ? y.score - x.score : y.a.publishedAt.localeCompare(x.a.publishedAt)
+    )
+    .slice(0, limit)
+    .map((n) => n.a)
 }
 
 /** Image venue de One : adresse absolue, hors de l'optimiseur d'images. */

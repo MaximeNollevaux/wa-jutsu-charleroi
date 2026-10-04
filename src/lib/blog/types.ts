@@ -1,24 +1,10 @@
-// Modele de contenu du blog.
+// Modele d'un article du blog, tel que les pages l'affichent.
 //
-// Les articles sont des donnees typees, pas du MDX : le site n'a pas de CMS et
-// ajouter un pipeline Markdown pour six articles couterait plus cher que ca ne
-// rapporte. Un bloc = un element de rendu, ce qui garde le HTML sous controle
-// (titres hierarchises, listes semantiques) — ce dont depend le referencement.
-
-export type Block =
-  | { type: 'p'; text: string }
-  | { type: 'h2'; text: string }
-  | { type: 'h3'; text: string }
-  | { type: 'ul'; items: string[] }
-  | { type: 'ol'; items: string[] }
-  | { type: 'quote'; text: string; source?: string }
-  | { type: 'note'; text: string }
-  | { type: 'cta'; text: string; href: string; label: string }
-
-export type FaqEntry = {
-  question: string
-  answer: string
-}
+// Depuis le 2026-10-04, tous les articles viennent de Synara One (voir
+// `from-one.ts`) : le corps est du Markdown, la FAQ y vit sous
+// « ## Questions frequentes », et les donnees structurees sont calculees par
+// One. Les anciens blocs types (p, h2, cta...) ont disparu avec les articles en
+// dur qui les portaient.
 
 export type Article = {
   slug: string
@@ -32,7 +18,7 @@ export type Article = {
   seoTitle: string
   description: string
   keywords: string[]
-  /** Date ISO. Sert a la fois au tri, au JSON-LD et a l'affichage. */
+  /** Date ISO courte. Sert au tri et a l'affichage. */
   publishedAt: string
   updatedAt?: string
   author: string
@@ -41,14 +27,8 @@ export type Article = {
   image: string
   imageAlt: string
   excerpt: string
-  body: Block[]
-  /**
-   * Corps en Markdown, pour les articles ecrits dans Synara One. Quand il est
-   * present, il remplace `body` (vide dans ce cas).
-   */
-  contentMd?: string
-  /** Alimente le JSON-LD FAQPage de l'article. Facultatif. */
-  faq?: FaqEntry[]
-  /** Slugs d'articles lies, pour le maillage interne. */
-  related?: string[]
+  /** Corps de l'article en Markdown (Synara One). */
+  contentMd: string
+  /** JSON-LD servi par One (BlogPosting, FAQPage) : injecte tel quel. */
+  jsonld: Record<string, unknown>[]
 }

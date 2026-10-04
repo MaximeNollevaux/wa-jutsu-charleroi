@@ -3,9 +3,9 @@ import ReactMarkdown, { type Components } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 /**
- * Corps d'un article ecrit dans Synara One (Markdown). Reprend un a un les
- * styles d'`ArticleBody` : un article de One ne doit pas se distinguer d'un
- * article du depot. Le HTML brut du Markdown est ignore (pas de rehype-raw) :
+ * Corps d'un article ecrit dans Synara One (Markdown), seule source du blog.
+ * Les styles reprennent ceux des anciens articles en blocs types, pour que
+ * les huit articles importes le 2026-10-04 gardent leur rendu. Le HTML brut du Markdown est ignore (pas de rehype-raw) :
  * rien d'autre que ce que ces composants produisent n'arrive dans la page.
  */
 const composants: Components = {

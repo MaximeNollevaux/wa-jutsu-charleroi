@@ -3,7 +3,8 @@ import { chargerArticles } from '@/lib/blog/from-one'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://wa-jutsu-charleroi.be'
-  // Articles du depot + ceux de Synara One (repli silencieux sur le depot).
+  // Articles de Synara One, seule source du blog. Si One ne repond pas en
+  // revalidation, la lecture LEVE et le sitemap precedent reste servi.
   const articles = await chargerArticles()
 
   // lastModified porte la vraie date de l'article, pas new Date() : annoncer

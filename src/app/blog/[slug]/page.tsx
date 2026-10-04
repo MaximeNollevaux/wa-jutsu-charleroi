@@ -3,10 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ClockIcon } from '@heroicons/react/24/outline'
-import { ArticleBody } from '@/components/blog/ArticleBody'
 import { ArticleMarkdown } from '@/components/blog/ArticleMarkdown'
 import {
-  articles,
   estImageDistante,
   formatDate,
   getRelated,
@@ -17,9 +15,10 @@ import { BlocReservation } from '@/components/reservation/BlocReservation'
 
 const baseUrl = 'https://wa-jutsu-charleroi.be'
 
-// Les slugs du depot sont construits au build ; ceux de One sont rendus a la
-// demande (dynamicParams reste a true, sa valeur par defaut).
-export function generateStaticParams() {
+// Les slugs connus de Synara One au build sont pre-rendus ; ceux publies
+// ensuite sont rendus a la demande (dynamicParams reste a true).
+export async function generateStaticParams() {
+  const articles = await chargerArticles()
   return articles.map((article) => ({ slug: article.slug }))
 }
 
@@ -73,64 +72,22 @@ export default async function ArticlePage({
   if (!article) notFound()
 
   const related = getRelated(article, 3, tous)
-  const url = `${baseUrl}/blog/${article.slug}`
-
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    '@id': `${url}#article`,
-    headline: article.title,
-    description: article.description,
-    url,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    datePublished: article.publishedAt,
-    dateModified: article.updatedAt ?? article.publishedAt,
-    inLanguage: 'fr-BE',
-    image: [urlAbsolueImage(article.image, baseUrl)],
-    articleSection: article.category,
-    keywords: article.keywords.join(', '),
-    wordCount: article.contentMd
-      ? article.contentMd.split(/\s+/).filter(Boolean).length
-      : article.body.reduce((total, block) => {
-          if ('text' in block) return total + block.text.split(/\s+/).length
-          if ('items' in block)
-            return total + block.items.join(' ').split(/\s+/).length
-          return total
-        }, 0),
-    author: {
-      '@type': 'Organization',
-      name: article.author,
-      url: baseUrl,
-    },
-    publisher: { '@id': `${baseUrl}/#organization` },
-    isPartOf: { '@id': `${baseUrl}/blog#blog` },
-  }
-
-  const faqJsonLd = article.faq?.length
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        '@id': `${url}#faq`,
-        mainEntity: article.faq.map((entry) => ({
-          '@type': 'Question',
-          name: entry.question,
-          acceptedAnswer: { '@type': 'Answer', text: entry.answer },
-        })),
-      }
-    : null
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      {faqJsonLd && (
+      {/* Donnees structurees servies par Synara One (BlogPosting, et FAQPage
+          tiree de la section « Questions frequentes » visible) : une seule
+          source, pas de double balisage. Le fil d'Ariane (BreadcrumbList) reste
+          celui du composant Breadcrumbs. `<` echappe : un contenu ne peut pas
+          fermer la balise. */}
+      {article.jsonld.map((bloc, i) => (
         <script
+          key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(bloc).replace(/</g, '\\u003c'),
+          }}
         />
-      )}
+      ))}
 
       <article>
         {/* En-tete */}
@@ -177,41 +134,8 @@ export default async function ArticlePage({
         {/* Corps */}
         <div className="py-16 bg-dark-700">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            {article.contentMd ? (
-              <ArticleMarkdown markdown={article.contentMd} />
-            ) : (
-              <ArticleBody blocks={article.body} />
-            )}
-
-            {/* FAQ */}
-            {article.faq?.length ? (
-              <section className="mt-16 pt-12 border-t border-dark-600">
-                <h2 className="font-heading font-extrabold text-3xl uppercase mb-8 tracking-tight">
-                  Questions fréquentes
-                </h2>
-                <div className="space-y-4">
-                  {article.faq.map((entry) => (
-                    <details
-                      key={entry.question}
-                      className="bg-dark-800 border border-dark-600 group"
-                    >
-                      <summary className="cursor-pointer p-5 font-heading font-bold text-lg list-none flex justify-between items-center gap-4">
-                        <span>{entry.question}</span>
-                        <span
-                          aria-hidden
-                          className="text-primary text-2xl shrink-0 group-open:rotate-45 transition-transform"
-                        >
-                          +
-                        </span>
-                      </summary>
-                      <p className="px-5 pb-5 text-dark-300 leading-relaxed">
-                        {entry.answer}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </section>
-            ) : null}
+            {/* La FAQ fait partie du Markdown (« ## Questions frequentes »). */}
+            <ArticleMarkdown markdown={article.contentMd} />
 
             {/* Encart club */}
             <aside className="mt-16 bg-dark-800 border border-dark-600 p-8">
