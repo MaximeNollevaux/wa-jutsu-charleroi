@@ -29,13 +29,15 @@ export function CalendrierReservation() {
   const [src, setSrc] = useState<string | null>(null)
 
   useEffect(() => {
-    const attribution = lireAttribution()
+    // `lireAttribution()` rend `undefined` quand la visite n'a aucun marqueur :
+    // on retombe alors sur un objet vide, comme avant.
+    const attribution = lireAttribution() ?? {}
     const url = new URL(EMBED)
 
     for (const [cle, valeur] of Object.entries(attribution)) {
-      // `referrer` et `landing_page` portent des noms differents cote BookFlow,
-      // et sont poses juste apres.
-      if (cle === 'referrer' || cle === 'landing_page') continue
+      // `referrer`, `landing_page` et `landing_url` portent des noms differents
+      // cote BookFlow, et la page d'entree est posee juste apres sous `landing`.
+      if (cle === 'referrer' || cle === 'landing_page' || cle === 'landing_url') continue
       url.searchParams.set(cle, valeur)
     }
 

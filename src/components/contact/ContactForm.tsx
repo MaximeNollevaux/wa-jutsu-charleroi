@@ -1,14 +1,42 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { lireAttribution } from '@/lib/attribution'
 import { signalerDemande } from '@/lib/analytics'
+import { OBJETS_SECOURS, type ObjetFormulaire } from '@/lib/site'
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // Objets proposes : ceux de Synara One quand ils sont joignables, les cinq
+  // sujets historiques sinon. Le visiteur ne doit jamais voir une liste vide.
+  const [objets, setObjets] = useState<ObjetFormulaire[]>(OBJETS_SECOURS)
+  // Heure d'affichage du formulaire, jointe a l'envoi. Un robot qui remplit tout
+  // d'un coup laisse moins de trois secondes ; la route refuse alors en silence.
+  // Remise a l'heure quand le formulaire reapparait, sinon un deuxieme message
+  // saisi paisiblement serait pris pour un robot.
+  const [horodatage, setHorodatage] = useState(() => Date.now())
+
+  useEffect(() => {
+    let actif = true
+    // Passe par la route du site (meme origine que l'envoi) : le CORS du routeur
+    // de One n'entre pas en jeu. En cas d'echec, la liste de secours reste.
+    fetch('/api/contact')
+      .then((reponse) => (reponse.ok ? reponse.json() : null))
+      .then((donnees) => {
+        if (actif && donnees && Array.isArray(donnees.objets) && donnees.objets.length) {
+          setObjets(donnees.objets as ObjetFormulaire[])
+        }
+      })
+      .catch(() => {
+        /* One injoignable : la liste de secours reste affichee */
+      })
+    return () => {
+      actif = false
+    }
+  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -23,12 +51,17 @@ export function ContactForm() {
     // naviguer, les parametres ne sont plus dans l'URL a cet instant.
     const attribution = lireAttribution()
     const data = {
-      attribution,
+      // L'origine part telle quelle : la route serveur la relaie a Synara One,
+      // seul a savoir ou envoyer la demande selon l'objet choisi.
+      utm: attribution,
+      landing_url: attribution?.landing_url || window.location.href,
       name: formData.get('name') as string,
       email: formData.get('email') as string,
       phone: formData.get('phone') as string,
-      subject: formData.get('subject') as string,
+      objet_id: formData.get('objet_id') as string,
       message: formData.get('message') as string,
+      piege: formData.get('piege') as string,
+      horodatage: formData.get('horodatage') as string,
     }
 
     try {
@@ -39,7 +72,10 @@ export function ContactForm() {
       })
 
       if (!response.ok) {
-        throw new Error('Erreur lors de l\'envoi du message')
+        // La route renvoie un message d'erreur lisible (ex. e-mail manquant) :
+        // on le montre au visiteur plutot qu'un texte generique.
+        const corps = await response.json().catch(() => null)
+        throw new Error(corps?.error || 'Erreur lors de l\'envoi du message')
       }
 
       signalerDemande('contact', attribution)
@@ -65,7 +101,11 @@ export function ContactForm() {
           Nous vous répondrons dans les plus brefs délais.
         </p>
         <button
-          onClick={() => setIsSuccess(false)}
+          onClick={() => {
+            setIsSuccess(false)
+            // Nouveau formulaire, nouvelle fenetre anti-robot.
+            setHorodatage(Date.now())
+          }}
           className="text-primary hover:underline"
         >
           Envoyer un autre message
@@ -76,6 +116,23 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/*
+        Piege a robots : invisible et inatteignable au clavier pour un humain,
+        mais un robot qui remplit tous les champs le trouvera. `type="text"` et
+        pas `type="hidden"` : beaucoup de robots ignorent les champs caches.
+        Pas de `display:none` non plus, qu'ils savent reperer — on le sort de
+        l'ecran.
+      */}
+      <input
+        type="text"
+        name="piege"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}
+      />
+      {/* Heure d'affichage, comparee cote serveur a l'heure de reception. */}
+      <input type="hidden" name="horodatage" value={horodatage} readOnly />
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -119,21 +176,21 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium mb-2">
-            Sujet *
+          <label htmlFor="objet_id" className="block text-sm font-medium mb-2">
+            Objet *
           </label>
           <select
-            id="subject"
-            name="subject"
+            id="objet_id"
+            name="objet_id"
             required
             className="input-field"
           >
-            <option value="">Sélectionnez un sujet</option>
-            <option value="inscription">Inscription / Essai gratuit</option>
-            <option value="information">Demande d'information</option>
-            <option value="horaires">Horaires des cours</option>
-            <option value="tarifs">Tarifs</option>
-            <option value="autre">Autre</option>
+            <option value="">Sélectionnez un objet</option>
+            {objets.map((objet) => (
+              <option key={objet.id} value={objet.id}>
+                {objet.libelle}
+              </option>
+            ))}
           </select>
         </div>
       </div>

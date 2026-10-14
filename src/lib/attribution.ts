@@ -36,7 +36,13 @@ const CHAMPS_CLIC = [
   'fbclid',
   'msclkid',
   'ttclid',
+  // Identifiants de clic LinkedIn et Twitter/X : meme role que les autres.
+  'li_fat_id',
+  'twclid',
 ] as const
+
+/** Marqueur de parrainage generique (`?ref=`), courant sur les liens partages. */
+const CHAMPS_REF = ['ref'] as const
 
 const CLE_RELAIS = 'wj_origine_visite'
 
@@ -52,10 +58,16 @@ export type Attribution = {
   fbclid?: string
   msclkid?: string
   ttclid?: string
+  li_fat_id?: string
+  twclid?: string
+  /** Marqueur de parrainage generique. */
+  ref?: string
   /** Referent externe, uniquement quand aucun marqueur de campagne n'est present. */
   referrer?: string
   /** Page d'entree sur le site pour cette visite. */
   landing_page?: string
+  /** Page d'arrivee du visiteur, sous le nom attendu par Synara One (2000 signes). */
+  landing_url?: string
 }
 
 type SynaraOrigine = {
@@ -74,10 +86,14 @@ declare global {
  * Cles que SynaraOrigine nomme autrement que nous. Verifie en production le
  * 2026-08-30 : `dernier()` renvoie `landing`, pas `landing_page`. Sans cet alias
  * la page d'entree etait silencieusement jetee par le filtre.
+ *
+ * `landing` alimente DEUX champs : `landing_url`, que le routeur de formulaires
+ * de Synara One attend, et `landing_page`, sous lequel le calendrier de
+ * reservation la lit depuis plus longtemps.
  */
-const ALIAS: Record<string, keyof Attribution> = {
-  landing: 'landing_page',
-  referer: 'referrer',
+const ALIAS: Record<string, (keyof Attribution)[]> = {
+  landing: ['landing_page', 'landing_url'],
+  referer: ['referrer'],
 }
 
 /**
@@ -90,16 +106,27 @@ function nettoyer(source: Record<string, unknown> | undefined | null): Attributi
   if (!source) return {}
 
   const resultat: Attribution = {}
-  const cles = [...CHAMPS_UTM, ...CHAMPS_CLIC, 'referrer', 'landing_page'] as const
+  const cles = [
+    ...CHAMPS_UTM,
+    ...CHAMPS_CLIC,
+    ...CHAMPS_REF,
+    'referrer',
+    'landing_page',
+    'landing_url',
+  ] as const
 
   const retenir = (cle: keyof Attribution, valeur: unknown) => {
     if (typeof valeur !== 'string' || !valeur.trim()) return
-    // Une valeur d'UTM manipulee peut etre arbitrairement longue : on borne.
-    if (resultat[cle] === undefined) resultat[cle] = valeur.trim().slice(0, 255)
+    // Une valeur de campagne manipulee peut etre arbitrairement longue : on la
+    // borne a 200 signes, comme le veut le contrat Synara One. La page
+    // d'arrivee, elle, est bornee a 2000 signes par `avecLanding`.
+    if (resultat[cle] === undefined) resultat[cle] = valeur.trim().slice(0, 200)
   }
 
   for (const cle of cles) retenir(cle, source[cle])
-  for (const [alias, cle] of Object.entries(ALIAS)) retenir(cle, source[alias])
+  for (const [alias, clesCibles] of Object.entries(ALIAS)) {
+    for (const cle of clesCibles) retenir(cle, source[alias])
+  }
 
   return resultat
 }
@@ -188,19 +215,51 @@ function ecrireRelais(attribution: Attribution): void {
 }
 
 /**
- * Origine a joindre a une demande. Retourne `{}` plutot que `null` : un
+ * La page d'entree telle que SynaraOrigine la nomme (`landing`), bornee a 2000
+ * signes comme le veut le routeur de formulaires de Synara One.
+ */
+function landingDe(source: Record<string, unknown> | undefined | null): string | undefined {
+  if (!source) return undefined
+  const valeur = source['landing'] ?? source['landing_url'] ?? source['landing_page']
+  if (typeof valeur !== 'string' || !valeur.trim()) return undefined
+  return valeur.trim().slice(0, 2000)
+}
+
+/**
+ * Pose `landing_url` (nom attendu par One, 2000 signes) sur une origine. On
+ * garde aussi `landing_page`, sous lequel le calendrier de reservation la lit
+ * depuis plus longtemps : renommer casserait son attribution.
+ */
+function avecLanding(attribution: Attribution, landing: string | undefined): Attribution {
+  // Le relais memorise un simple chemin (« /self-defense ») ; SynaraOrigine, une
+  // adresse complete. One attend une page d'arrivee : on rend le chemin absolu.
+  let adresse = landing?.trim()
+  if (adresse && adresse.startsWith('/')) {
+    adresse = `${window.location.origin}${adresse}`
+  }
+  return {
+    ...attribution,
+    landing_url: (adresse || window.location.href).slice(0, 2000),
+  }
+}
+
+/**
+ * Origine a joindre a une demande. Rend `undefined` quand le visiteur n'a laisse
+ * aucun marqueur (mesure marketing refusee ou arrivee directe) : on ne transmet
+ * alors rien plutot qu'un objet vide, comme le veut le contrat Synara One. Un
  * formulaire ne doit jamais echouer parce que l'attribution est indisponible.
  */
-export function lireAttribution(): Attribution {
-  if (typeof window === 'undefined') return {}
+export function lireAttribution(): Attribution | undefined {
+  if (typeof window === 'undefined') return undefined
 
   const synara = window.SynaraOrigine
   if (synara) {
     for (const lecture of [synara.dernier, synara.parametres, synara.premier]) {
       if (typeof lecture !== 'function') continue
       try {
-        const valeur = nettoyer(lecture.call(synara))
-        if (!estVide(valeur)) return valeur
+        const brut = lecture.call(synara)
+        const valeur = nettoyer(brut)
+        if (!estVide(valeur)) return avecLanding(valeur, landingDe(brut))
       } catch {
         /* le script tiers ne doit jamais casser l'envoi du formulaire */
       }
@@ -208,9 +267,12 @@ export function lireAttribution(): Attribution {
   }
 
   const relais = lireRelais()
-  if (relais) return relais
+  if (relais) return avecLanding(relais, relais.landing_page)
 
-  return depuisUrl(window.location.href)
+  const depuisPage = depuisUrl(window.location.href)
+  if (!estVide(depuisPage)) return avecLanding(depuisPage, window.location.href)
+
+  return undefined
 }
 
 /**
