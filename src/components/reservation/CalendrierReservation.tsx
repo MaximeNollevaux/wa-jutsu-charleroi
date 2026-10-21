@@ -1,9 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { lireAttribution } from '@/lib/attribution'
 
 const EMBED = 'https://rdv.synara.be/embed/wa-jutsu'
+const ORIGINE_MODULE = 'https://rdv.synara.be'
+const HAUTEUR_REPLI = 820
+const HAUTEUR_MIN = 200
+const HAUTEUR_MAX = 3000
+
+/** Le module repond a cette demande en annoncant sa hauteur (BookFlow 2b92257). */
+function demanderHauteur(iframe: HTMLIFrameElement | null) {
+  iframe?.contentWindow?.postMessage({ type: 'bookflow:demande-hauteur' }, ORIGINE_MODULE)
+}
 
 /** Une entree deja absolue est rendue telle quelle ; un chemin est prefixe. */
 function absolutiser(entree: string): string {
@@ -27,6 +36,30 @@ function absolutiser(entree: string): string {
  */
 export function CalendrierReservation() {
   const [src, setSrc] = useState<string | null>(null)
+  const cadre = useRef<HTMLIFrameElement>(null)
+
+  /*
+   * ⚠ Mesure du 2026-10-21 sur un telephone Android (emulateur, Chrome), sur
+   * centrevital.be qui integre le meme module : dans un cadre a hauteur fixe,
+   * la verification Cloudflare poussait « Confirmer le rendez-vous » sous le
+   * bas du cadre ; il n'apparaissait qu'en faisant defiler l'INTERIEUR du
+   * cadre. Ici, `minHeight: 820` laissait en plus un grand vide sous les
+   * etapes courtes. Le module annonce sa hauteur (« bookflow:hauteur ») : on
+   * ajuste le cadre, et on la redemande au chargement, le premier message
+   * pouvant partir avant que cette page n'ecoute.
+   */
+  useEffect(() => {
+    function ajuster(e: MessageEvent) {
+      const iframe = cadre.current
+      if (!iframe || e.source !== iframe.contentWindow || e.origin !== ORIGINE_MODULE) return
+      const d = e.data as { type?: unknown; hauteur?: unknown } | null
+      if (!d || typeof d !== 'object' || d.type !== 'bookflow:hauteur') return
+      if (typeof d.hauteur !== 'number' || !Number.isFinite(d.hauteur)) return
+      iframe.style.height = `${Math.min(HAUTEUR_MAX, Math.max(HAUTEUR_MIN, Math.round(d.hauteur)))}px`
+    }
+    window.addEventListener('message', ajuster)
+    return () => window.removeEventListener('message', ajuster)
+  }, [])
 
   useEffect(() => {
     // `lireAttribution()` rend `undefined` quand la visite n'a aucun marqueur :
@@ -63,11 +96,14 @@ export function CalendrierReservation() {
     <div className="bg-white border border-dark-600 p-1 sm:p-2">
       {src ? (
         <iframe
+          ref={cadre}
           src={src}
+          onLoad={(e) => demanderHauteur(e.currentTarget)}
           title="Réserver un cours d'essai au Club CCAJT Wa-Jutsu"
           loading="lazy"
           className="w-full block"
-          style={{ minHeight: 820, border: 0 }}
+          height={HAUTEUR_REPLI}
+          style={{ border: 0 }}
         />
       ) : (
         <div
