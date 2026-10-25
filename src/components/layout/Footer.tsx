@@ -146,6 +146,11 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-dark-500 text-sm">
               &copy; {currentYear} ASBL CCAJT Wa-Jutsu. Tous droits réservés.
+              {" "}Site réalisé par{" "}
+              <a href="https://synara.be/fr/villes/charleroi" className="underline hover:text-dark-300">
+                Synara
+              </a>
+              .
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               {legalLinks.map((link) => (
