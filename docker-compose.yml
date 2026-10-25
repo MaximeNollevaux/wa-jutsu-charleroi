@@ -15,6 +15,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.wajutsu-app.rule=Host(`wa-jutsu-charleroi.be`) || Host(`www.wa-jutsu-charleroi.be`)"
+      - "traefik.http.routers.wajutsu-app.middlewares=csp-observation@file"
       - "traefik.http.routers.wajutsu-app.entrypoints=websecure"
       - "traefik.http.routers.wajutsu-app.tls.certresolver=letsencrypt"
       - "traefik.http.routers.wajutsu-app.tls.domains[0].main=wa-jutsu-charleroi.be"
