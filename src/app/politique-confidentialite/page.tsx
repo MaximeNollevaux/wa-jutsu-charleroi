@@ -113,10 +113,10 @@ export default function PolitiqueConfidentialitePage() {
             <ul className="text-dark-400 space-y-3">
               <li>
                 • <strong className="text-white">Mesure d'audience</strong> — Google
-                Analytics, pour savoir quelles pages sont consultées. Aucun cookie
-                de mesure n'est déposé avant votre accord : tant que vous n'avez
-                pas accepté, la mesure reste anonyme et rien n'est stocké sur
-                votre appareil.
+                Analytics, pour savoir quelles pages sont consultées. Pour Google
+                Analytics, aucun cookie de mesure n'est déposé avant votre accord :
+                tant que vous n'avez pas accepté, la mesure reste anonyme et rien
+                n'est stocké sur votre appareil.
               </li>
               <li>
                 • <strong className="text-white">Réservation d'un cours d'essai</strong> —
@@ -133,6 +133,18 @@ export default function PolitiqueConfidentialitePage() {
                 de votre demande.
               </li>
             </ul>
+            <p className="text-dark-300 mt-4">
+              Nous comptons aussi les visites avec Umami, un outil de mesure
+              d'audience hébergé sur nos propres serveurs dans l'Union européenne
+              (stats.synara.be). Il ne dépose aucun cookie, n'écrit rien dans votre
+              navigateur et ne conserve ni votre adresse IP ni un identifiant
+              permanent : il enregistre seulement la page vue, la page de provenance,
+              le pays et le type d'appareil, de façon agrégée. Il sert uniquement à
+              savoir quelles pages sont utiles, n'est partagé avec personne et n'est
+              jamais utilisé pour de la publicité (base légale : intérêt légitime).
+              Si votre navigateur envoie le signal « Do Not Track », il n'est pas
+              utilisé.
+            </p>
             <p className="text-dark-300 mt-4">
               Le site est hébergé sur un serveur situé en France, exploité par
               OVHcloud. Aucune donnée n'est transférée hors de l'Union européenne

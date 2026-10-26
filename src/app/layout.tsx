@@ -246,6 +246,10 @@ export default function RootLayout({
           }}
         />
         <Script src="https://one.synara.be/origine.js" strategy="beforeInteractive" />
+        {/* Mesure d'audience sans cookies hebergee chez Synara ; compte aussi
+            les visiteurs qui refusent le bandeau ; production seulement
+            (data-domains) ; DNT respecte. */}
+        <Script src="https://stats.synara.be/script.js" data-website-id="27a528f8-07ee-476c-ad67-83a95779f658" data-domains="wa-jutsu-charleroi.be" data-do-not-track="true" strategy="afterInteractive" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* JSON-LD Structured Data */}
