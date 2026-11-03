@@ -142,7 +142,7 @@ export async function POST(request: Request) {
     // enregistre, le perdre parce que Resend tousse serait pire.
     try {
       await getResend().emails.send({
-        from: 'Wa-Jutsu Club <noreply@synara.be>',
+        from: 'Club Méthode Wa-Jutsu <noreply@synara.be>',
         to: ['contact@wa-jutsu-charleroi.be'],
         replyTo: email,
         subject: `Message du site — ${esc(objet_id)}`,

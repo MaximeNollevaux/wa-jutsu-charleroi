@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Mentions légales',
-  description: 'Mentions légales du site Club CCAJT Wa-Jutsu Marcinelle.',
+  description: 'Mentions légales du site Club CCAJT Méthode Wa-Jutsu Marcinelle.',
   alternates: {
     canonical: 'https://wa-jutsu-charleroi.be/mentions-legales',
   },
@@ -31,7 +31,7 @@ export default function MentionsLegalesPage() {
               <strong className="text-white">
                 Club Charleroi l’Asie de Ju-Jutsu Traditionnel Méthode Wa-Jutsu ASBL
               </strong><br />
-              Sigle : CCAJT Wa-Jutsu<br />
+              Sigle : CCAJT Méthode Wa-Jutsu<br />
               Siège social : Rue des Merles, 32 – 6001 Marcinelle, Belgique<br />
               N° d'entreprise : 0441.444.624<br />
               Email : contact@wa-jutsu-charleroi.be<br />
@@ -63,7 +63,7 @@ export default function MentionsLegalesPage() {
             </h2>
             <p className="text-dark-300">
               L'ensemble du contenu de ce site (textes, images, vidéos, logos) est la propriété
-              exclusive de l'ASBL CCAJT Wa-Jutsu, sauf mention contraire.
+              exclusive de l'ASBL CCAJT Méthode Wa-Jutsu, sauf mention contraire.
               Toute reproduction, représentation, modification, publication ou adaptation de
               tout ou partie des éléments du site est interdite sans autorisation écrite préalable.
             </p>
@@ -74,7 +74,7 @@ export default function MentionsLegalesPage() {
               Limitation de responsabilité
             </h2>
             <p className="text-dark-300">
-              L’ASBL CCAJT Wa-Jutsu s'efforce de fournir des informations
+              L’ASBL CCAJT Méthode Wa-Jutsu s'efforce de fournir des informations
               exactes et à jour sur ce site. Toutefois, elle ne peut garantir l'exactitude,
               la complétude ou l'actualité des informations diffusées. L'utilisateur reconnaît
               utiliser ces informations sous sa responsabilité exclusive.
@@ -86,7 +86,7 @@ export default function MentionsLegalesPage() {
               Liens externes
             </h2>
             <p className="text-dark-300">
-              Ce site peut contenir des liens vers des sites externes. L'ASBL Wa-Jutsu Club
+              Ce site peut contenir des liens vers des sites externes. L'ASBL CCAJT Méthode Wa-Jutsu
               l'Asie Marcinelle n'exerce aucun contrôle sur ces sites et décline toute
               responsabilité quant à leur contenu.
             </p>

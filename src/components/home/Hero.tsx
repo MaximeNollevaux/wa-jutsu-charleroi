@@ -24,15 +24,15 @@ export function Hero() {
               <span className="text-primary">Transformation</span>
             </h1>
             <p className="text-dark-300 text-lg md:text-xl mb-8 max-w-xl">
-              Découvrez le Wa-Jutsu, un art martial non compétitif axé sur le développement personnel et une self-défense efficace.
+              Découvrez la méthode Wa-Jutsu, un art martial non compétitif axé sur le développement personnel et une self-défense efficace.
               <strong className="text-white"> Premier mois d'essai gratuit.</strong>
             </p>
             <div className="flex flex-wrap gap-4">
               <Button href="/inscription" size="lg">
                 Commencer l'essai gratuit
               </Button>
-              <Button href="/le-wa-jutsu" variant="outline" size="lg">
-                Découvrir le Wa-Jutsu
+              <Button href="/la-methode-wa-jutsu" variant="outline" size="lg">
+                Découvrir la méthode Wa-Jutsu
               </Button>
             </div>
 

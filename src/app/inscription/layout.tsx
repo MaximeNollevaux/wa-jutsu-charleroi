@@ -6,17 +6,17 @@ const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
   title: 'Inscription — 1er mois gratuit, dès 5 ans',
-  description: 'Pré-inscription en ligne au Club CCAJT Wa-Jutsu Marcinelle. Premier mois d\'essai gratuit, sans engagement, pour les enfants dès 5 ans et les adultes.',
+  description: 'Pré-inscription en ligne au Club CCAJT Méthode Wa-Jutsu Marcinelle. Premier mois d\'essai gratuit, sans engagement, pour les enfants dès 5 ans et les adultes.',
   keywords: [
     'inscription arts martiaux charleroi',
     'inscription jujitsu',
     'essai gratuit arts martiaux',
-    's\'inscrire wa-jutsu',
+    's\'inscrire méthode wa-jutsu',
     'cours arts martiaux enfants',
     'inscription self-defense',
   ],
   openGraph: {
-    title: 'Inscription - Wa-Jutsu Club Charleroi',
+    title: 'Inscription - Club Méthode Wa-Jutsu Charleroi',
     description: 'Inscrivez-vous et bénéficiez d\'un mois d\'essai gratuit.',
     url: `${baseUrl}/inscription`,
     type: 'website',

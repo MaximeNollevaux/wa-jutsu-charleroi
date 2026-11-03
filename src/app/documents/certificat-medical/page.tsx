@@ -3,7 +3,7 @@ import { PrintButton } from '@/components/ui/PrintButton'
 
 export const metadata: Metadata = {
   title: 'Certificat médical de non contre-indication',
-  description: 'Certificat de non contre-indication médicale à faire remplir par votre médecin pour la pratique du Wa-Jutsu.',
+  description: 'Certificat de non contre-indication médicale à faire remplir par votre médecin pour la pratique de la méthode Wa-Jutsu.',
   robots: { index: false },
 }
 
@@ -26,11 +26,11 @@ export default function CertificatMedicalPage() {
         <div className="flex items-center justify-between gap-6 mb-6 print:mb-3 border-b-2 border-black pb-4 print:pb-2">
           <img
             src="/images/logo-club-asie.png"
-            alt="Club CCAJT Wa-Jutsu - Marcinelle"
+            alt="Club CCAJT Méthode Wa-Jutsu - Marcinelle"
             className="w-40 print:w-32 h-auto"
           />
           <div className="text-center text-sm print:text-xs leading-snug">
-            <p className="text-xl print:text-base font-bold">Club CCAJT Wa-Jutsu - Marcinelle</p>
+            <p className="text-xl print:text-base font-bold">Club CCAJT Méthode Wa-Jutsu - Marcinelle</p>
             <p>De Ju-Jutsu Traditionnel Méthode Wa-Jutsu</p>
             <p>Association sans but lucratif</p>
             <p className="mt-1">Rue des Merles, 32 — 6001 Marcinelle</p>

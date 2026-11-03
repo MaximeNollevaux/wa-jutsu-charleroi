@@ -99,7 +99,7 @@ export function CalendrierReservation() {
           ref={cadre}
           src={src}
           onLoad={(e) => demanderHauteur(e.currentTarget)}
-          title="Réserver un cours d'essai au Club CCAJT Wa-Jutsu"
+          title="Réserver un cours d'essai au Club CCAJT Méthode Wa-Jutsu"
           loading="lazy"
           className="w-full block"
           height={HAUTEUR_REPLI}

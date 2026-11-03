@@ -31,7 +31,7 @@ export function Disciplines() {
         <SectionHeader
           subtitle="Nos disciplines"
           title="Ce que vous apprendrez"
-          description="Le Wa-Jutsu englobe un large éventail de techniques traditionnelles adaptées au monde moderne."
+          description="La méthode Wa-Jutsu englobe un large éventail de techniques traditionnelles adaptées au monde moderne."
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -66,7 +66,7 @@ export function Disciplines() {
         </div>
 
         <div className="text-center mt-12">
-          <Button href="/le-wa-jutsu">Découvrir le Wa-Jutsu</Button>
+          <Button href="/la-methode-wa-jutsu">Découvrir la méthode Wa-Jutsu</Button>
         </div>
       </div>
     </section>

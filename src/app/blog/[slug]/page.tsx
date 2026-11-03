@@ -143,7 +143,7 @@ export default async function ArticlePage({
                 À propos du club
               </p>
               <p className="text-dark-300 leading-relaxed">
-                Le <strong className="text-white">Club CCAJT Wa-Jutsu</strong> enseigne le
+                Le <strong className="text-white">Club CCAJT Méthode Wa-Jutsu</strong> enseigne le
                 ju-jutsu traditionnel japonais à Marcinelle depuis plus de trente
                 ans. ASBL affiliée à l&apos;Académie Européenne de Ju-Jutsu
                 Traditionnel, il accueille les enfants dès 5 ans et les adultes de
@@ -167,10 +167,10 @@ export default async function ArticlePage({
                     elle, c'est elle qui vise « wa jutsu » — 1554 affichages sur
                     16 mois, et la requete ou le club a le plus a gagner. */}
                 <Link
-                  href="/le-wa-jutsu"
+                  href="/la-methode-wa-jutsu"
                   className="inline-flex items-center justify-center border-2 border-white text-white font-heading font-bold uppercase tracking-wide px-6 py-3 hover:bg-white hover:text-dark-800 transition-colors"
                 >
-                  Qu&apos;est-ce que le Wa-Jutsu ?
+                  Qu&apos;est-ce que la méthode Wa-Jutsu ?
                 </Link>
               </div>
             </aside>

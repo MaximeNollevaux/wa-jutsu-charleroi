@@ -13,7 +13,7 @@ import {
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
   title: 'Le Club — ASBL de Ju-Jutsu à Marcinelle depuis 1990',
-  description: 'Le Club CCAJT Wa-Jutsu Marcinelle, ASBL fondée en 1990, affiliée à l\'AEJT. Notre équipe, notre histoire et nos valeurs.',
+  description: 'Le Club CCAJT Méthode Wa-Jutsu Marcinelle, ASBL fondée en 1990, affiliée à l\'AEJT. Notre équipe, notre histoire et nos valeurs.',
 }
 
 const values = [
@@ -79,7 +79,7 @@ export default function LeClubPage() {
             Le Club
           </h1>
           <p className="text-dark-300 text-xl max-w-3xl mx-auto">
-            Club CCAJT Wa-Jutsu Marcinelle - Un club familial dédié à la pratique
+            Club CCAJT Méthode Wa-Jutsu Marcinelle - Un club familial dédié à la pratique
             du Ju-Jutsu Traditionnel depuis plus de 30 ans.
           </p>
         </div>
@@ -96,12 +96,12 @@ export default function LeClubPage() {
                 centered={false}
               />
               <p className="text-dark-300 mb-6">
-                L'<strong className="text-white">ASBL CCAJT Wa-Jutsu</strong> est une association
+                L'<strong className="text-white">ASBL CCAJT Méthode Wa-Jutsu</strong> est une association
                 sans but lucratif déclarée sous le n° d'entreprise 441444624, avec son siège social
                 situé Rue des Merles, 32 à 6001 Marcinelle.
               </p>
               <p className="text-dark-300 mb-6">
-                Nous pratiquons la méthode <strong className="text-primary">Wa-Jutsu</strong>, une forme
+                Nous pratiquons la <strong className="text-primary">méthode Wa-Jutsu</strong>, une forme
                 de Ju-Jutsu Traditionnel à but non compétitif, sous l'égide de l'Académie Européenne
                 de Ju-Jutsu Traditionnel (AEJT) du Soké Fondateur Maître J.J. QUERO.
               </p>
@@ -264,7 +264,7 @@ export default function LeClubPage() {
             Rejoignez notre club
           </h2>
           <p className="text-on-primary/90 text-lg mb-8">
-            Premier mois d'essai gratuit. Venez découvrir le Wa-Jutsu et notre communauté.
+            Premier mois d'essai gratuit. Venez découvrir la méthode Wa-Jutsu et notre communauté.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button href="/inscription" variant="outline" size="lg">

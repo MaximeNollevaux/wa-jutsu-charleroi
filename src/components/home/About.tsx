@@ -56,13 +56,13 @@ export function About() {
           <div>
             <SectionHeader
               subtitle="À propos du club"
-              title="Le Club CCAJT Wa-Jutsu"
+              title="Le Club CCAJT Méthode Wa-Jutsu"
               centered={false}
             />
             <p className="text-dark-300 mb-6">
-              Le <strong className="text-white">Club CCAJT Wa-Jutsu Marcinelle</strong> pratique un art martial
-              traditionnel japonais non compétitif. Notre méthode, le Wa-Jutsu, signifie littéralement
-              "l'art de l'harmonie" et vise la transformation personnelle profonde.
+              Le <strong className="text-white">Club CCAJT Méthode Wa-Jutsu Marcinelle</strong> pratique un art martial
+              traditionnel japonais non compétitif. Nous enseignons la méthode Wa-Jutsu, dont le nom signifie littéralement
+              "l'art de l'harmonie", et qui vise la transformation personnelle profonde.
             </p>
             <p className="text-dark-300 mb-8">
               Affilié à l'<strong className="text-white">Académie Européenne de Ju-Jutsu Traditionnel (AEJT)</strong>

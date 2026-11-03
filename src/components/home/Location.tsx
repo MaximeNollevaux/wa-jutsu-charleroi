@@ -22,7 +22,7 @@ export function Location() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localisation du Club CCAJT Wa-Jutsu Marcinelle"
+              title="Localisation du Club CCAJT Méthode Wa-Jutsu Marcinelle"
             />
           </div>
 

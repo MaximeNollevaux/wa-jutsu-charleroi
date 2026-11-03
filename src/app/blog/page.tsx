@@ -11,17 +11,17 @@ const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
   title: `Conseils arts martiaux à Charleroi`,
-  description: `Choisir un art martial pour son enfant, débuter adulte, comprendre le Wa-Jutsu : les articles écrits par les enseignants du club.`,
+  description: `Choisir un art martial pour son enfant, débuter adulte, comprendre la méthode Wa-Jutsu : les articles écrits par les enseignants du club.`,
   keywords: [
     'blog arts martiaux charleroi',
     'conseils arts martiaux',
     'ju-jutsu charleroi',
-    'wa-jutsu',
+    'méthode wa-jutsu',
     'choisir un art martial',
     'arts martiaux marcinelle',
   ],
   openGraph: {
-    title: `Le blog du Club CCAJT Wa-Jutsu Marcinelle`,
+    title: `Le blog du Club CCAJT Méthode Wa-Jutsu Marcinelle`,
     description: `Conseils pratiques et repères sur les arts martiaux, par les enseignants du club de Marcinelle.`,
     url: `${baseUrl}/blog`,
     type: 'website',
@@ -38,7 +38,7 @@ const blogJsonLd = (articles: Article[]) => ({
   '@context': 'https://schema.org',
   '@type': 'Blog',
   '@id': `${baseUrl}/blog#blog`,
-  name: `Le blog du Club CCAJT Wa-Jutsu Marcinelle`,
+  name: `Le blog du Club CCAJT Méthode Wa-Jutsu Marcinelle`,
   description: `Conseils et reperes sur les arts martiaux a Charleroi, par les enseignants du club.`,
   url: `${baseUrl}/blog`,
   inLanguage: 'fr-BE',

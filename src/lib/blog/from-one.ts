@@ -62,7 +62,7 @@ function depuisOne(a: ArticleOne): Article {
     keywords: a.keywords || [],
     publishedAt: publie,
     updatedAt: jour(a.updated_at),
-    author: `Club CCAJT Wa-Jutsu Marcinelle`,
+    author: `Club CCAJT Méthode Wa-Jutsu Marcinelle`,
     category: a.category || 'Vie du club',
     readingMinutes: Math.max(1, Math.round(md.split(/\s+/).length / 200)),
     image: a.cover_image_url || IMAGE_ARTICLE_PAR_DEFAUT,

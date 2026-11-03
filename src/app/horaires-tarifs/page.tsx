@@ -306,7 +306,7 @@ export default function HorairesTarifsPage() {
           </h2>
           <p className="text-on-primary/90 text-lg mb-8 max-w-2xl mx-auto">
             Les nouveaux membres bénéficient d'un mois d'essai gratuit (4 cours).
-            Aucun engagement, venez découvrir le Wa-Jutsu sans pression.
+            Aucun engagement, venez découvrir la méthode Wa-Jutsu sans pression.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button href="/inscription" variant="outline" size="lg">

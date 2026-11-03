@@ -13,7 +13,7 @@ const baseUrl = 'https://wa-jutsu-charleroi.be'
 // Et la page self-defense existante s'adresse aux adultes.
 //
 // ⚠ Premiere version corrigee le 2026-09-07 : elle promettait que l'enfant
-// « n'apprend pas a frapper ». C'etait faux — le Wa-Jutsu enseigne les
+// « n'apprend pas a frapper ». C'etait faux — la méthode Wa-Jutsu enseigne les
 // Atemi-Waza — et surtout c'etait une promesse NEGATIVE, qui ne donne envie de
 // rien. La self-defense est efficace, le club l'ecrit lui-meme. Ce qui le
 // distingue n'est pas ce qu'il retire, c'est ce qu'il ajoute : l'absence de
@@ -73,7 +73,7 @@ const objections = [
   {
     dite: "Un art martial, ça va le rendre bagarreur.",
     reponse:
-      "C'est le contraire qui se produit, et il y a une raison technique. Ici, il n'y a ni tournoi, ni classement, ni podium. Le temps que les autres clubs passent à préparer des compétitions, nous le passons sur ce que le Wa-Jutsu appelle le Shin — l'état d'esprit : se maîtriser, garder son calme, savoir s'arrêter. La devise du club est « Amitié, entraide et prospérité partagée », et la maxime qu'on y répète est « un seul ennemi à vaincre : soi-même ». Un enfant qui s'entraîne toutes les semaines à contrôler une clé sur un partenaire apprend surtout à doser sa force.",
+      "C'est le contraire qui se produit, et il y a une raison technique. Ici, il n'y a ni tournoi, ni classement, ni podium. Le temps que les autres clubs passent à préparer des compétitions, nous le passons sur ce que la méthode Wa-Jutsu appelle le Shin — l'état d'esprit : se maîtriser, garder son calme, savoir s'arrêter. La devise du club est « Amitié, entraide et prospérité partagée », et la maxime qu'on y répète est « un seul ennemi à vaincre : soi-même ». Un enfant qui s'entraîne toutes les semaines à contrôler une clé sur un partenaire apprend surtout à doser sa force.",
   },
   {
     dite: "Est-ce qu'il saura vraiment se défendre s'il se fait embêter à l'école ?",
@@ -178,7 +178,7 @@ export default function CoursEnfantsPage() {
             </div>
             <div>
               <dt className="text-primary font-heading font-bold uppercase text-sm tracking-wide">
-                Le wa-jutsu, c&apos;est quoi
+                La méthode Wa-Jutsu, c&apos;est quoi
               </dt>
               <dd>
                 Une méthode de ju-jutsu traditionnel créée en 1982, sans

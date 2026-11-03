@@ -8,12 +8,12 @@ const baseUrl = 'https://wa-jutsu-charleroi.be'
 const contactJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: 'Contact - Wa-Jutsu Charleroi',
-  description: 'Contactez le Club CCAJT Wa-Jutsu Marcinelle pour toute question sur les cours, les inscriptions ou l\'accès au dojo.',
+  name: 'Contact - Méthode Wa-Jutsu Charleroi',
+  description: 'Contactez le Club CCAJT Méthode Wa-Jutsu Marcinelle pour toute question sur les cours, les inscriptions ou l\'accès au dojo.',
   url: `${baseUrl}/contact`,
   mainEntity: {
     '@type': 'SportsClub',
-    name: 'Club CCAJT Wa-Jutsu Marcinelle',
+    name: 'Club CCAJT Méthode Wa-Jutsu Marcinelle',
     telephone: '+32473838075',
     email: 'contact@wa-jutsu-charleroi.be',
     address: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: 'Contact & accès — 4 Rue de l\'Asie, Marcinelle',
   description: 'Le dojo se trouve au 4 Rue de l\'Asie, 6001 Marcinelle. Téléphone, email et formulaire pour joindre le club.',
   keywords: [
-    'contact wa-jutsu charleroi',
+    'contact méthode wa-jutsu charleroi',
     'adresse club jujitsu marcinelle',
     'telephone arts martiaux charleroi',
     'inscription jujitsu',

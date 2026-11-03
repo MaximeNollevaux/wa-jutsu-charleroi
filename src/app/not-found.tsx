@@ -81,8 +81,8 @@ export default function NotFound() {
         {/* Bottom hint */}
         <p className="mt-12 text-dark-500 text-sm">
           Vous cherchez quelque chose de précis ?{' '}
-          <Link href="/le-wa-jutsu" className="text-primary hover:underline">
-            Découvrez le Wa-Jutsu
+          <Link href="/la-methode-wa-jutsu" className="text-primary hover:underline">
+            Découvrez la méthode Wa-Jutsu
           </Link>{' '}
           ou consultez nos{' '}
           <Link href="/horaires-tarifs" className="text-primary hover:underline">

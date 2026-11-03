@@ -22,7 +22,7 @@ const steps = [
   {
     number: 2,
     title: 'Mois d\'essai gratuit',
-    description: 'Profitez de 4 cours d\'essai gratuits pour découvrir le Wa-Jutsu.',
+    description: 'Profitez de 4 cours d\'essai gratuits pour découvrir la méthode Wa-Jutsu.',
   },
   {
     number: 3,
@@ -59,7 +59,7 @@ export default function InscriptionPage() {
           </h1>
           <p className="text-dark-300 text-xl max-w-3xl mx-auto">
             Inscrivez-vous en quelques clics et bénéficiez d'un mois d'essai gratuit
-            pour découvrir le Wa-Jutsu.
+            pour découvrir la méthode Wa-Jutsu.
           </p>
           {/* Le formulaire demande un engagement que le visiteur venu d'une
               annonce n'a pas encore. La reservation d'un seul cours est le pas

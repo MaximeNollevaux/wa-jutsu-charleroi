@@ -6,22 +6,22 @@ import { Button } from '@/components/ui/Button'
 // les metadonnees de la page ecrasent celles du layout. Les layouts en
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Photos du dojo et des cours — Wa-Jutsu Marcinelle',
-  description: 'Photos du dojo, des entraînements et des événements du Club CCAJT Wa-Jutsu Marcinelle — à quoi ressemble vraiment un cours avant de venir essayer.',
+  title: 'Photos du dojo et des cours — Méthode Wa-Jutsu Marcinelle',
+  description: 'Photos du dojo, des entraînements et des événements du Club CCAJT Méthode Wa-Jutsu Marcinelle — à quoi ressemble vraiment un cours avant de venir essayer.',
 }
 
 // Photos réelles du club, sélectionnées dans les archives du club.
 const galleryImages = [
-  { id: 1, src: '/images/gallery/gallery-01.webp', alt: 'Moment partagé au Club CCAJT Wa-Jutsu', category: 'club' },
+  { id: 1, src: '/images/gallery/gallery-01.webp', alt: 'Moment partagé au Club CCAJT Méthode Wa-Jutsu', category: 'club' },
   { id: 2, src: '/images/gallery/gallery-02.webp', alt: 'Entraînement au dojo', category: 'training' },
-  { id: 3, src: '/images/gallery/gallery-03.webp', alt: 'Pratique du Wa-Jutsu', category: 'training' },
+  { id: 3, src: '/images/gallery/gallery-03.webp', alt: 'Pratique de la méthode Wa-Jutsu', category: 'training' },
   { id: 4, src: '/images/gallery/gallery-04.webp', alt: 'Cours et progression au club', category: 'training' },
-  { id: 5, src: '/images/gallery/gallery-05.webp', alt: 'Technique de Wa-Jutsu', category: 'training' },
+  { id: 5, src: '/images/gallery/gallery-05.webp', alt: 'Technique de la méthode Wa-Jutsu', category: 'training' },
   { id: 6, src: '/images/gallery/gallery-06.webp', alt: 'Esprit de groupe au dojo', category: 'club' },
   { id: 7, src: '/images/gallery/gallery-07.webp', alt: 'Entraînement traditionnel', category: 'training' },
   { id: 8, src: '/images/gallery/gallery-08.webp', alt: 'Pratiquants du club', category: 'club' },
-  { id: 9, src: '/images/gallery/gallery-09.webp', alt: 'Séance de Wa-Jutsu', category: 'training' },
-  { id: 10, src: '/images/gallery/gallery-10.webp', alt: 'Vie du Club CCAJT Wa-Jutsu', category: 'club' },
+  { id: 9, src: '/images/gallery/gallery-09.webp', alt: 'Séance de la méthode Wa-Jutsu', category: 'training' },
+  { id: 10, src: '/images/gallery/gallery-10.webp', alt: 'Vie du Club CCAJT Méthode Wa-Jutsu', category: 'club' },
 ]
 
 export default function GaleriePage() {
@@ -95,7 +95,7 @@ export default function GaleriePage() {
           <SectionHeader
             subtitle="Vidéos"
             title="En action"
-            description="Découvrez le Wa-Jutsu en mouvement."
+            description="Découvrez la méthode Wa-Jutsu en mouvement."
           />
 
           <div className="max-w-4xl mx-auto">

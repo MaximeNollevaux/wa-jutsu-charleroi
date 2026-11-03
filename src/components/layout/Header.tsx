@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 const navigation = [
   { name: 'Accueil', href: '/' },
-  { name: 'Le Wa-Jutsu', href: '/le-wa-jutsu' },
+  { name: 'Méthode Wa-Jutsu', href: '/la-methode-wa-jutsu' },
   { name: 'Le Club', href: '/le-club' },
   { name: 'Self-défense', href: '/self-defense' },
   { name: 'Enfants', href: '/cours-enfants' },
@@ -69,14 +69,14 @@ export function Header() {
                 priority
                 className="w-12 h-12 rounded-full"
               />
-              <div className="hidden sm:block">
-                <div className="font-heading font-bold text-lg leading-tight">WA-JUTSU</div>
+              <div className="hidden sm:block xl:hidden">
+                <div className="font-heading font-bold text-lg leading-tight">MÉTHODE WA-JUTSU</div>
                 <div className="text-xs text-dark-400 uppercase tracking-wider">Charleroi</div>
               </div>
             </Link>
 
             {/* Desktop navigation */}
-            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <div className="hidden xl:flex items-center gap-6 xl:gap-8">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -97,7 +97,7 @@ export function Header() {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden p-2 text-dark-300 hover:text-white"
+              className="xl:hidden p-2 text-dark-300 hover:text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">Ouvrir le menu</span>
@@ -112,7 +112,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-dark-900 border-t border-dark-700">
+          <div className="xl:hidden bg-dark-900 border-t border-dark-700">
             <div className="px-4 py-4 space-y-2">
               {navigation.map((item) => (
                 <Link

@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'Règlement intérieur',
-  description: 'Règlement d\'ordre intérieur du Club CCAJT Wa-Jutsu Marcinelle.',
+  description: 'Règlement d\'ordre intérieur du Club CCAJT Méthode Wa-Jutsu Marcinelle.',
   alternates: {
     canonical: 'https://wa-jutsu-charleroi.be/reglement-interieur',
   },
@@ -19,7 +19,7 @@ export default function ReglementInterieurPage() {
 
         <div className="bg-dark-700 border border-dark-600 p-6 mb-8">
           <p className="text-dark-300">
-            Toute personne qui demande son affiliation à l'association « Club CCAJT Wa-Jutsu »
+            Toute personne qui demande son affiliation à l'association « Club CCAJT Méthode Wa-Jutsu »
             s'engage à respecter le présent règlement d'ordre intérieur.
           </p>
         </div>
@@ -33,7 +33,7 @@ export default function ReglementInterieurPage() {
             <ul className="text-dark-300 space-y-4">
               <li>
                 <strong className="text-white">1.1</strong> Toute personne qui demande son affiliation à l'association
-                « Club CCAJT Wa-Jutsu » s'engage à respecter le présent règlement d'ordre intérieur.
+                « Club CCAJT Méthode Wa-Jutsu » s'engage à respecter le présent règlement d'ordre intérieur.
               </li>
               <li>
                 <strong className="text-white">1.2</strong> Toute personne représentant un enfant et qui demande l'affiliation

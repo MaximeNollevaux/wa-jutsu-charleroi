@@ -6,16 +6,16 @@ const baseUrl = 'https://wa-jutsu-charleroi.be'
 
 export const metadata: Metadata = {
   title: 'Photos du dojo et des cours à Marcinelle',
-  description: 'Photos du dojo, des cours, des passages de grades et des démonstrations du Club CCAJT Wa-Jutsu Marcinelle.',
+  description: 'Photos du dojo, des cours, des passages de grades et des démonstrations du Club CCAJT Méthode Wa-Jutsu Marcinelle.',
   keywords: [
-    'photos wa-jutsu',
+    'photos méthode wa-jutsu',
     'galerie arts martiaux',
     'photos jujitsu charleroi',
     'evenements arts martiaux',
     'demonstration ju-jutsu',
   ],
   openGraph: {
-    title: 'Photos du dojo et des cours — Wa-Jutsu Marcinelle',
+    title: 'Photos du dojo et des cours — Méthode Wa-Jutsu Marcinelle',
     description: 'Photos de nos cours, événements et démonstrations.',
     url: `${baseUrl}/galerie`,
     type: 'website',

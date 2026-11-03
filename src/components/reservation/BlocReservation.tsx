@@ -5,7 +5,7 @@ import { CalendrierReservation } from './CalendrierReservation'
  * Le passage a l'action, pose au bas d'une page d'arrivee.
  *
  * Pourquoi ce bloc existe : les annonces de la campagne de rentree mènent sur
- * quatre pages differentes — /self-defense, /le-wa-jutsu, un article de blog,
+ * quatre pages differentes — /self-defense, /la-methode-wa-jutsu, un article de blog,
  * et /reserver. Seule la derniere permettait de reserver. Les trois autres
  * finissaient sur un lien « Reserver un cours d'essai » : un clic de plus,
  * une page de plus a charger, et autant d'occasions de partir. Un clic paye

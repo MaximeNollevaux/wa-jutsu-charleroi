@@ -97,7 +97,7 @@ export async function POST(request: Request) {
     // Send email notification to admin
     try {
       await getResend().emails.send({
-        from: 'Wa-Jutsu Club <noreply@synara.be>',
+        from: 'Club Méthode Wa-Jutsu <noreply@synara.be>',
         // Alias qui redistribue aux quatre boites du comite (president,
         // secretaire, directeur, tresorier). Changer qui recoit se fait dans
         // l'alias Mailu, pas ici : le code n'a pas a connaitre le comite.
@@ -108,7 +108,7 @@ export async function POST(request: Request) {
         replyTo: email,
         subject: `Nouvelle inscription - ${esc(firstName)} ${esc(lastName)}`,
         html: `
-          <h2>Nouvelle pré-inscription au Wa-Jutsu Club</h2>
+          <h2>Nouvelle pré-inscription au Club Méthode Wa-Jutsu</h2>
           <table style="border-collapse:collapse;width:100%;max-width:600px">
             <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Nom</td><td style="padding:8px;border:1px solid #ddd">${esc(lastName)}</td></tr>
             <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Prénom</td><td style="padding:8px;border:1px solid #ddd">${esc(firstName)}</td></tr>

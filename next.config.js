@@ -36,7 +36,7 @@ const nextConfig = {
       },
       {
         source: '/methodewajutsu.php',
-        destination: '/le-wa-jutsu',
+        destination: '/la-methode-wa-jutsu',
         permanent: true,
       },
       {
@@ -51,12 +51,12 @@ const nextConfig = {
       },
       {
         source: '/progressiontechnique.php',
-        destination: '/le-wa-jutsu',
+        destination: '/la-methode-wa-jutsu',
         permanent: true,
       },
       {
         source: '/bushido.php',
-        destination: '/le-wa-jutsu',
+        destination: '/la-methode-wa-jutsu',
         permanent: true,
       },
       {
@@ -97,6 +97,13 @@ const nextConfig = {
       {
         source: '/plandusite.php',
         destination: '/',
+        permanent: true,
+      },
+      // « Wa-Jutsu » ne s'ecrit plus jamais seul : la page pilier est devenue
+      // /la-methode-wa-jutsu (2026-11-03). L'ancienne adresse garde son referencement.
+      {
+        source: '/le-wa-jutsu',
+        destination: '/la-methode-wa-jutsu',
         permanent: true,
       },
       // Anciennes pages de formulaire

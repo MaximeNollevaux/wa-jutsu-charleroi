@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const quickLinks = [
   { name: 'Accueil', href: '/' },
-  { name: 'Le Wa-Jutsu', href: '/le-wa-jutsu' },
+  { name: 'Méthode Wa-Jutsu', href: '/la-methode-wa-jutsu' },
   { name: 'Le Club', href: '/le-club' },
   { name: 'Self-défense', href: '/self-defense' },
   { name: 'Cours enfants', href: '/cours-enfants' },
@@ -38,7 +38,7 @@ export function Footer() {
                 className="w-12 h-12 rounded-full"
               />
               <div>
-                <div className="font-heading font-bold text-lg leading-tight">WA-JUTSU</div>
+                <div className="font-heading font-bold text-lg leading-tight">MÉTHODE WA-JUTSU</div>
                 <div className="text-xs text-dark-400 uppercase tracking-wider">CCAJT Marcinelle</div>
               </div>
             </Link>
@@ -127,7 +127,7 @@ export function Footer() {
           <div>
             <h3 className="font-heading font-bold text-lg uppercase tracking-wide mb-6">Essai gratuit</h3>
             <p className="text-dark-400 text-sm mb-4">
-              Découvrez le Wa-Jutsu avec un mois d'essai gratuit (4 cours inclus).
+              Découvrez la méthode Wa-Jutsu avec un mois d'essai gratuit (4 cours inclus).
             </p>
             <Link href="/inscription" className="btn-primary inline-block text-sm">
               S'inscrire maintenant
@@ -145,7 +145,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-dark-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-dark-500 text-sm">
-              &copy; {currentYear} ASBL CCAJT Wa-Jutsu. Tous droits réservés.
+              &copy; {currentYear} ASBL CCAJT Méthode Wa-Jutsu. Tous droits réservés.
               {" "}Site réalisé par{" "}
               <a href="https://synara.be/fr/villes/charleroi" className="underline hover:text-dark-300">
                 Synara

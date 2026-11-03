@@ -21,7 +21,7 @@
 - **WebSite** : Informations du site
 
 #### Pages specifiques :
-- **/le-wa-jutsu** : FAQPage (4 questions/reponses)
+- **/la-methode-wa-jutsu** : FAQPage (4 questions/reponses)
 - **/horaires-tarifs** : Service + Offers + FAQPage
 - **/contact** : ContactPage
 
@@ -36,7 +36,7 @@
 | Page | Title optimise | Canonical | JSON-LD |
 |------|---------------|-----------|---------|
 | / | Wa-Jutsu Charleroi - Club Ju-Jutsu Traditionnel | oui | Org+Local+Website |
-| /le-wa-jutsu | Le Wa-Jutsu - Art Martial Traditionnel | oui | FAQPage |
+| /la-methode-wa-jutsu | La méthode Wa-Jutsu - Art Martial Traditionnel | oui | FAQPage |
 | /le-club | Le Club - Wa-Jutsu Club Asie Marcinelle | oui | - |
 | /horaires-tarifs | Horaires & Tarifs - des 8EUR/mois | oui | Service+FAQ |
 | /contact | Contact - Wa-Jutsu Club Charleroi | oui | ContactPage |

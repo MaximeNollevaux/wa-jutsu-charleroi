@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Wa-Jutsu Charleroi — Club de ju-jutsu traditionnel',
-    short_name: 'Wa-Jutsu',
+    name: 'Méthode Wa-Jutsu Charleroi — Club de ju-jutsu traditionnel',
+    short_name: 'Méthode Wa-Jutsu',
     description: 'Club de ju-jutsu traditionnel, méthode Wa-Jutsu, à Marcinelle (Charleroi). Art martial non compétitif, self-défense efficace.',
     start_url: '/',
     display: 'standalone',

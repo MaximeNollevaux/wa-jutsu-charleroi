@@ -6,7 +6,7 @@ import { ChevronRightIcon, HomeIcon } from '@heroicons/react/24/outline'
 import { blogBreadcrumbLabels } from '@/lib/blog/breadcrumb-labels'
 
 const pathLabels: Record<string, string> = {
-  'le-wa-jutsu': 'Le Wa-Jutsu',
+  'la-methode-wa-jutsu': 'La méthode Wa-Jutsu',
   'le-club': 'Le Club',
   'horaires-tarifs': 'Horaires & Tarifs',
   'contact': 'Contact',

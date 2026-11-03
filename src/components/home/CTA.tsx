@@ -16,7 +16,7 @@ export function CTA() {
           Prêt à commencer<br />votre transformation ?
         </h2>
         <p className="text-xl md:text-2xl text-on-primary/90 mb-8 max-w-2xl mx-auto">
-          Rejoignez-nous et découvrez le Wa-Jutsu avec un mois d'essai gratuit.
+          Rejoignez-nous et découvrez la méthode Wa-Jutsu avec un mois d'essai gratuit.
           Aucun engagement, juste la passion des arts martiaux.
         </p>
         <div className="flex flex-wrap justify-center gap-4">

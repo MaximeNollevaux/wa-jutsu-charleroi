@@ -5,7 +5,7 @@
  * Router, une page qui redeclare `openGraph` REMPLACE l'objet entier du
  * layout — elle n'en herite pas champ par champ. Neuf pages redeclaraient
  * `openGraph` pour poser leur titre et leur adresse, et perdaient l'image au
- * passage : un lien vers /le-wa-jutsu ou /horaires-tarifs partage sur WhatsApp
+ * passage : un lien vers /la-methode-wa-jutsu ou /horaires-tarifs partage sur WhatsApp
  * ou Facebook sortait sans visuel, ce que personne ne voit depuis le site.
  *
  * Meme piege que les titres, corriges le 2026-08-30 : ce qui est declare a deux
@@ -20,6 +20,6 @@ export const IMAGE_PARTAGE = [
     url: `${baseUrl}/og-image.jpg`,
     width: 1200,
     height: 630,
-    alt: "Club CCAJT Wa-Jutsu — dojo de Marcinelle, Charleroi",
+    alt: "Club CCAJT Méthode Wa-Jutsu — dojo de Marcinelle, Charleroi",
   },
 ]

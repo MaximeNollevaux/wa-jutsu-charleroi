@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     'ju-jutsu self defense',
   ],
   openGraph: {
-    title: 'Self-défense à Charleroi — Wa-Jutsu Club Marcinelle',
+    title: 'Self-défense à Charleroi — Club Méthode Wa-Jutsu Marcinelle',
     description:
       "Les techniques de défense du ju-jutsu traditionnel, apprises dans la durée plutôt qu'en stage express. Cours adultes le jeudi soir à Marcinelle.",
     url: `${baseUrl}/self-defense`,

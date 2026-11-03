@@ -7,7 +7,7 @@ import { BlocReservation } from '@/components/reservation/BlocReservation'
 // les metadonnees de la page ecrasent celles du layout. Les layouts en
 // declaraient aussi, et personne ne les a jamais vues.
 export const metadata: Metadata = {
-  title: 'Le Wa-Jutsu — Art martial japonais sans compétition',
+  title: 'La méthode Wa-Jutsu — Art martial japonais sans compétition',
   description: 'Méthode de ju-jutsu traditionnel créée en 1982 par Maître J.J. Quero, sans compétition ni classement. Cours à Marcinelle, dès 10 €/mois.',
 }
 
@@ -54,7 +54,7 @@ export default function LeWaJutsuPage() {
             L'Art de l'Harmonie
           </p>
           <h1 className="font-heading font-extrabold text-5xl md:text-6xl uppercase mb-6">
-            Le Wa-Jutsu
+            La méthode Wa-Jutsu
           </h1>
           <p className="text-dark-300 text-xl max-w-3xl mx-auto">
             Un art martial traditionnel japonais non compétitif, axé sur la transformation personnelle
@@ -82,7 +82,7 @@ export default function LeWaJutsuPage() {
                 centered={false}
               />
               <p className="text-dark-300 mb-6">
-                Le terme <strong className="text-white">"Wa-Jutsu"</strong> signifie littéralement
+                Le nom de la <strong className="text-white">méthode Wa-Jutsu</strong> signifie littéralement
                 "l'art de l'harmonie". Cette discipline ne vise pas la compétition mais la
                 <strong className="text-primary"> transformation personnelle profonde</strong>.
               </p>
@@ -91,7 +91,7 @@ export default function LeWaJutsuPage() {
                 reflète l'esprit de communauté et d'entraide qui règne au sein de notre pratique.
               </p>
               <p className="text-dark-300 mb-8">
-                Dans un dojo de Wa-Jutsu, il n'y a pas de notion d'êtres supérieurs ou inférieurs.
+                Dans un dojo de la méthode Wa-Jutsu, il n'y a pas de notion d'êtres supérieurs ou inférieurs.
                 Chacun se trouve sur une Voie d'évolution, avec ses qualités et ses défauts.
                 Comme le disent les Maîtres : <em className="text-primary">"Un seul ennemi à vaincre… Soi-même !"</em>
               </p>
@@ -100,7 +100,7 @@ export default function LeWaJutsuPage() {
               <div className="bg-dark-800 p-6 border-l-4 border-primary">
                 <h3 className="font-heading font-bold text-lg mb-3">Le Bushido</h3>
                 <p className="text-dark-400 text-sm">
-                  Le pratiquant de Wa-Jutsu suit les valeurs morales dictées par le code d'honneur
+                  Le pratiquant de la méthode Wa-Jutsu suit les valeurs morales dictées par le code d'honneur
                   et de morale traditionnelle japonaise : le Bushido. La technique n'est rien si
                   le pratiquant néglige ces valeurs fondamentales.
                 </p>
@@ -135,7 +135,7 @@ export default function LeWaJutsuPage() {
           <SectionHeader
             subtitle="Les techniques"
             title="Ce que vous apprendrez"
-            description="Le Wa-Jutsu englobe un large éventail de techniques issues du Ju-Jutsu traditionnel."
+            description="La méthode Wa-Jutsu englobe un large éventail de techniques issues du Ju-Jutsu traditionnel."
           />
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -272,7 +272,7 @@ export default function LeWaJutsuPage() {
       <section className="py-20 bg-primary text-on-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl uppercase mb-6">
-            Prêt à découvrir le Wa-Jutsu ?
+            Prêt à découvrir la méthode Wa-Jutsu ?
           </h2>
           <p className="text-on-primary/90 text-lg mb-8">
             Bénéficiez d'un mois d'essai gratuit et découvrez par vous-même
