@@ -11,7 +11,7 @@
 export const blogBreadcrumbLabels: Record<string, string> = {
   'rentree-sportive-2026-inscriptions-marcinelle': 'Rentrée 2026',
   'quel-art-martial-pour-mon-enfant-charleroi': 'Art martial pour son enfant',
-  'wa-jutsu-ou-ju-jitsu-quelle-difference': 'Méthode Wa-Jutsu ou Ju-Jitsu',
+  'methode-wa-jutsu-ou-ju-jitsu-quelle-difference': 'Méthode Wa-Jutsu ou Ju-Jitsu',
   'premier-cours-arts-martiaux-comment-ca-se-passe': 'Le premier cours',
   'debuter-un-art-martial-adulte-apres-30-ans': 'Débuter adulte',
   'pourquoi-un-art-martial-sans-competition': 'Sans compétition',

@@ -106,6 +106,12 @@ const nextConfig = {
         destination: '/la-methode-wa-jutsu',
         permanent: true,
       },
+      // Article du blog (Synara One) renomme le meme jour, pour la meme raison.
+      {
+        source: '/blog/wa-jutsu-ou-ju-jitsu-quelle-difference',
+        destination: '/blog/methode-wa-jutsu-ou-ju-jitsu-quelle-difference',
+        permanent: true,
+      },
       // Anciennes pages de formulaire
       {
         source: '/ajax-load/:path*',
