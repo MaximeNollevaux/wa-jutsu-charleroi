@@ -28,7 +28,7 @@ export default function FormulaireInscriptionPage() {
             Club CCAJT Méthode Wa-Jutsu - Marcinelle
           </h1>
           <p className="text-sm">ASBL N° 441444624</p>
-          <p className="text-sm">Siège social : Rue des Merles, 32 — 6001 Marcinelle</p>
+          <p className="text-sm">Dojo : 4 Rue de l'Asie — 6001 Marcinelle</p>
           <p className="text-sm">Tél. : (+32) 0473/83.80.75</p>
           <h2 className="text-xl font-bold uppercase mt-4">
             Formulaire d'inscription — Saison {new Date().getFullYear()}-{new Date().getFullYear() + 1}

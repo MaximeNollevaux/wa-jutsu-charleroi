@@ -27,12 +27,17 @@ export default function MentionsLegalesPage() {
                 INSCRITE au registre (BCE 0441.444.624), pas le sigle d'usage :
                 c'est elle qui identifie l'editeur en cas de litige. Le sigle
                 officiel suit, puisque c'est sous ce nom que le club se presente.
+                Le siege (rue des Merles) n'apparait QUE sur cette page : l'art.
+                2:20 CSA l'impose sur le site, mais des visiteurs le prenaient
+                pour le lieu des cours (Maxime, 2026-11-03). Partout ailleurs,
+                seule l'adresse du dojo.
               */}
               <strong className="text-white">
                 Club Charleroi l’Asie de Ju-Jutsu Traditionnel Méthode Wa-Jutsu ASBL
               </strong><br />
               Sigle : CCAJT Méthode Wa-Jutsu<br />
-              Siège social : Rue des Merles, 32 – 6001 Marcinelle, Belgique<br />
+              Siège social (adresse administrative, aucun cours n'y a lieu) : Rue des Merles, 32 – 6001 Marcinelle, Belgique<br />
+              Lieu des cours : dojo, 4 Rue de l'Asie – 6001 Marcinelle<br />
               N° d'entreprise : 0441.444.624<br />
               Email : contact@wa-jutsu-charleroi.be<br />
               Téléphone : 0473 83 80 75
@@ -87,7 +92,7 @@ export default function MentionsLegalesPage() {
             </h2>
             <p className="text-dark-300">
               Ce site peut contenir des liens vers des sites externes. L'ASBL CCAJT Méthode Wa-Jutsu
-              l'Asie Marcinelle n'exerce aucun contrôle sur ces sites et décline toute
+              n'exerce aucun contrôle sur ces sites et décline toute
               responsabilité quant à leur contenu.
             </p>
           </section>

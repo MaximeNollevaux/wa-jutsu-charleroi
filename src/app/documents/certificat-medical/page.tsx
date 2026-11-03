@@ -33,7 +33,7 @@ export default function CertificatMedicalPage() {
             <p className="text-xl print:text-base font-bold">Club CCAJT Méthode Wa-Jutsu - Marcinelle</p>
             <p>De Ju-Jutsu Traditionnel Méthode Wa-Jutsu</p>
             <p>Association sans but lucratif</p>
-            <p className="mt-1">Rue des Merles, 32 — 6001 Marcinelle</p>
+            <p className="mt-1">Dojo : 4 Rue de l'Asie — 6001 Marcinelle</p>
             <p>Tél. : (+32) 0473/83.80.75</p>
             <p className="mt-1">Membre de L'AEJT</p>
             <p className="italic">(Académie Européenne de Ju-Jutsu Traditionnel)</p>

@@ -34,7 +34,6 @@ export default function PolitiqueConfidentialitePage() {
             </h2>
             <p className="text-dark-300">
               <strong className="text-white">ASBL CCAJT Méthode Wa-Jutsu</strong><br />
-              Rue des Merles, 32 – 6001 Marcinelle, Belgique<br />
               N° d'entreprise : 441444624<br />
               Contact : contact@wa-jutsu-charleroi.be
             </p>

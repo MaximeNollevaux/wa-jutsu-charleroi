@@ -97,8 +97,8 @@ export default function LeClubPage() {
               />
               <p className="text-dark-300 mb-6">
                 L'<strong className="text-white">ASBL CCAJT Méthode Wa-Jutsu</strong> est une association
-                sans but lucratif déclarée sous le n° d'entreprise 441444624, avec son siège social
-                situé Rue des Merles, 32 à 6001 Marcinelle.
+                sans but lucratif déclarée sous le n° d'entreprise 441444624. Les cours ont lieu
+                au dojo, 4 Rue de l'Asie à 6001 Marcinelle.
               </p>
               <p className="text-dark-300 mb-6">
                 Nous pratiquons la <strong className="text-primary">méthode Wa-Jutsu</strong>, une forme
@@ -229,11 +229,6 @@ export default function LeClubPage() {
                   <strong className="text-white">Adresse du dojo :</strong><br />
                   4 Rue de l'Asie<br />
                   6001 Marcinelle, Belgique
-                </p>
-                <p>
-                  <strong className="text-white">Siège social :</strong><br />
-                  Rue des Merles, 32<br />
-                  6001 Marcinelle
                 </p>
                 <p>
                   <strong className="text-white">N° IBAN :</strong><br />
