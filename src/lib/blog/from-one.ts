@@ -28,7 +28,7 @@ const SITE = 'wa-jutsu-charleroi.be'
 const PREMIER_RENDU = process.env['NEXT_PHASE'] === 'phase-production-build'
 
 /** Image du blog quand One n'en fournit pas : jamais d'image cassee. */
-export const IMAGE_ARTICLE_PAR_DEFAUT = '/images/hero-training-2026.webp'
+export const IMAGE_ARTICLE_PAR_DEFAUT = '/images/accueil-kata-sabre.webp'
 
 type ArticleOne = {
   slug: string

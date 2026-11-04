@@ -10,7 +10,7 @@ const disciplines = [
   {
     title: 'Kata',
     description: 'Formes traditionnelles codifiées permettant de perfectionner les mouvements et la concentration.',
-    image: '/images/kata-2026.webp',
+    image: '/images/gallery/gallery-04.webp',
   },
   {
     title: 'Techniques au Sol',
