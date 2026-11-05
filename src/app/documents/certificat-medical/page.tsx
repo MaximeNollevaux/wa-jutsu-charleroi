@@ -64,7 +64,7 @@ export default function CertificatMedicalPage() {
           </p>
           <p>
             Nous vous demandons de remplir ce certificat médical qui lui est demandé, dans le
-            cadre de la pratique du Ju-Jitsu traditionnel, méthode «&nbsp;Wa-Jutsu&nbsp;»
+            cadre de la pratique du Ju-Jutsu traditionnel, méthode «&nbsp;Wa-Jutsu&nbsp;»
             (Art martial non compétitif à but non violent).
           </p>
         </section>
